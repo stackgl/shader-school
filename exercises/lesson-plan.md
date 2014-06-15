@@ -5,7 +5,6 @@
 * intro-glsl
 * vector-types
 * matrix-types
-* compound-types
 
 ## Fragment shaders
 
@@ -29,6 +28,7 @@
 # More GLSL
 
 * glslify
+* compound-types
 * the preprocessor
 * textureLOD/vertex shader read from texture
 * cube maps
