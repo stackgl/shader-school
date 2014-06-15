@@ -55,7 +55,7 @@ Floating point variables are declared with an optional precision specifier, whic
 * `mediump` - Default precision supported on the hardware
 * `highp` - Highest precision supported on the hardware
 
-The number of bits available at the different precision levels can vary between implementations, but a general rule of thumb is that mediump is that `lowp` is usually 16bits, `mediump` is 32bit, and `highp` is either 64bit or 32bit.
+The number of bits available at the different precision levels can vary between implementations, but a general rule of thumb is that `lowp` is usually 16bits, `mediump` is 32bit, and `highp` is either 64bit or 32bit, though this is not true 100% of the time.  On some systems, `lowp` is 8bit, `mediump` is 16bit and `highp` is 32bit.  Also some systems implement lower precision specifiers using fixed point arithmetic instead of true IEEE floating point.  This situation is less problematic on modern GPUs.
 
 To declare a floating point variable, you just write the precision specifier then `float`.  For example:
 
@@ -182,6 +182,38 @@ void test() {
   //  w == -1.0
 }
 ```
+
+### Built-in functions
+
+Finally, GLSL comes with a collection of builtin functions for performing common mathematical operations.  Here is an (incomplete) list of built in functions for operating on scalar datatypes:
+
+* `radians`
+* `degrees`
+* `sin`
+* `cos`
+* `tan`
+* `asin`
+* `acos`
+* `atan`
+* `pow`
+* `exp`
+* `log`
+* `exp2`
+* `log2`
+* `sqrt`
+* `inversesqrt`
+* `abs`
+* `sign`
+* `floor`
+* `ceil`
+* `fract`
+* `mod`
+* `min`
+* `max`
+* `clamp`
+* `mix`
+* `step`
+
 
 ## Your first GLSL procedure
 
