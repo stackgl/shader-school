@@ -41,6 +41,7 @@
     "rework-inline": "^0.2.0",
     "rework-npm": "^0.6.1",
     "sliced": "0.0.5",
-    "wordwrap": "0.0.2"
+    "wordwrap": "0.0.2",
+    "browserify": "^4.1.10"
   }
 }
