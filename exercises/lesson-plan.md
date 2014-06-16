@@ -1,4 +1,4 @@
-# Proposed lesson plan order
+# Minimal lesson plan
 
 ## Basic GLSL
 
@@ -20,12 +20,16 @@
 
 ## Basic shaders
 
-* hello-shader
-* texture mapping
+* hello-shader (draw flat colored polygons with model/view/projection matrix)
+
+# Optional stuff
+
+## More shaders
+
 * blinn-phong lighting
 * cel shader
 
-# More GLSL
+## More GLSL
 
 * glslify
 * compound-types
@@ -38,5 +42,6 @@
 
 * feedback effects
 * cellular automata
+* particle effects
 * tone mapping
 * ssao
