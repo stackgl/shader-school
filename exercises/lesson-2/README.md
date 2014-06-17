@@ -9,3 +9,5 @@
 ## Compound datatypes
 
 ## Exercise
+
+Simple mandlebrodt set renderer maybe?
