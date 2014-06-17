@@ -13,6 +13,9 @@ var fs        = require('fs')
 
 var livePort = Number(process.env.GLSLIFY_LIVE_PORT = 12491)
 var mainPort = 12492
+var closeWindow = fs.readFileSync(
+  path.join(__dirname, 'lib/close-window.html')
+)
 
 module.exports = createServer
 
@@ -59,11 +62,17 @@ function createServer(root) {
 
     http.createServer(function(req, res) {
       var uri = url.parse(req.url).pathname
+      var paths = uri.split('/').filter(Boolean)
 
       if (uri === '/style.css') {
         res.setHeader('content-type', 'text/css')
         res.end(styles())
         return
+      }
+
+      if (paths[0] === 'open') {
+        opener(path.join(root, paths[1]))
+        return res.end(closeWindow)
       }
 
       for (var i = 0; i < exLinks.length; i++) {

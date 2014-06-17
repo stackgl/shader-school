@@ -217,6 +217,10 @@ Finally, GLSL comes with a collection of builtin functions for performing common
 
 ## Your first GLSL procedure
 
-With the above information, you should now be able to write a simple GLSL procedure yourself. 
+With the above information, you should now be able to write a simple GLSL procedure yourself.
+
+In <a href="/open/lesson-0" target="_blank">this lesson's directory</a> you'll
+find a file called `hello.glsl` that exports a function called `sum`. Fix this
+function to return the sum of its first two arguments.
 
 <TODO: Set up workshopper with some simple example>
