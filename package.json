@@ -46,6 +46,8 @@
     "gl-matrix": "^2.1.0",
     "gl-axes": "^2.2.3",
     "gl-vao": "^1.1.3",
-    "gl-buffer": "^2.0.8"
+    "gl-buffer": "^2.0.8",
+    "browserify": "^4.1.10",
+    "watchify": "^0.10.2"
   }
 }
