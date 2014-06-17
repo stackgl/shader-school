@@ -26,6 +26,10 @@ reasonable example of how to build up an exercise.
 * lesson descriptions.
 * magically inline local files using envify.
 
+Color scheme:
+
+![color scheme](http://imgur.com/mcbbaNt.png)
+
 ## TODO
 
 * trigger tests to check if passed.
