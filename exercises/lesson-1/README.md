@@ -1,4 +1,4 @@
-# Datatypes: Vectors
+# Vectors and Matrices
 
 ## Vectors
 
@@ -51,4 +51,16 @@ ivec3 q(1,0,-1);          //A 3D integer vector with components 1,0,-1
 * `all`
 * `not`
 
-## Hello vector project
+
+## Matrix data types
+
+### Component access 
+
+### Arithmetic
+
+Note on `matrixCompMult`
+
+### Matrices as transformations
+
+
+## Exercise

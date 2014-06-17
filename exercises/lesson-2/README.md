@@ -1,14 +1,11 @@
-# Matrices
+# Control flow
 
-## Matrix data types
+## If statements
 
-### Component access 
+## Loops
 
-### Arithmetic
+## Preprocessor macros
 
-Note on `matrixCompMult`
+## Compound datatypes
 
-### Matrices as transformations
-
-## Matrix lesson
-
+## Exercise

@@ -2,15 +2,15 @@
 
 ## Basic GLSL
 
-* intro-glsl
-* vector-types
-* matrix-types
+* introduction to glsl
+* vectors and matrices
+* loops and control flow, preprocessor, structs and arrays
 
 ## Fragment shaders
 
-* intro-fragment
-* uniforms-variables
-* texture-2d
+* introduction to fragment shaders
+* uniform variables
+* textures
 
 ## Vertex shaders
 
