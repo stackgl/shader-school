@@ -48,6 +48,7 @@
     "gl-vao": "^1.1.3",
     "gl-buffer": "^2.0.8",
     "browserify": "^4.1.10",
-    "watchify": "^0.10.2"
+    "watchify": "^0.10.2",
+    "gl-compare-sidebar": "^1.0.1"
   }
 }
