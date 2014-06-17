@@ -39,6 +39,34 @@ body .gl-compare-content {
 .gl-compare-content h1 {
   font-weight: bold;
   margin-bottom: 1em;
+  border-bottom: 1px dotted #AAA;
+}
+
+.gl-compare-content pre {
+  margin-bottom: 1em;
+  overflow-x: auto;
+  overflow-y: none;
+  background-color: rgba(0,0,0,0.5);
+  padding: 1em;
+}
+
+.gl-compare-content pre + h2,
+.gl-compare-content pre + h3 {
+  margin-top: 2em;
+}
+
+/*.gl-compare-content pre > code {
+  color: #34363B;
+}*/
+
+.gl-compare-content ul {
+  margin-bottom: 1em;
+}
+
+.gl-compare-content ul > li:before {
+  content: '\00a0* ';
+  font-weight: bold;
+  opacity: 0.5;
 }
 
 #container {
