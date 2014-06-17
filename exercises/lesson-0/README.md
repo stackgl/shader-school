@@ -217,6 +217,6 @@ Finally, GLSL comes with a collection of builtin functions for performing common
 
 ## Your first GLSL procedure
 
-With the above information, you should now be able to run a simple GLSL procedure yourself.
+With the above information, you should now be able to write a simple GLSL procedure yourself. 
 
 <TODO: Set up workshopper with some simple example>
