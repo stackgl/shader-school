@@ -27,7 +27,7 @@
     "gl-context": "^0.1.0",
     "gl-fbo": "^1.1.2",
     "glslify": "^1.4.0",
-    "glslify-live": "^1.0.0",
+    "glslify-live": "^1.0.1",
     "google-fonts": "0.0.0",
     "inquirer": "^0.5.1",
     "insert-css": "^0.1.1",
