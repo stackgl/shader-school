@@ -13,61 +13,30 @@ body {
   padding: 0;
 }
 
-.glslify-description {
-  font-size: 14px;
-  background: rgba(0, 0, 0, 0.9);
-  position: absolute;
-  top: 0; right: -500px;
-  transition: right 0.15s ease-in-out-quad;
-  max-height: 100%;
-  box-sizing: border-box;
-  height: 100%;
-  width: 500px;
-  padding: 1.5rem;
+body .gl-compare-content {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 12px;
   line-height: 1.5em;
 }
-.glslify-description.enabled {
-  right: 0;
-}
 
-.glslify-description p {
+.gl-compare-content p {
   margin-bottom: 1em;
 }
-.glslify-description a {
+
+.gl-compare-content a {
   color: #5ED7F7;
   text-decoration: none;
   border-bottom: 1px solid #5ED7F7;
 }
-.glslify-description pre,
-.glslify-description code {
+
+.gl-compare-content pre,
+.gl-compare-content code {
   font-family: 'Source Code Pro', monospace;
   font-weight: 200;
   color: #AAA;
 }
 
-.glslify-description-toggle {
-  transition: transform 0.15s, margin-right 0.15s ease-in-out-quad;
-  transform: rotate(45deg);
-  width: 24px;
-  height: 24px;
-  background: #fff;
-  cursor: pointer;
-  position: absolute;
-  margin-right: 500px;
-  top: 1.5em;
-  right: 1.5em;
-  background-image: inline('./icon-close.svg');
-  background-size: 21px 21px;
-  background-position: 50% 50%;
-  border-radius: 24px;
-}
-
-.glslify-description.enabled .glslify-description-toggle {
-  margin-right: 0;
-  transform: rotate(0);
-}
-
-.glslify-description h1 {
+.gl-compare-content h1 {
   font-weight: bold;
   margin-bottom: 1em;
 }
@@ -76,93 +45,4 @@ body {
   position: absolute;
   top: 0; left: 0;
   right: 0; bottom: 0;
-}
-
-/**
- * Diff UI: the slider/buttons that appears at the bottom of a lesson.
- */
-.diff-ui {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0.5em;
-  background: rgba(0,0,0,0);
-}
-
-.diff-ui > ul {
-  list-style-type: none;
-}
-
-.diff-ui > ul > li {
-  float: left;
-  width: 48px;
-  height: 48px;
-  background: rgba(255,255,255,0.5);
-  cursor: pointer;
-  border: 1px solid rgba(0,0,0,0.45);
-  box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(0,0,0,0.65);
-  margin-right: 0.5em;
-  border-radius: 48px;
-  background-position: 50% 50%;
-  background-size: 24px 24px;
-  background-repeat: no-repeat;
-  opacity: 1;
-  transition: transform 0.35s ease-in-out-back, background-color 0.25s, opacity 0.25s;
-  transform: rotate(90deg);
-}
-
-.diff-ui:hover > ul > li {
-  opacity: 1;
-  transform: rotate(90deg);
-}
-
-.diff-ui:hover > ul > li.selected {
-  transform: rotate(0);
-}
-
-.diff-ui > ul > li.selected {
-  transform: rotate(0);
-}
-
-.diff-ui:hover > ul > li:hover {
-  background-color: #fff;
-  transform: rotate(0);
-}
-
-.diff-ui .onion {
-  background-image: inline('./icon-onion.svg');
-}
-.diff-ui .slide {
-  background-image: inline('./icon-slide.svg');
-}
-.diff-ui .diff {
-  background-image: inline('./icon-diff.svg');
-}
-
-.diff-ui:hover .diff-slider {
-  opacity: 1;
-}
-
-.diff-slider {
-  opacity: 1;
-  transition: opacity 0.25s;
-  cursor: ew-resize;
-  float: left;
-  top: 14px;
-  left: 7px;
-  width: 300px;
-  height: 22px;
-  position: relative;
-  background: rgba(255,255,255,0.5);
-  border: 1px solid rgba(0,0,0,0.45);
-  box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(0,0,0,0.65);
-}
-
-.diff-slider-inner {
-  position: absolute;
-  top: 0; left: 0; bottom: 0;
-  width: 50%;
-  border-right: 1px solid #000;
-  background: #fff;
 }

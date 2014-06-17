@@ -1,5 +1,5 @@
 var description = require('../lib/description')
-var diffui      = require('../lib/diff-ui')
+var sidebar     = require('gl-compare-sidebar')
 var fonts       = require('google-fonts')
 var marked      = require('marked')
 var fs          = require('fs')
@@ -11,8 +11,15 @@ module.exports = function(opts) {
     'Source Code Pro': [200, 600]
   })
 
-  if (opts.compare) diffui(opts.compare)
-  if (opts.description) document.body.appendChild(
-    description(marked(opts.description))
-  )
+  if (opts.compare) {
+    var compare = sidebar(opts.compare)
+
+    if (opts.description) {
+      compare.content.innerHTML = marked(opts.description)
+    }
+  }
+
+  // if (opts.description) document.body.appendChild(
+  //   description(marked(opts.description))
+  // )
 }
