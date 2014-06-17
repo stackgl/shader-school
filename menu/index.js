@@ -1,8 +1,8 @@
 var exercises = require('../exercises.json')
 var menu = require('browser-menu')({
     x: 2, y: 2
-  , bg: process.browser ? '#1F8DD6' : 'blue'
-  , fg: process.browser ? '#f2f2f2' : 'white'
+  , bg: process.browser ? '#61FF90' : 'green'
+  , fg: process.browser ? '#34363B' : 'black'
 })
 
 menu.reset()
