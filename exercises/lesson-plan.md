@@ -40,8 +40,11 @@
 
 ## Advanced shaders
 
-* feedback effects
-* cellular automata
-* particle effects
 * tone mapping
 * ssao
+* feedback effects
+  1. simple texture feedback
+  1. cellular automata
+  1. separate logic and render shaders
+  1. floating point textures
+  1. particle system: gl.POINTS
