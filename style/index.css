@@ -19,6 +19,10 @@ body .gl-compare-content {
   line-height: 1.5em;
 }
 
+body .gl-compare-sidebar {
+  width: 420px;
+}
+
 .gl-compare-content p {
   margin-bottom: 1em;
 }

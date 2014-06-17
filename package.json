@@ -24,6 +24,7 @@
     "findup-element": "0.0.0",
     "frame-debounce": "0.0.0",
     "gl-compare": "^1.0.0",
+    "gl-compare-sidebar": "^1.0.3",
     "gl-context": "^0.1.0",
     "gl-fbo": "^1.1.2",
     "glslify": "^1.4.0",
