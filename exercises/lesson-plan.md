@@ -1,4 +1,4 @@
-# Minimal lesson plan
+# Core lesson plan
 
 ## Basic GLSL
 
@@ -9,18 +9,13 @@
 ## Fragment shaders
 
 * introduction to fragment shaders
-* uniform variables
-* textures
+* uniform variables & textures
 
 ## Vertex shaders
 
 * intro-vertex-shaders
-* point-size
-* varying-variables
+* varying-variables/hello shader (draw flat colored polygons with model/view/projection matrix)
 
-## Basic shaders
-
-* hello-shader (draw flat colored polygons with model/view/projection matrix)
 
 # Optional stuff
 
@@ -29,14 +24,7 @@
 * blinn-phong lighting
 * cel shader
 
-## More GLSL
-
-* glslify
-* compound-types
-* the preprocessor
-* textureLOD/vertex shader read from texture
-* cube maps
-* fragment shader discard
+## glslify
 
 ## Advanced shaders
 
