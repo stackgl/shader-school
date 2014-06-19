@@ -58,10 +58,30 @@ Textures are set up and passed to GLSL from the WebGL side of things. Also, unli
 vec4 texture2D(in sampler2D texture, in vec2 coordinate, in float bias = 0.0);
 ```
 
-The first parameter, `texture`, is the texture variable itself.  The second, `coordinate`, controls which data is read out from the texture.  Coordinates in the texture range from `0` to `1` and must be in 2D. Finally, `bias` is an optional parameter that changes the filtering of the texture from coarse to fine.  
-
-There is also a variation of `texture2D` called `texture2DProj`, which takes a homogeneous vector as input instead of a 2D vector.  This version can be more accurate for rendering projected or transformed textures, like shadow maps.
+The first parameter, `texture`, is the texture variable itself.  The second, `coordinate`, controls which data is read out from the texture.  Coordinates in the texture range from `0` to `1` and must be in 2D. Finally, `bias` is an optional parameter that changes the filtering of the texture from coarse to fine. There is also a variation of `texture2D` called `texture2DProj`, which takes a homogeneous vector as input instead of a 2D vector.  This version can be more accurate for rendering projected or transformed textures, like shadow maps.
 
 ## Exercise
 
 Write a program which rotates a texture by `theta` radians above the horizontal axis about the point `center`.
+
+The shader program will be sent the following uniform variables:
+
+* `texture` - Which is the texture to be rotated
+* `screenSize` - A 2D vector representing the size of the drawing buffer. Use this to rescale `gl_FragCoord.xy`
+* `theta` - A float representing the angle to rotate by in radians
+* `center` - The point about which you should rotate. This is given in `[0,1]` texture units - not screen coordinates
+
+
+**Note** Here are a few basic facts about coordinate transformations which should help get you started:
+
+To rotate the vector `[x,y]` by the angle theta, we can use the rule:
+
+```
+[x,y]  ->   [cos(theta) * x + sin(theta) * y,  -sin(theta) * x + cos(theta) * y]
+```
+
+And to translate a vector so that the point `[s,t]` is at the origin, we can just subtract the two vectors:
+
+```
+[x,y]  ->   [x-s, y-t]
+```

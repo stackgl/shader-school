@@ -1,12 +1,17 @@
-precision mediump float;
+precision highp float;
+
+uniform sampler2D texture;
+uniform vec2 screenSize;
+uniform vec2 center;
+uniform float theta;
 
 void main() {
-  float bx = mod(gl_FragCoord.x / 20.0, 2.0);
-  float by = mod(gl_FragCoord.y / 20.0, 2.0);
-  float brightness = (
-    bx > 1.0 && by > 1.0 ||
-    bx < 1.0 && by < 1.0
-  ) ? 1.0 : 0.0;
+  vec2 coord = gl_FragCoord.xy / screenSize;
+  
+  float s = sin(theta),
+        c = cos(theta);
 
-  gl_FragColor = vec4(vec3(brightness, 0.2, 0.5), 1.0);
+  mat2 m = mat2(c, s, -s, c);
+
+  gl_FragColor = texture2D(texture, m*(coord-center) + center);
 }
