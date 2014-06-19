@@ -24,6 +24,7 @@
 * blinn-phong lighting
 * cel shader
 * something involving point sprites/billboards
+* cube maps
 * raycasting
 * bump mapping/normal mapping
 * cone tracing
