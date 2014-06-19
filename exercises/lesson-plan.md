@@ -13,7 +13,7 @@
 
 ## Vertex shaders
 
-* intro-vertex-shaders
+* introduction to vertex shaders (wire cube)
 * varying-variables/hello shader (draw flat colored polygons with model/view/projection matrix)
 
 
@@ -23,13 +23,27 @@
 
 * blinn-phong lighting
 * cel shader
+* something involving point sprites/billboards
+* raycasting
+* bump mapping/normal mapping
+* cone tracing
+* blending/transparency
+
+## Extensions
+
+* dFdx/dFdy extensions
+* multiple render targets
+* frag_depth
 
 ## glslify
 
+* some example using multiple files
+* some example using a module from npm (maybe glsl-random?)
+
 ## Advanced shaders
 
-* tone mapping
-* ssao
+* tone mapping (low priority)
+* ssao (low priority)
 * feedback effects
   1. simple texture feedback
   1. cellular automata
