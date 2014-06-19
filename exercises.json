@@ -1,5 +1,7 @@
 {
-  "» LESSON TEMPLATE": "lesson-template",
-  "» LESSON 0": "lesson-0",
+  "» TEMPLATE": "lesson-template",
+  "» INTRO: HELLO GLSL": "lesson-0",
+  "» INTRO: LOOPS AND IFS": "lesson-2",
+  "» FRAGMENT SHADERS: BASICS": "frag-0",
   "» GPGPU: FEEDBACK LOOPS": "gpgpu-1"
 }
