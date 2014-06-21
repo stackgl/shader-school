@@ -17,13 +17,19 @@
 * varying-variables/hello shader (draw flat colored polygons with model/view/projection matrix)
 
 
+## Projective geometry
+
+* Clip coordinates
+* Transformations
+
+
 # Optional stuff
 
 ## More shaders
 
 * blinn-phong lighting
 * cel shader
-* something involving point sprites/billboards
+* point sprites/billboards
 * cube maps
 * raycasting
 * bump mapping/normal mapping
