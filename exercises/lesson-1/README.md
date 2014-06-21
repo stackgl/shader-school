@@ -220,3 +220,5 @@ lights[0].radius = 100.0;
 ```
 
 ## Exercise
+
+In this lecture, you will implement a few simple vector operations.
