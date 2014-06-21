@@ -1,3 +1,4 @@
+var mouse        = require('mouse-position')()
 var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
@@ -16,14 +17,25 @@ var canvas     = container.appendChild(document.createElement('canvas'))
 var readme     = fs.readFileSync(__dirname + '/README.md', 'utf8')
 var gl         = getContext(canvas, render)
 var comparison = compare(gl, actual, expected)
-var axes       = createAxes(gl, {
-  bounds: [[-1,-1,-1], [1,1,1]],
-  axesColors: [[1,1,1], [1,1,1], [1,1,1]],
-  gridColor: [1,1,1],
-  labels: [ "x", "f(x,y)", "y" ]
-})
 
-var userShader = fs.readFileSync(process.env.file_mandelbrot_glsl)
+//Draw 3 arrows, format = 
+//  weights
+//  offset
+var buffer = []
+for(var i=0; i<3; ++i) {
+  var x = [0,0,0]
+  x[i] = 1
+  buffer.push(   0,   0,   0, 0)
+  buffer.push(x[0],x[1],x[2], 0)
+  buffer.push(x[0],x[1],x[2], 0)
+  buffer.push(x[0],x[1],x[2], 0.1)
+  buffer.push(x[0],x[1],x[2], 0)
+  buffer.push(x[0],x[1],x[2], -0.1)
+}
+var vao = createVAO(gl, [{
+  "buffer": createBuffer(gl, buffer),
+  "size": 4
+}])
 
 comparison.mode = 'slide'
 comparison.amount = 0.5
@@ -37,39 +49,41 @@ require('../common')({
 window.addEventListener('resize', fit(canvas), false)
 
 var actualShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
+    frag: 'void main() { gl_FragColor = vec4(1, 1, 1, 1); }'
+  , vert: '\
+precision mediump float;\
+attribute vec4 vertexData;\
+uniform vec2 aVector;\
+uniform vec2 bVector;\n\
+#pragma glslify: func = require(' + process.env.file_vectors_glsl + ')\n\
+void main() {\
+  vec2 base = vertexData.x * aVector +\
+              vertexData.y * bVector +\
+              vertexData.z * func(aVector, bVector);\
+  float baseLen = length(base);\
+  float offsetScale = vertexData.w;\
+  vec2 headShift = offsetScale * normalize(vec2(-base.y, base.x)) - abs(offsetScale) * normalize(base);\
+  gl_Position = vec4(base + headShift, 0.0, 1.0);\
+}'
+  , inline: true
 })(gl)
-
 
 var expectedShader = createShader({
     frag: './shaders/fragment.glsl'
   , vert: './shaders/vertex.glsl'
 })(gl)
 
-
-var camera
+var aVector = [0,0]
+var bVector = [0,0]
 
 function render() {
 
-  var projection = mat4.perspective(
-    mat4.create(),
-    Math.PI/4.0,
-    canvas.width/canvas.height,
-    0.0001,
-    1000.0)
+  var theta = 0.0001 * now()
+  aVector[0] = 0.5 * Math.cos(theta)
+  aVector[1] = 0.5 * Math.sin(theta)
 
-  var t = now() * 0.0001
-  var view = mat4.lookAt(
-    mat4.create(),
-    [4*Math.cos(t), 4.5, 4*Math.sin(t)],
-    [0,0,0],
-    [0,1,0])
-
-  camera = {
-    view: view,
-    projection: projection
-  }
+  bVector[0] = 2.0 * (mouse.x / canvas.width) - 1.0
+  bVector[1] = 1.0 - 2.0 * (mouse.y / canvas.height)
 
   comparison.run()
   comparison.render()
@@ -79,12 +93,20 @@ function actual(fbo) {
   fbo.shape = [canvas.height, canvas.width]
   fbo.bind()
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
-  axes.draw(camera)
+  actualShader.bind()
+  actualShader.uniforms.aVector = aVector
+  actualShader.uniforms.bVector = bVector
+  vao.bind()
+  vao.draw(gl.LINES, buffer.length / 4)
 }
 
 function expected(fbo) {
   fbo.shape = [canvas.height, canvas.width]
   fbo.bind()
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
-  axes.draw(camera)
+  expectedShader.bind()
+  expectedShader.uniforms.aVector = aVector
+  expectedShader.uniforms.bVector = bVector
+  vao.bind()
+  vao.draw(gl.LINES, buffer.length / 4)
 }

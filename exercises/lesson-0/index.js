@@ -1,3 +1,4 @@
+var mouse        = require('mouse-position')()
 var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
@@ -81,7 +82,6 @@ var expectedShader = createShader({
     frag: './shaders/fragment.glsl'
   , vert: './shaders/vertex.glsl'
 })(gl)
-
 
 var camera
 

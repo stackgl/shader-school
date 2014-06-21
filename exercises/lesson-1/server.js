@@ -8,6 +8,7 @@ module.exports = function(sourceFiles) {
 
   sourceFiles.forEach(function(file) {
     var base = path.basename(file).replace(/\./g, '_')
+    console.log(base)
     envify.push('--file_' + base)
     envify.push(file)
   })
@@ -23,7 +24,7 @@ module.exports = function(sourceFiles) {
     , bundlerFlags: []
       .concat(envify)
       //.concat(live)
-      .concat(glslify)
       .concat(brfs)
+      .concat(glslify)
   })
 }
