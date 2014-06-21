@@ -42,13 +42,6 @@ The first fragment shader input is `gl_FragCoord`.  `gl_FragCoord` is a 4D vecto
 
 For now, we won't worry too much about `gl_FragCoord.z` and `gl_FragCoord.w`, since understanding them properly requires explaining how clip coordinates work (which we will come to when we introduce vertex shaders).
 
-#### Other inputs
-
-In addition to gl_FragCoord, there are two other special inputs to fragment shaders:
-
-* `gl_PointCoord` - Only present for point sprites. Is a `vec2` which gives the coordinate of the fragment in the plane of the point sprite.
-* `gl_FrontFacing` - Only present for triangles. Is a `bool` which tests if the fragment is on the front or back of a triangle.
-
 ### The `discard` keyword
 
 Finally, in GLSL it is possible to skip rendering a fragment with the `discard` statement.  For example, using this method we could remove all pixels on the back side of a polygon with this program:
