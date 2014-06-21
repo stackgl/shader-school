@@ -28,11 +28,11 @@ var actualShader = createShader({
   fragment: [
 "precision highp float;",
 "uniform vec2 screenSize;",
-"#pragma glslify: mandlebrot = require(" + process.env.file_mandelbrot_glsl + ")",
+"#pragma glslify: fractal=require(" + process.env.file_mandelbrot_glsl + ")",
 "void main() {",
   "vec2 q = 2.0 * (gl_FragCoord.xy / screenSize) - vec2(1.5,1.0);",
   "vec4 color = vec4(0,0,0,1);",
-  "if(mandelbrot(q)) {",
+  "if(fractal(q)) {",
     "color = vec4(1,1,1,1);",
   "}",
   "gl_FragColor = color;",

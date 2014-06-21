@@ -128,3 +128,4 @@ Remember the definition of complex multiplication:
 
 ```
 (a + b*i) * (c + d*i) = (a * c - b * d) + (a * d + b * d) * i
+```
