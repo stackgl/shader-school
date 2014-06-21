@@ -4,5 +4,6 @@
   "» INTRO: CONTROL FLOW": "lesson-2",
   "» FRAGMENT SHADERS: BASICS": "frag-0",
   "» FRAGMENT SHADERS: UNIFORMS AND TEXTURES": "frag-1",
+  "» VERTEX SHADERS: BASICS": "vert-0",
   "» GPGPU: FEEDBACK LOOPS": "gpgpu-1"
 }
