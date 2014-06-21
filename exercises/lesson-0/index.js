@@ -59,27 +59,27 @@ var actualShader = createShader({
   vertex: "attribute vec2 uv;\
 uniform mat4 view;\
 uniform mat4 projection;\
-varying float value;\
-float func(float x, float y) {\
-  return max(x, y);\
-}\
+varying float value;\n\
+#pragma glslify: func = require(" + process.env.file_hello_glsl + ")\n\
 void main() {\
   vec2 coord = (uv / 128.0) - 1.0;\
   float f = func(coord.x, coord.y);\
   gl_Position = projection * view * vec4(coord.x, f, coord.y, 1.0);\
   value = f;\
 }",
-  fragment: "varying highp float value;\
+  fragment: "precision highp float;\
+varying float value;\
 void main() {\
-  gl_FragColor = vec4(value, value, value, 1.0);\
+  vec3 color = vec3(sin(value), cos(value+0.7853981633974483), cos(value));\
+  gl_FragColor = vec4(normalize(color), 1.0);\
 }",
   inline: true
 })(gl)
 
 
 var expectedShader = createShader({
-    frag: './shaders/expected.frag'
-  , vert: './shaders/expected.vert'
+    frag: './shaders/fragment.glsl'
+  , vert: './shaders/vertex.glsl'
 })(gl)
 
 

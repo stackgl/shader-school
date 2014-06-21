@@ -24,14 +24,26 @@ require('../common')({
 window.addEventListener('resize', fit(canvas), false)
 
 var actualShader = createShader({
-  vertex: './shaders/expected.vert',
-  fragment: './shaders/expected.frag'
+  vertex: "attribute vec2 uv;void main() {gl_Position = vec4(uv,0,1);}",
+  fragment: [
+"precision highp float;",
+"uniform vec2 screenSize;",
+"#pragma glslify: mandlebrot = require(" + process.env.file_mandelbrot_glsl + ")",
+"void main() {",
+  "vec2 q = 2.0 * (gl_FragCoord.xy / screenSize) - vec2(1.5,1.0);",
+  "vec4 color = vec4(0,0,0,1);",
+  "if(mandelbrot(q)) {",
+    "color = vec4(1,1,1,1);",
+  "}",
+  "gl_FragColor = color;",
+"}"].join("\n"),
+  inline: true
 })(gl)
 
 
 var expectedShader = createShader({
-    frag: './shaders/expected.frag'
-  , vert: './shaders/expected.vert'
+    frag: './shaders/fragment.glsl'
+  , vert: './shaders/vertex.glsl'
 })(gl)
 
 function render() {

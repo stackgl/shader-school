@@ -23,6 +23,8 @@ var axes       = createAxes(gl, {
   labels: [ "x", "f(x,y)", "y" ]
 })
 
+var userShader = fs.readFileSync(process.env.file_mandelbrot_glsl)
+
 comparison.mode = 'slide'
 comparison.amount = 0.5
 

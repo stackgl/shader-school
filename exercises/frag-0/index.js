@@ -34,6 +34,7 @@ var expectedShader = createShader({
 })(gl)
 
 function render() {
+  gl.enable(gl.DEPTH_TEST)
   comparison.run()
   comparison.render()
 }

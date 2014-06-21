@@ -23,7 +23,7 @@ module.exports = function(sourceFiles) {
     , bundlerFlags: []
       .concat(envify)
       //.concat(live)
-      .concat(glslify)
       .concat(brfs)
+      .concat(glslify)
   })
 }
