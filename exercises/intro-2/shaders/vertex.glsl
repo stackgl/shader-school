@@ -3,9 +3,7 @@ attribute vec4 vertexData;
 uniform vec2 aVector;
 uniform vec2 bVector;
 
-vec2 func(vec2 a, vec2 b) {
-  return normalize(normalize(a) + normalize(b));
-}
+#pragma glslify: func=require(./expected.glsl)
 
 void main() {
   vec2 base = vertexData.x * aVector +

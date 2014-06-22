@@ -1,9 +1,11 @@
 var mouse        = require('mouse-position')()
+var triangle     = require('a-big-triangle')
 var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
 var compare      = require('gl-compare')
 var createAxes   = require('gl-axes')
+var createFBO    = require('gl-fbo')
 var glm          = require('gl-matrix')
 var createBuffer = require('gl-buffer')
 var createVAO    = require('gl-vao')
@@ -17,6 +19,18 @@ var canvas     = container.appendChild(document.createElement('canvas'))
 var readme     = fs.readFileSync(__dirname + '/README.md', 'utf8')
 var gl         = getContext(canvas, render)
 var comparison = compare(gl, actual, expected)
+var verifyFBO  = createFBO(gl, [512,512])
+
+var testVectors = [
+  [0,1],
+  [1,0],
+  [-1,0],
+  [0,-1],
+  [0.25,0.3],
+  [-1,-1],
+  [1,2],
+  [0.4,8]
+]
 
 //Draw 3 arrows, format = 
 //  weights
@@ -44,6 +58,7 @@ require('../common')({
     description: readme
   , compare: comparison
   , canvas: canvas
+  , test: verify
 })
 
 window.addEventListener('resize', fit(canvas), false)
@@ -71,6 +86,32 @@ void main() {\
 var expectedShader = createShader({
     frag: './shaders/fragment.glsl'
   , vert: './shaders/vertex.glsl'
+})(gl)
+
+var verifyShader = createShader({
+    frag: [
+  'precision highp float;',
+  '#pragma glslify: actualFunc=require(' + process.env.file_vectors_glsl + ')',
+  '#pragma glslify: expectedFunc=require(./shaders/expected.glsl)',
+  'uniform vec2 bVector;',
+  'varying vec2 aVector;',
+  'void main() {',
+    'vec2 actual = actualFunc(aVector, bVector);',
+    'vec2 expected = expectedFunc(aVector, bVector);',
+    'if(distance(actual, expected) > 0.01) {',
+      'gl_FragColor = vec4(1,1,1,1);',
+    '} else {',
+      'gl_FragColor = vec4(0,0,0,0);',
+    '}',
+  '}'].join('\n')
+  , vert: [
+  'attribute vec2 position;',
+  'varying vec2 aVector;',
+  'void main() {',
+    'gl_Position = vec4(position,0,1);',
+    'aVector = position;',
+  '}'].join('\n')
+  , inline: true
 })(gl)
 
 var aVector = [0,0]
@@ -109,4 +150,26 @@ function expected(fbo) {
   expectedShader.uniforms.bVector = bVector
   vao.bind()
   vao.draw(gl.LINES, buffer.length / 4)
+}
+
+function verify(cb) {
+  process.nextTick(function() {
+    var buffer = new Uint8Array(512*512*4)
+    verifyFBO.bind()
+    verifyShader.bind()
+    for(var i=0; i<testVectors.length; ++i) {
+      verifyShader.uniforms.bVector = testVectors[i]
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+      triangle(gl)
+      gl.readPixels(0, 0, 512, 512, gl.RGBA, gl.UNSIGNED_BYTE, buffer)
+      for(var j=0; j<buffer.length; ++j) {
+        if(buffer[j]) {
+          cb(null, null)
+          return
+        }
+      }
+    }
+    cb(null, 'you got it!')
+    return
+  })
 }
