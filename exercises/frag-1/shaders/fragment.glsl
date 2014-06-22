@@ -1,17 +1,13 @@
 precision highp float;
 
-uniform sampler2D texture;
-uniform vec2 screenSize;
-uniform vec2 center;
-uniform float theta;
+#define CIRCLE_COLOR    vec4(1, 0, 0, 1)
+#define OUTSIDE_COLOR   vec4(0, 0, 1, 1)
 
 void main() {
-  vec2 coord = gl_FragCoord.xy / screenSize;
-  
-  float s = sin(theta),
-        c = cos(theta);
-
-  mat2 m = mat2(c, s, -s, c);
-
-  gl_FragColor = texture2D(texture, m*(coord-center) + center);
+  float d2 = distance(gl_FragCoord.xy, vec2(256, 256));
+  if(d2 >= 128.0) {
+    gl_FragData[0] = CIRCLE_COLOR;
+  } else {
+    gl_FragData[0] = OUTSIDE_COLOR;
+  }
 }
