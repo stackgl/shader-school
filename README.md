@@ -25,6 +25,8 @@ reasonable example of how to build up an exercise.
 * live-reloads shaders on save.
 * lesson descriptions.
 * magically inline local files using envify.
+* trigger tests to check if passed.
+* record student progress.
 
 Color scheme:
 
@@ -32,9 +34,7 @@ Color scheme:
 
 ## TODO
 
-* trigger tests to check if passed.
 * back button to return to menu.
-* record student progress.
 * image/text preview on hover for lesson menu?
 * make the exit button work.
 * in-browser editor, e.g. like [glsl.heroku.com](http://glsl.heroku.com)?

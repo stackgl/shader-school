@@ -12,6 +12,7 @@ module.exports = function(sourceFiles) {
     envify.push(file)
   })
 
+  envify.push('--lesson_dirname', path.basename(__dirname))
   envify.push(']')
 
   return require('beefy')({

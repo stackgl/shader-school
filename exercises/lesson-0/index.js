@@ -1,3 +1,4 @@
+var matchFBO     = require('../../lib/match-fbo')
 var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
@@ -7,6 +8,7 @@ var glm          = require('gl-matrix')
 var createBuffer = require('gl-buffer')
 var createVAO    = require('gl-vao')
 var createShader = require('glslify')
+var path         = require('path')
 var fs           = require('fs')
 var now          = require('right-now')
 var mat4         = glm.mat4
@@ -51,6 +53,8 @@ require('../common')({
     description: readme
   , compare: comparison
   , canvas: canvas
+  , dirname: process.env.lesson_dirname
+  , test: matchFBO(comparison, 0.99)
 })
 
 window.addEventListener('resize', fit(canvas), false)
