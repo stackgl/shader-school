@@ -52,6 +52,8 @@
     "right-now": "^1.0.0",
     "sliced": "0.0.5",
     "wordwrap": "0.0.2",
-    "xhr": "^1.9.0"
+    "xhr": "^1.9.0",
+    "ndarray": "^1.0.15",
+    "ndarray-distance": "0.0.0"
   }
 }
