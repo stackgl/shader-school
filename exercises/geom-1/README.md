@@ -56,25 +56,6 @@ The main motivation (and also the origin of the name "clip" coordinates) comes f
  0 < z < w
 ```
 
-Working backwards from the formula for projecting points in clip coordinates to the screen, you can check that the first two inequations are sufficient to determine that no points are drawn outside of the viewable bounds. The last inequation constrains that no objects behind the camera are drawn and that points where `z>=1` are clipped.
-
-## Transformations in projective geometry
-
-One of the biggest advantages of projective coordinates is that they greatly simplify geometric transformations. Specifically, in projective geometry each of the following types of transformations is a special case of a *projective transformation*:
-
-* Translations
-* Rotations
-* Reflections
-* Scaling
-* Shearing
-* Perspective warping (aka homographies)
-
-In projective geometry
-
-### Transforming points
-
-### Transforming functions
-
+Working backwards from the formula for projecting points in clip coordinates to the screen, you can check that the first two inequations are sufficient to determine that no points are drawn outside of the viewable bounds. The last inequation constrains that no objects behind the camera are drawn and that distant points where `z>=1` are clipped.
 
 ## Exercise
-
