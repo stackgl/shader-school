@@ -1,4 +1,4 @@
-var triangle     = require('a-big-triangle')
+var drawTriangle = require('a-big-triangle')
 var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
@@ -24,9 +24,22 @@ require('../common')({
 window.addEventListener('resize', fit(canvas), false)
 
 var actualShader = createShader({
-    frag: process.env.file_fragment_glsl
-  , vert: './shaders/vertex.glsl'
+  vertex: "attribute vec2 uv;void main() {gl_Position = vec4(uv,0,1);}",
+  fragment: [
+"precision highp float;",
+"uniform vec2 screenSize;",
+"#pragma glslify: fractal=require(" + process.env.file_mandelbrot_glsl + ")",
+"void main() {",
+  "vec2 q = 2.0 * (gl_FragCoord.xy / screenSize) - vec2(1.5,1.0);",
+  "vec4 color = vec4(0,0,0,1);",
+  "if(fractal(q)) {",
+    "color = vec4(1,1,1,1);",
+  "}",
+  "gl_FragColor = color;",
+"}"].join("\n"),
+  inline: true
 })(gl)
+
 
 var expectedShader = createShader({
     frag: './shaders/fragment.glsl'
@@ -39,15 +52,17 @@ function render() {
 }
 
 function actual(fbo) {
-  fbo.shape = [512, 512]
+  fbo.shape = [canvas.height, canvas.width]
   fbo.bind()
   actualShader.bind()
-  triangle(gl)
+  actualShader.uniforms.screenSize = [canvas.width, canvas.height]
+  drawTriangle(gl)
 }
 
 function expected(fbo) {
-  fbo.shape = [512, 512]
+  fbo.shape = [canvas.height, canvas.width]
   fbo.bind()
   expectedShader.bind()
-  triangle(gl)
+  expectedShader.uniforms.screenSize = [canvas.width, canvas.height]
+  drawTriangle(gl)
 }

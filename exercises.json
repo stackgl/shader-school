@@ -1,8 +1,10 @@
 {
-  "» TEMPLATE": "lesson-template",
-  "» INTRO: HELLO GLSL": "lesson-0",
-  "» INTRO: CONTROL FLOW": "lesson-2",
-  "» FRAGMENT SHADERS: BASICS": "frag-0",
-  "» FRAGMENT SHADERS: UNIFORMS AND TEXTURES": "frag-1",
-  "» GPGPU: FEEDBACK LOOPS": "gpgpu-1"
+  "» INTRO 1: GLSL SYNTAX": "intro-1",
+  "» INTRO 2: DATA TYPES": "intro-2",
+  "» INTRO 3: CONTROL FLOW": "intro-3",
+  "» FRAG 1: FRAGMENT SHADER BASICS": "frag-1",
+  "» FRAG 2: UNIFORMS AND TEXTURES": "frag-2",
+  "» VERT 1: VERTEX SHADER BASICS": "vert-1",
+  "» VERT 2: VARYING VARIABLES": "vert-2",
+  "» GPGPU 1: FEEDBACK LOOPS": "gpgpu-1"
 }
