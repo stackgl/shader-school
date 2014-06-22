@@ -1,7 +1,7 @@
 {
-  "» INTRO 1: GLSL SYNTAX": "lesson-0",
-  "» INTRO 2: DATA TYPES": "lesson-1",
-  "» INTRO 3: CONTROL FLOW": "lesson-2",
+  "» INTRO 1: GLSL SYNTAX": "intro-1",
+  "» INTRO 2: DATA TYPES": "intro-2",
+  "» INTRO 3: CONTROL FLOW": "intro-3",
   "» FRAG 0: FRAGMENT SHADER BASICS": "frag-0",
   "» FRAG 1: UNIFORMS AND TEXTURES": "frag-1",
   "» VERT 0: VERTEX SHADER BASICS": "vert-0",
