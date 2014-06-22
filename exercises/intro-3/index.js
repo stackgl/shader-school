@@ -1,3 +1,4 @@
+var matchFBO     = require('../../lib/match-fbo')
 var drawTriangle = require('a-big-triangle')
 var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
@@ -19,6 +20,7 @@ require('../common')({
     description: readme
   , compare: comparison
   , canvas: canvas
+  , test: matchFBO(comparison, 0.99)
 })
 
 window.addEventListener('resize', fit(canvas), false)

@@ -104,7 +104,7 @@ z(n+1) = z(n) * z(n) + c
 Then we say that the point `c` is in the mandelbrot set if this sequence converges
 
 ```
-    lim          z(n)   < infinity
+    lim        |z(n)|   < infinity
 n -> infinity
 ```
 
@@ -124,8 +124,14 @@ bool mandelbrot(vec2 c) {
 
 ### Hints
 
-Remember the definition of complex multiplication:
+Remember the definition of complex multiplication is:
 
 ```
 (a + b*i) * (c + d*i) = (a * c - b * d) + (a * d + b * d) * i
+```
+
+And the magnitude of a complex number is the vector length of its components:
+
+```
+| a + b*i | = sqrt(a*a + b*b)
 ```
