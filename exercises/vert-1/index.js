@@ -1,3 +1,4 @@
+var matchFBO     = require('../../lib/match-fbo')
 var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
@@ -21,6 +22,7 @@ require('../common')({
     description: readme
   , compare: comparison
   , canvas: canvas
+  , test: matchFBO(comparison, 0.99)
 })
 
 window.addEventListener('resize', fit(canvas), false)
