@@ -1,3 +1,4 @@
+var matchFBO     = require('../../lib/match-fbo')
 var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
@@ -21,6 +22,7 @@ require('../common')({
     description: readme
   , compare: comparison
   , canvas: canvas
+  , test: matchFBO(comparison, 0.99)  
 })
 
 window.addEventListener('resize', fit(canvas), false)
@@ -52,6 +54,8 @@ var expectedShader = createShader({
   , vert: './shaders/vertex.glsl'
 })(gl)
 
+expectedShader.attributes.position.location = 0
+expectedShader.attributes.color.location = 1
 
 var theta = 0.0
 

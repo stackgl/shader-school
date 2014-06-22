@@ -2,37 +2,34 @@
 
 ## Connecting vertex shaders to fragment shaders
 
-In addition to defining the position of vertices, vertex shaders can also send information directly to fragment shaders using the `varying` type qualifier.  `varying` variables, like `attribute`s and `uniform`s are declared at global scope within a shader. `varying` variables must have a datatype of either `float`, `vec2`, `vec3` or `vec4`. By default, `varying` variables are linearly interpolated across the rendered primitive. Here is a simple example of using a `varying` variable to change the color of a triangle:
-
-#### Vertex shader:
+In addition to defining the position of vertices, vertex shaders can also send information directly to fragment shaders using the `varying` type qualifier.  `varying` variables, like `attribute`s and `uniform`s are declared at global scope within a shader. `varying` variables must have a datatype of either `float`, `vec2`, `vec3` or `vec4`. By default, `varying` variables are linearly interpolated across the rendered primitive. In a vertex shader, one could declare a variable like this:
 
 ```glsl
-precision highp float;
-
 attribute vec4 position;
-attribute vec3 color;
 
-varying vec3 fragColor;
+//Declare a varying variable called fragPosition
+varying vec4 fragPosition;
 
 void main() {
-  fragColor = color;
   gl_Position = position;
+
+  //Set fragPosition variable for the fragment shader output
+  fragPosition = position;
 }
 ```
 
-#### Fragment shader:
+Then in the fragment shader, the `fragPosition` variable can be used like so:
 
 ```glsl
 precision highp float;
 
-varying vec3 fragColor;
+varying vec4 fragPosition;
 
 void main() {
-  gl_FragColor = vec4(fragColor, 1);
+  gl_FragColor = fragPosition;
 }
 ```
-
-This program will draw a colored
 
 ## Exercise
 
+In this exercise you will write a minimal vertex shader and fragment shader for rendering colored objects. Specifically, you should declare a vertex shader with two attributes: `position` and `color`.  Your fragment shader should output the interpolated value of `color` to the `gl_FragColor` register. This will be used to draw a shaded triangle.
