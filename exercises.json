@@ -5,5 +5,6 @@
   "» FRAG 1: FRAGMENT SHADER BASICS": "frag-1",
   "» FRAG 2: UNIFORMS AND TEXTURES": "frag-2",
   "» VERT 1: VERTEX SHADER BASICS": "vert-1",
+  "» VERT 2: VARYING VARIABLES": "vert-2",
   "» GPGPU 1: FEEDBACK LOOPS": "gpgpu-1"
 }
