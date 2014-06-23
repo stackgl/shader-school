@@ -78,8 +78,6 @@ function getCamera() {
   var model = mat4.create()
   mat4.rotateX(model, model, t * 2.9 + 0.1)
 
-  console.log(model, view, projection)
-
   return {
     view: view,
     projection: projection,
