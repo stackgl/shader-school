@@ -9,5 +9,6 @@
   "» GEOM 1: CLIP COORDINATES": "geom-1",
   "» GEOM 2: TRANSLATIONS": "geom-2",
   "» GEOM 3: SCALING": "geom-3",
+  "» GEOM 4: REFLECTIONS": "geom-4",
   "» GPGPU 1: FEEDBACK LOOPS": "gpgpu-1"
 }
