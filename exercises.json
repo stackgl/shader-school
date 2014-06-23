@@ -8,5 +8,6 @@
   "» VERT 2: VARYING VARIABLES": "vert-2",
   "» GEOM 1: CLIP COORDINATES": "geom-1",
   "» GEOM 2: TRANSLATIONS": "geom-2",
+  "» GEOM 3: SCALING": "geom-3",
   "» GPGPU 1: FEEDBACK LOOPS": "gpgpu-1"
 }
