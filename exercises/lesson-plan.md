@@ -16,18 +16,42 @@
 * introduction to vertex shaders (wire cube)
 * varying-variables/hello shader (draw flat colored polygons with model/view/projection matrix)
 
-
 ## Projective geometry
 
 * Clip coordinates
 * Transformations
 
+## Lighting
+
+* flat shading
+* gouraud shading
+* blinn-phong
+* other models?  (cook torrance maybe)
 
 # Optional stuff
 
+## Color space
+
+* rgb coordinates
+* hsl
+* dynamic range/tonemapping
+
+## Image processing
+
+* convolutions
+    + blur
+    + edge enhancment maybe
+* warping
+* mip mapping
+
+## Antialiasing
+
+## Raytracing
+
+* perhaps have students implement a simple glsl raytracer for some quadric surfaces
+
 ## More shaders
 
-* blinn-phong lighting
 * cel shader
 * point sprites/billboards
 * cube maps
@@ -49,11 +73,12 @@
 
 ## Advanced shaders
 
-* tone mapping (low priority)
-* ssao (low priority)
-* feedback effects
-  1. simple texture feedback
-  1. cellular automata
-  1. separate logic and render shaders
-  1. floating point textures
-  1. particle system: gl.POINTS
+* ssao
+
+## feedback effects
+
+* simple texture feedback
+* cellular automata
+* separate logic and render shaders
+* floating point textures
+* particle system: gl.POINTS
