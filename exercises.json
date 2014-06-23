@@ -6,5 +6,6 @@
   "» FRAG 2: UNIFORMS AND TEXTURES": "frag-2",
   "» VERT 1: VERTEX SHADER BASICS": "vert-1",
   "» VERT 2: VARYING VARIABLES": "vert-2",
+  "» GEOM 1: CLIP COORDINATES": "geom-1",
   "» GPGPU 1: FEEDBACK LOOPS": "gpgpu-1"
 }

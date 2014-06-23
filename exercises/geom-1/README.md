@@ -58,4 +58,53 @@ The main motivation (and also the origin of the name "clip" coordinates) comes f
 
 Working backwards from the formula for projecting points in clip coordinates to the screen, you can check that the first two inequations are sufficient to determine that no points are drawn outside of the viewable bounds. The last inequation constrains that no objects behind the camera are drawn and that distant points where `z>=1` are clipped.
 
+## Transformations
+
+Working in projective coordinates also has the advantage that it greatly simplifies coordinate transformations. Specifically, any change of reference frame in plane geometry can be encoded as a 4x4 matrix in homogeneous coordinates.  These matrices are used throughout graphics to control the position and orientation of the camera, the shape of the viewable frustum and the location of objects within the scene.  We will cover the different types of transformations in more detail in the coming lessons, but for now it is enough to understand that applying a transformation encoded in a 4x4 matrix `m` to vector `p` can be done using the following convetion:
+
+```glsl
+vec4 transformPoint(mat4 transform, vec4 point) {
+  return transform * point;
+}
+```
+
+And that the concatenation of transformations is equivalent to the product of their matrices.  That is,
+
+```glsl
+transformPoint(A, transformPoint(B, p)) == transformPoint(A * B, p)
+```
+
+That this is true is a consequence of the fact that matrix multiplication is associative.
+
+### The model-view-projection factorization
+
+Many 3D graphical applications make use of 4 different coordinate systems:
+
+* Data coordinates: Which are the coordinates of the vertices in the model
+* World coordinates: Which are the coordinates of objects in the scene
+* View coordinates: Which are the unprojected coordinates of the camera
+* Clip coordinates: Which are the coordinates used by the GPU to render all primitives
+
+The relationship between these coordinate systems is usually specified using 3 different transformations:
+
+* `model`: Which transforms the object from data coordinates to world coordinates.  This controls the location of the object in the world.
+* `view`: Which transforms world coordinate system to a viewing coordinate system.  This controls the position and orientation of the camera.
+* `projection`: Which transforms the view coordinate system into device clip coordinates.  This controls whether the view is orthographic or perspective, and also controls the aspect ratio of the camera.
+
+While it would in theory be sufficient to pass just one matrix which is the full data -> clip coordinate transformation, factoring the coordinate transformation into 3 phases can simplify various effects.  For example, some lighting operations must be applied in world coordinates, and some effects like billboarding for sprites need to be applied in a view coordinate system.
+
 ## Exercise
+
+In this exercise, you will implement a vertex shader which applies the above sequence of operations to a 3D object. Your vertex shader should take a `vec3` attribute called `position` and `mat4` uniforms called `model`, `view` and `projection`.
+
+```glsl
+precision highp float;
+
+attribute vec3 position;
+
+uniform mat4 model, view, projection;
+
+void main() {
+  gl_Position = vec4(position, 1);
+}
+```
