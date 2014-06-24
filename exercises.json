@@ -13,5 +13,6 @@
   "» GEOM 5: ROTATIONS": "geom-5",
   "» LIGHT 1: FLAT SHADING": "light-1",
   "» LIGHT 2: DIFFUSE SHADING": "light-2",
+  "» LIGHT 3: PHONG SHADING": "light-3",
   "» GPGPU 1: FEEDBACK LOOPS": "gpgpu-1"
 }
