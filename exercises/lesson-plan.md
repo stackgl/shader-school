@@ -37,6 +37,7 @@
 
 * cel shading
 * gooch shading
+* real-time hatching (praun et al)
 
 # Optional stuff
 
