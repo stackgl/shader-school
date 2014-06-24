@@ -89,6 +89,7 @@ function createServer(root) {
     }).listen(mainPort, function(err) {
       if (err) throw err
       opener('http://localhost:'+mainPort)
+      console.log('listening on port:', mainPort)
     })
   }
 }
