@@ -4,19 +4,19 @@
 
 ## Running this thing
 
-First, clone this repository into your local directory, `cd` into the `glslify-workshopper` directory and do:
+First, you need to get a browser with WebGL, as well as a copy of node.js.  Once you have all of that set up, clone this repository, `cd` into the `glslify-workshopper` directory and do:
 
 ```
 npm install
 ```
 
-Once that completes, you should be able to run the workshopper with the command:
+After that completes, you should be able to run the workshopper with the command:
 
 ```
 npm start
 ```
 
-Your answers go in the `answers` directory.  Eventually this whole process will be streamlined once it gets pushed out to npm.
+The script will ask you if you want to create an answer directory, press `y` to accept.  After that's done it should create a directory called `answers` which you can then edit.  If the system crashes, you can just rerun the `npm start` script and it should pick back up where you left off.
 
 ## Creating a new exercise
 
