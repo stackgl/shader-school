@@ -20,6 +20,7 @@ module.exports = function(sourceFiles) {
     , quiet: false
     , live: false
     , debug: false
+    , watchify: false
     , bundlerFlags: []
       .concat(envify)
       //.concat(live)
