@@ -26,6 +26,9 @@
 * flat shading
 * lambertian
 * blinn-phong
+* point lights
+* spot lights
+* multiple light sources
 * oren-nayar (advanced)
 * cook-torrance (advanced)
 * (shadows and reflections might be too much, and require multipass stuff)
