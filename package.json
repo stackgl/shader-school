@@ -13,7 +13,7 @@
     "a-big-triangle": "0.0.0",
     "autoprefixer": "^1.2.0",
     "baboon-image": "^1.0.0",
-    "beefy": "^2.0.0",
+    "beefy": "^2.0.2",
     "brfs": "^1.1.1",
     "browser-menu": "0.0.1",
     "browserify": "^4.1.10",

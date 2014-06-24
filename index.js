@@ -58,6 +58,7 @@ function createServer(root) {
         cwd: path.join(__dirname, 'menu')
       , entries: ['index.js']
       , quiet: false
+      , watchify: false
     })
 
     http.createServer(function(req, res) {
