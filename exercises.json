@@ -11,5 +11,6 @@
   "» GEOM 3: SCALING": "geom-3",
   "» GEOM 4: REFLECTIONS": "geom-4",
   "» GEOM 5: ROTATIONS": "geom-5",
+  "» LIGHT 1: FLAT SHADING": "light-1",
   "» GPGPU 1: FEEDBACK LOOPS": "gpgpu-1"
 }

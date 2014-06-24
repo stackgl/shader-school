@@ -27,6 +27,12 @@
 * gouraud shading
 * blinn-phong
 * other models?  (cook torrance maybe)
+* (shadows and reflections might be too much, and require multipass stuff)
+
+## NPR
+
+* cel shading
+* gooch shading
 
 # Optional stuff
 
@@ -41,6 +47,9 @@
 * convolutions
     + blur
     + edge enhancment maybe
+* morphological
+    + dilate/erode
+    + open/close
 * warping
 * mip mapping
 
@@ -52,7 +61,6 @@
 
 ## More shaders
 
-* cel shader
 * point sprites/billboards
 * cube maps
 * raycasting
