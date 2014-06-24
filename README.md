@@ -2,6 +2,22 @@
 
 **WORK IN PROGRESS**
 
+## Running this thing
+
+First, clone this repository into your local directory, `cd` into the `glslify-workshopper` directory and do:
+
+```
+npm install
+```
+
+Once that completes, you should be able to run the workshopper with the command:
+
+```
+npm start
+```
+
+Your answers go in the `answers` directory.  Eventually this whole process will be streamlined once it gets pushed out to npm.
+
 ## Creating a new exercise
 
 Add an entry to `exercises.json`. Each key is the label used in the menu, and

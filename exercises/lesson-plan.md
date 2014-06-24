@@ -24,9 +24,10 @@
 ## Lighting
 
 * flat shading
-* gouraud shading
+* lambertian
 * blinn-phong
-* other models?  (cook torrance maybe)
+* oren-nayar (advanced)
+* cook-torrance (advanced)
 * (shadows and reflections might be too much, and require multipass stuff)
 
 ## NPR
