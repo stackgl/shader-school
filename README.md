@@ -44,10 +44,6 @@ reasonable example of how to build up an exercise.
 * trigger tests to check if passed.
 * record student progress.
 
-Color scheme:
-
-![color scheme](http://imgur.com/mcbbaNt.png)
-
 ## TODO
 
 * back button to return to menu.
@@ -55,3 +51,18 @@ Color scheme:
 * make the exit button work.
 * in-browser editor, e.g. like [glsl.heroku.com](http://glsl.heroku.com)?
   low priority perhaps...
+
+## Color scheme
+
+![color scheme](http://imgur.com/mcbbaNt.png)
+
+From left to right:
+
+* `#34363B` `vec3(0.2039, 0.2117, 0.2313)` (black)
+* `#A9B0C3` `vec3(0.5372, 0.6901, 0.7647)` (dark grey)
+* `#DEE7FF` `vec3(0.8705, 0.9058, 1.0)` (light grey)
+* `#FFFFFF` `vec3(1.0, 1.0, 1.0)` (white)
+* `#58FF8B` `vec3(0.3451, 1.0, 0.5450)` (green)
+* `#FF6E57` `vec3(1.0, 0.4313, 0.3411)` (red)
+* `#FFE25F` `vec3(1.0, 0.8862, 0.9607)` (yellow)
+* `#61C3FF` `vec3(0.3804, 0.7647, 1.0)` (blue)
