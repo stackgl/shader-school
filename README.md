@@ -64,5 +64,5 @@ From left to right:
 * `#FFFFFF` `vec3(1.0, 1.0, 1.0)` (white)
 * `#58FF8B` `vec3(0.3451, 1.0, 0.5450)` (green)
 * `#FF6E57` `vec3(1.0, 0.4313, 0.3411)` (red)
-* `#FFE25F` `vec3(1.0, 0.8862, 0.9607)` (yellow)
+* `#FFE25F` `vec3(1.0, 0.8862, 0.3725)` (yellow)
 * `#61C3FF` `vec3(0.3804, 0.7647, 1.0)` (blue)
