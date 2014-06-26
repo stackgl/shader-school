@@ -46,3 +46,7 @@ Implement a shader which renders a 3D object using Lambertian diffuse lighting. 
 * `vec3 ambient` the ambinet light coefficient
 * `vec3 diffuse` the diffuse light coefficient
 * `vec3 lightDirection` the direction of the point light source (normalized)
+
+#### Notes
+
+To implement your shader, <a href="/open/light-2" target="_blank">modify the `vertex.glsl` and `fragment.glsl` files in this directory for this lesson</a>.
