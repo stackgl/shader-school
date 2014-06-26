@@ -185,42 +185,20 @@ void test() {
 
 ### Built-in functions
 
-Finally, GLSL comes with a collection of builtin functions for performing common mathematical operations.  Here is an (incomplete) list of built in functions for operating on scalar datatypes:
+Finally, GLSL comes with a collection of builtin functions for performing common mathematical operations.  Here is an (incomplete) list of built in functions for operating on scalar datatypes, based on types:
 
-* `radians`
-* `degrees`
-* `sin`
-* `cos`
-* `tan`
-* `asin`
-* `acos`
-* `atan`
-* `pow`
-* `exp`
-* `log`
-* `exp2`
-* `log2`
-* `sqrt`
-* `inversesqrt`
-* `abs`
-* `sign`
-* `floor`
-* `ceil`
-* `fract`
-* `mod`
-* `min`
-* `max`
-* `clamp`
-* `mix`
-* `step`
-
+* Unit conversion: `radians`, `degrees`
+* Trigonometry: `sin`, `cos`, `tan`, `asin`, `acos`, `atan`
+* Calculus:  `exp`, `log`, `exp2`, `log2`
+* Algebra: `pow`, `sqrt`, `inversesqrt`
+* Rounding: `floor`, `ceil`, `fract`, `mod`, `step`
+* Magnitude: `abs`, `sign`, `min`, `max`, `clamp`
+* Interpolation: `mix`
 
 ## Your first GLSL procedure
 
 With the above information, you should now be able to write a simple GLSL procedure yourself.
 
-In <a href="/open/lesson-0" target="_blank">this lesson's directory</a> you'll
+In <a href="/open/intro-1" target="_blank">this lesson's directory</a> you'll
 find a file called `hello.glsl` that exports a function called `sum`. Fix this
 function to return the sum of its first two arguments.
-
-<TODO: Set up workshopper with some simple example>
