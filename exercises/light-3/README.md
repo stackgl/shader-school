@@ -49,5 +49,10 @@ Implement the Phong lighting model in GLSL.  To get started, a vertex and fragme
 * `diffuse` the color and intensity of the diffuse light
 * `specular` the color and intensity of the specular light
 * `lightDirection` the direction of the incoming light
-* `eyeDirection` the direction of the viewing camera
 * `shininess` the exponent in the Phong specular parameter
+
+### Hint
+
+To compute the eye direction, use the fact that this is the same as the normalized view position. (You should prove to yourself that this is the case.)
+
+For finding the half angle between the eye and light direction, remember the exercise from `INTRO 2`.

@@ -102,8 +102,7 @@ function getCamera() {
     diffuse: [1, 0, 0],
     specular: [0.5,0.5,0.5],
     shininess: 16,
-    lightDirection: [1.0/Math.sqrt(3), 1.0/Math.sqrt(3), 1.0/Math.sqrt(3)],
-    eyeDirection: eye
+    lightDirection: [1.0/Math.sqrt(3), 1.0/Math.sqrt(3), 1.0/Math.sqrt(3)]
   }
 }
 
