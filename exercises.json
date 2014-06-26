@@ -1,5 +1,6 @@
 {
   "» INTRO 1: GLSL SYNTAX": "intro-1",
+  "» INTRO 1.5: QUALIFIERS AND BUILTINS": "qualifiers",
   "» INTRO 2: DATA TYPES": "intro-2",
   "» INTRO 3: CONTROL FLOW": "intro-3",
   "» FRAG 1: FRAGMENT SHADER BASICS": "frag-1",
