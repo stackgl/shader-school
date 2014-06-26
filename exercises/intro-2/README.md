@@ -221,15 +221,6 @@ lights[0].radius = 100.0;
 
 ## Exercise
 
-In this lesson, you will write a GLSL function which computes the unit angle bisector between two vectors.  That is, it is the vector whose length is `1` and whose angle is halfway between two vectors.  For this exercise you will start from the following template:
+In this lesson, you will write a GLSL function which computes the unit angle bisector between two vectors.  That is, it is the vector whose length is `1` and whose angle is halfway between two vectors.  If the vectors are parallel or zero, you can return whatever you want. A file called <a href="/open/intro-2">`vectors.glsl` has been created for you as a template</a>.
 
-```glsl
-highp vec2 func(highp vec2 a, highp vec2 b) {
-
-  //TODO: Compute the unit angle bisector of the triangle determined by a and b
-
-  return vec2(0, 1);
-}
-```
-
-You should modify the function `func` so that it returns a vector whose end point is equidistant between a and b and whose length is 1.  If a and b are paralle, return a zero vector.
+As an example, if `a = vec2(1,0)` and `b = vec2(0,1)`, then you should return the result `vec2(sqrt(2)/2, sqrt(2)/2)`.
