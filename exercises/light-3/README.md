@@ -34,4 +34,20 @@ light = ambient + diffuse * lambert + specular * phong
 
 ## Exercise
 
-Implement the Phong lighting model in GLSL.  <TODO document and double check all of this>
+Implement the Phong lighting model in GLSL.  To get started, a vertex and fragment shader have been created in <a href="/open/light-3" target="_blank">the directory for this lesson</a>.  The input to these shaders will be as follows:
+
+### Attributes
+
+* `position` the position of each vertex
+* `normal` the normal vector the mesh at each vertex
+
+### Uniforms
+
+* `model, view, projection` The forward model, view and projection matrices
+* `inverseModel, inverseView, inverseProjection` The inverse of the above transformation matrices
+* `ambient` the color and intensity of the ambient light parameter
+* `diffuse` the color and intensity of the diffuse light
+* `specular` the color and intensity of the specular light
+* `lightDirection` the direction of the incoming light
+* `eyeDirection` the direction of the viewing camera
+* `shininess` the exponent in the Phong specular parameter
