@@ -83,7 +83,7 @@ function getCamera() {
     [0,1,0])
 
   var model = mat4.create()
-  mat4.rotateY(model, model, -0.00001 * now())
+  //mat4.rotateY(model, model, -0.00001 * now())
 
   return {
     model: model,
