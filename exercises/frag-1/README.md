@@ -57,24 +57,6 @@ void main() {
 
 ## Exercise
 
-For this first fragment shader program, we will start with something simple.  Here you should write a fragment shader that draws a circle with a radius of `128` pixels centered at the point `vec2(256, 256)` in screen space.  The points inside the circle should be colored with `CIRCLE_COLOR` and the points outside the circle should be colored with `OUTSIDE_COLOR`.  To help get you started, a file called `fragment.glsl` has been created.  The contents of this file look like this:
+For this first fragment shader program, we will start with something simple.  Here you should write a fragment shader that draws a circle with a radius of `128` pixels centered at the point `vec2(256, 256)` in screen space.  The points inside the circle should be colored with `CIRCLE_COLOR` and the points outside the circle should be colored with `OUTSIDE_COLOR`.  To help get you started, a file called <a href="/open/frag-1" target="_blank">`fragment.glsl` has been created in this project's directory to help get you started</a>.
 
-```glsl
-precision highp float;
-
-#define CIRCLE_COLOR    vec4(1, 0, 0, 1)
-#define OUTSIDE_COLOR   vec4(0, 0, 1, 1)
-
-void main() {
-
-  //TODO: Replace this with a function that draws a circle at (256.5,256.5) with radius 128
-  
-  if(gl_FragCoord.y > 256.0) {
-    gl_FragColor = CIRCLE_COLOR;
-  } else {
-    gl_FragColor = OUTSIDE_COLOR;
-  }
-}
-```
-
-You should modify this function so that instead it draws a circle, rather than a pair of colored bars.
+You should modify this shader so that it draws a circle rather than a pair of colored bars.
