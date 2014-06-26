@@ -16,6 +16,7 @@
   "» LIGHT 3: PHONG SHADING": "light-3",
   "» LIGHT 4: POINT LIGHTS": "light-4",
   "» NPR 1: CEL SHADING": "npr-1",
+  "» NPR 2: GOOCH SHADING": "npr-2",
   "» GPGPU 1: FEEDBACK LOOPS": "gpgpu-1",
   "» GPGPU 2: CELLULAR AUTOMATA": "gpgpu-2",
   "» GPGPU 3: SEPARATING FORM AND FUNCTION": "gpgpu-3"
