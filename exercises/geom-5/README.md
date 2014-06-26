@@ -14,4 +14,4 @@ vec3 rotatePoint(vec3 p, vec3 n, float theta) {
 
 ## Exercises
 
-Again, rotations are linear perspective transformations and so they can be written as matrices.  For this exercise, you should translate the above function `rotatePoint` into a matrix.
+Again, rotations are linear perspective transformations and so they can be written as matrices.  For this exercise, you should translate the above function `rotatePoint` into a matrix. For the solution, <a href="/open/geom-5" target="_blank">modify the file `rotate.glsl` in this lesson's directory.</a>
