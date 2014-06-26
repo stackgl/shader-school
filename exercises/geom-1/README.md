@@ -95,16 +95,4 @@ While it would in theory be sufficient to pass just one matrix which is the full
 
 ## Exercise
 
-In this exercise, you will implement a vertex shader which applies the above sequence of operations to a 3D object. Your vertex shader should take a `vec3` attribute called `position` and `mat4` uniforms called `model`, `view` and `projection`.
-
-```glsl
-precision highp float;
-
-attribute vec3 position;
-
-uniform mat4 model, view, projection;
-
-void main() {
-  gl_Position = vec4(position, 1);
-}
-```
+In this exercise, you will implement a vertex shader which applies the above sequence of operations to a 3D vertex. Your vertex shader should take a `vec3` attribute called `position` and `mat4` uniforms called `model`, `view` and `projection`. To get started a vertex shader called <a href="/open/geom-1" target="_blank">`transforms.glsl` has been created in this project's directory, which you should edit to create your solution.</a>
