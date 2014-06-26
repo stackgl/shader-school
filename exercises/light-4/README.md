@@ -10,4 +10,4 @@ vec3 lightDirection = normalize(lightPosition - surfacePosition);
 
 ## Exercise
 
-In this exercise, generalize the Phong lighting shader from the `LIGHT 3` lesson to support point light sources.  The `lightDirection` uniform has been replaced by a new uniform called `lightPosition`
+In this exercise, generalize the Phong lighting shader from the `LIGHT 3` lesson to support point light sources.  The `lightDirection` uniform has been replaced by a new uniform called `lightPosition`.  <a href="/open/light-4" target="_blank">Template files have been created in the directory for this lesson</a>, though you may find it expedient to copy your work from the previous directory.
