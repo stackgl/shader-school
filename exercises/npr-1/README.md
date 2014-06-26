@@ -14,4 +14,4 @@ Then we would use `celIntensity` instead of `lightIntensity` in the rest of the 
 
 ## Exercise
 
-Modify the Lambert diffuse lighting model from `LIGHT 2` to support cel shading.  The shader will be passed an extra uniform called `numBands` which determines the number of levels the light intensity should be quantized to.
+Modify the Lambert diffuse lighting model from `LIGHT 2` to support cel shading.  The shader will be passed an extra uniform called `numBands` which determines the number of levels the light intensity should be quantized to.  To get started, <a href="/open/npr-1" target="_blank">modify the template files in this directory</a>.
