@@ -1,11 +1,22 @@
-# If statements
+# Branching
 
+## If statements
 
+Like JavaScript, GLSL has `if` statements for conditional branching. The syntax is identical:
 
+```glsl
+if(a < 0.5) {
+  //Executed only if a < 0.5
+} else {
+  //Executed otherwise
+}
+```
 
-### Comparison functions
+Unlikes JavaScript though, branches in GLSL are very expensive so they should be used sparingly.
 
-GLSL also supports component-wise comparison operations for vectors.  These are implemented as routines that take a pair of vectors and return a `bvec` whose entries correspond to the value of the predicate.  These functions are as follows:
+## Comparisons
+
+GLSL also supports component-wise comparison operations for vectors.  These are implemented as routines that take a pair of vectors and return a `bvec` whose entries correspond to the value of the predicate:
 
 * `lessThan(a,b)`
 * `lessThanEqual(a,b)`
@@ -13,23 +24,14 @@ GLSL also supports component-wise comparison operations for vectors.  These are 
 * `greaterThanEqual(a,b)`
 * `equal(a,b)`
 
-For example, `lessThan(a,b) is equivalent to the following function:
+## Boolean operations
 
-```glsl
-bvec4 lessThan(vec4 a, vec4 b) {
-  return bvec4(
-    a.x < b.y,
-    a.y < b.y,
-    a.z < b.z,
-    a.w < b.w);
-}
-```
-
-### Boolean vectors
-
-GLSL also supports some special operations on boolean vectors:
+Boolean vectors also support the following special aggregate operations:
 
 * `any(b)` returns true if any component of `b` is true, true otherwise
 * `all(b)` returns false if any component of `b` is false, true otherwise
 * `not(b)` negates the logical value of the components of `b`
 
+## Exercise
+
+In this exercise write a subroutine to test if a point is contained in a bounding box defined by a pair of upper and lower bounds. A template <a href="/open/logic" target="_blank">file called `box.glsl` has been created in the directory for this purpose</a>.
