@@ -10,4 +10,4 @@ vec3 reflectPoint(vec3 p, vec3 n) {
 
 ## Exercises
 
-The above function is again linear in `p` so it can be translated into a matrix.  Do this now by modifying the file `reflect.glsl` and writing a GLSL function to compute this quantity.
+The above function is again linear in `p` so it can be translated into a matrix.  Do this now by modifying <a href="/open/geom-4" target="_blank">the file `reflect.glsl`</a> and writing a GLSL function to compute this quantity.
