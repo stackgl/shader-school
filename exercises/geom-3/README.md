@@ -10,4 +10,4 @@ vec3 scaleVector(vec3 v, vec3 s) {
 
 ## Exercises
 
-Scaling transformations are also linear in projective geometry. For this exercise, translate the above scaling function into a 4x4 matrix.
+Scaling transformations are also linear in projective geometry. For this exercise, write a shader that computes a matrix representation of the above scaling function. To get started, a file called <a href="/open/geom-3" target="_blank">`scaling.glsl` has been created in this lesson's directory.</a>
