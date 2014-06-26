@@ -202,3 +202,7 @@ With the above information, you should now be able to write a simple GLSL proced
 In <a href="/open/intro-1" target="_blank">this lesson's directory</a> you'll
 find a file called `hello.glsl` that exports a function called `sum`. Fix this
 function to return the sum of its first two arguments.
+
+### Note on the workshopper
+
+On the bottom you will find three buttons and a slider.  These will allow you to compare your implementation to an existing solution. The left button does a component-wise comparison of the color channels, the middle a side-by-side cutaway, and the right onion skinning. When you are done, click on the check box at the top to submit your lesson, or hide the panel by clicking x.
