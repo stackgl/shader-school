@@ -62,26 +62,7 @@ The first parameter, `texture`, is the texture variable itself.  The second, `co
 
 ## Exercise
 
-Write a program which rotates a texture by `theta` radians above the horizontal axis about the point `center`.
+Write a program which swaps the red and blue color channels of a texture image. To do this, you should modify the <a href="/open/frag-2" target="_blank">`fragment.glsl` shader in this project's directory</a>. You will be given the following uniforms to help compute this quantity:
 
-The shader program will be sent the following uniform variables:
-
-* `texture` - Which is the texture to be rotated
-* `screenSize` - A 2D vector representing the size of the drawing buffer. Use this to rescale `gl_FragCoord.xy`
-* `theta` - A float representing the angle to rotate by in radians
-* `center` - The point about which you should rotate. This is given in `[0,1]` texture units - not screen coordinates
-
-
-**Note** Here are a few basic facts about coordinate transformations which should help get you started:
-
-To rotate the vector `[x,y]` by the angle theta, we can use the rule:
-
-```
-[x,y]  ->   [cos(theta) * x + sin(theta) * y,  -sin(theta) * x + cos(theta) * y]
-```
-
-And to translate a vector so that the point `[s,t]` is at the origin, we can just subtract the two vectors:
-
-```
-[x,y]  ->   [x-s, y-t]
-```
+* `texture` which is a `sample2D` containing the texture to draw
+* `screenSize` which should be applied to scale the coordinates of `gl_FragCoord` to an acceptable range
