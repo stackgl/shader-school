@@ -14,4 +14,4 @@ As a warm up, we will start with the very simplest lighting model, which is call
 
 ## Exercise
 
-For this first exercise, implement flat shading. The file `vertex.glsl` and `fragment.glsl` have been provided as well as the appropriate uniform and attribute variables for the camera.  Apply the model, view and projection transformation matrices as in the `GEOM 1` exercise.
+For this first exercise, implement flat shading. <a href="/open/light-1" target="_blank">The files `vertex.glsl` and `fragment.glsl` have been provided</a> as well as the appropriate uniform and attribute variables for the camera.  Apply the model, view and projection transformation matrices as in the `GEOM 1` exercise.
