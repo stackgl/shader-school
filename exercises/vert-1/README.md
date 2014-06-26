@@ -32,4 +32,9 @@ void main() {
 
 ## Exercises
 
-Spinning wire cube or maybe point cloud?
+For this exercise you will write a shader which applies a 2D rotation to a vertex.  Specifically, create a vertex shader that accepts the following parameters:
+
+* A `vec2` attribute called `position` representing the position of the vertices in the plane
+* A `float` uniform `theta` encoding the amount to rotate by in radians
+
+Edit the file called <a href="/open/vert-1" target="_blank">`vertex.glsl` in the directory of this project</a>.
