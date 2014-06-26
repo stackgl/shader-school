@@ -108,29 +108,17 @@ Then we say that the point `c` is in the mandelbrot set if this sequence converg
 n -> infinity
 ```
 
-Since we can't calculate z(infinity) directly, we will instead make do with a finite approximation.  Here you should write a shader program which computes `z(100)` and tests if the magnitude of `z` is less than 2.  You should implement a function which fits the following interface:
-
-```glsl
-//Test if the point c is within the mandelbrot set after 100 iterations
-// c.x is the real part of c
-// c.y is the imaginary part of c
-bool mandelbrot(vec2 c) {
-  
-  //TODO: Return true if z(100) < 2
-
-  return false;
-}
-```
+Since we can't calculate z(infinity) directly, we will instead make do with a finite approximation.  Here you should write a shader program which computes `z(100)` and tests if the magnitude of `z` is less than 2.  You should implement the function called `mandelbrot` in the <a href="/open/intro-3">`mandelbrot.glsl` file in this project's directory</a>.
 
 ### Hints
 
-Remember the definition of complex multiplication is:
+Remember the definition of complex multiplication:
 
 ```
 (a + b*i) * (c + d*i) = (a * c - b * d) + (a * d + b * d) * i
 ```
 
-And the magnitude of a complex number is the vector length of its components:
+And the magnitude of a complex number is:
 
 ```
 | a + b*i | = sqrt(a*a + b*b)
