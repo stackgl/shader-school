@@ -53,7 +53,7 @@ var boxHi = [0,0]
 
 function render() {
   var t = 0.0001 * now()
-  boxLo = [ 0.5*(1.0+0.8*Math.cos(2*t)), 0.5*(1.0+0.8*Math.cos(t + 1.37)) ]
+  boxLo = [ 0.5*(1.0-0.8*Math.cos(2*t)), 0.5*(1.0+0.8*Math.cos(t + 1.37)) ]
   boxHi = [ boxLo[0] + 0.25*(1.0+0.8*Math.cos(0.9*t + 7)), boxLo[1]+0.25*(1.0+0.8*Math.cos(3*t - 1)) ]
 
   comparison.run()
@@ -65,8 +65,8 @@ function actual(fbo) {
   fbo.bind()
   actualShader.bind()
   actualShader.uniforms.screenSize = [canvas.width, canvas.height]
-  expectedShader.uniforms.boxLo = boxLo
-  expectedShader.uniforms.boxHi = boxHi
+  actualShader.uniforms.boxLo = boxLo
+  actualShader.uniforms.boxHi = boxHi
   drawTriangle(gl)
 }
 
