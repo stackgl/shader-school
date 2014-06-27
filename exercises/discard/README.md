@@ -1,4 +1,4 @@
-## The `discard` keyword
+# The `discard` keyword
 
 In GLSL it is possible to skip rendering a fragment with the `discard` statement. If a pixel is discarded in the fragment shader, execution terminates immediately and nothing is written to the frame buffer. 
 
