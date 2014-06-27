@@ -1,8 +1,6 @@
 # Matrices
 
-## Matrix data types
-
-In addition to vectors, GLSL has special datatypes for representing low dimensional matrices.  There are only 3 of these:  `mat2, mat3, mat4` which correspond to a 2x2, 3x3 and 4x4 square matrix respectively:
+Besides vectors, GLSL has special datatypes for representing low dimensional matrices. There are only 3 of these:  `mat2, mat3, mat4` which correspond to a 2x2, 3x3 and 4x4 square matrix respectively:
 
 ```glsl
 //Create a a 2x2 identity matrix.  Note matrix constructors are in column major order.
@@ -37,7 +35,7 @@ vec3 a = m[0];
 //Now: a = vec3(1.3, 2.3, 3.3);
 ```
 
-### Matrix arithmetic
+### Arithmetic
 
 Matrices support similar arithmetic operations to vectors.  Both scalar addition and vector addition are defined:
 
@@ -71,3 +69,19 @@ mat2 q = matrixCompMult(m, w);
 //q = mat2( 1, 16,
            27, 40)
 ```
+
+Instead, the `*` operator has the effect of multiplying matrices and transforming vectors:
+
+```glsl
+mat2 m = mat2(1, 2,
+              3, 4);
+
+vec2 v = m * vec2(1, 2);  //v = vec2(5, 8)
+
+//Switching order of arguments is equivalent to transposing:
+vec2 u = vec2(1, 2) * m;  //u = vec2(7, 10)
+```
+
+## Exercise
+
+Write a function to raise a 2x2 matrix `m` to the nth power, where 0 <= n < 16 is an integer. To get started, edit the template <a href="/open/matrices" target="_blank">file `mpow.glsl` in the directory for this project</a>.
