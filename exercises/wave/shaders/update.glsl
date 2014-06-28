@@ -5,10 +5,10 @@ uniform vec2 stateSize;
 uniform float kdiffuse, kdamping;
 
 float state0(vec2 x) {
-  return texture2D(prevState[0], x / stateSize).r;
+  return texture2D(prevState[0], fract(x / stateSize)).r;
 }
 float state1(vec2 x) {
-  return texture2D(prevState[1], x / stateSize).r;
+  return texture2D(prevState[1], fract(x / stateSize)).r;
 }
 
 float laplacian(vec2 x) {

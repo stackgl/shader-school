@@ -50,7 +50,6 @@ function createStateBuffers(n) {
   var result = new Array(n)
   for(var i=0; i<n; ++i) {
     result[i] = createFBO(gl, [stateSize, stateSize], {float: false})
-    result[i].color[0].wrap = gl.REPEAT
   }
   return result
 }
@@ -86,16 +85,20 @@ function createLoop(key) {
     var front   = buffers[tickCount%buffers.length]
     var back0   = buffers[(tickCount+buffers.length-1)%buffers.length]
     var back1   = buffers[(tickCount+buffers.length-2)%buffers.length]
+    var shape   = [canvas.height, canvas.width]
+    for(var i = 0; i < buffers.length; i++) {
+      buffers[i].shape = shape
+    }
 
     //Apply update
     front.bind()
 
     //Apply transformation
     shader.bind()
-    shader.uniforms.stateSize = [ stateSize, stateSize ]
+    shader.uniforms.stateSize = [ shape[1], shape[0] ]
     shader.uniforms.prevState = [ back0.color[0].bind(0), back1.color[0].bind(1) ]
-    shader.uniforms.kdiffuse  = 0.125
-    shader.uniforms.kdamping  = 0.0001
+    shader.uniforms.kdiffuse  = 0.1
+    shader.uniforms.kdamping  = 0.0005
     triangle(gl)
 
     //Draw mouse

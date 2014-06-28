@@ -49,8 +49,7 @@ var pointShader = createShader({
 function createStateBuffers(n) {
   var result = new Array(n)
   for(var i=0; i<n; ++i) {
-    result[i] = createFBO(gl, [stateSize, stateSize], {float: false})
-    result[i].color[0].wrap = gl.REPEAT
+    result[i] = createFBO(gl, [canvas.height, canvas.width], {float: false})
   }
   return result
 }
@@ -91,7 +90,7 @@ function createLoop(key) {
 
     //Apply transformation
     shader.bind()
-    shader.uniforms.stateSize = [ stateSize, stateSize ]
+    shader.uniforms.stateSize = [ canvas.width, canvas.height ]
     shader.uniforms.prevState = back.color[0].bind()
     shader.uniforms.kdiffuse  = 0.125
     shader.uniforms.kdamping  = 0.025
@@ -101,7 +100,7 @@ function createLoop(key) {
     pointShader.bind()
     pointShader.uniforms.coord = [ 2.0*mouse.x/canvas.width-1.0, 1.0-2.0*mouse.y/canvas.height ]
     pointShader.uniforms.color = [1,1,1,1]
-    pointShader.uniforms.size = 8.0
+    pointShader.uniforms.size = 16.0
     gl.drawArrays(gl.POINTS, 0, 1)
 
 
