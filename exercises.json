@@ -22,7 +22,7 @@
   "» LIGHT 5: MULTIPLE LIGHTS": "light-5",
   "» NPR 1: CEL SHADING": "npr-1",
   "» NPR 2: GOOCH SHADING": "npr-2",
-  "» GPGPU 1: FEEDBACK LOOPS": "gpgpu-1",
-  "» GPGPU 2: CELLULAR AUTOMATA": "gpgpu-2",
-  "» GPGPU 3: SEPARATING FORM AND FUNCTION": "gpgpu-3"
+  "» GPGPU 1: GAME OF LIFE": "life",
+  "» GPGPU 2: HEAT EQUATION": "heat",
+  "» GPGPU 3: WAVE EQUATION": "wave"
 }
