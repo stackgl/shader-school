@@ -133,6 +133,7 @@ function actual(fbo) {
   actualShader.bind()
   actualShader.uniforms.angle = angle
   vao.bind()
+  gl.lineWidth(4)
   vao.draw(gl.LINES, buffer.length / 4)
 }
 
@@ -143,6 +144,7 @@ function expected(fbo) {
   expectedShader.bind()
   expectedShader.uniforms.angle = angle;
   vao.bind()
+  gl.lineWidth(4)
   vao.draw(gl.LINES, buffer.length / 4)
 }
 

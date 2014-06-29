@@ -138,6 +138,7 @@ function actual(fbo) {
   actualShader.uniforms.aVector = aVector
   actualShader.uniforms.bVector = bVector
   vao.bind()
+  gl.lineWidth(4)
   vao.draw(gl.LINES, buffer.length / 4)
 }
 
@@ -149,6 +150,7 @@ function expected(fbo) {
   expectedShader.uniforms.aVector = aVector
   expectedShader.uniforms.bVector = bVector
   vao.bind()
+  gl.lineWidth(4)
   vao.draw(gl.LINES, buffer.length / 4)
 }
 
