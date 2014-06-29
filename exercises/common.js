@@ -1,6 +1,7 @@
 var description = require('../lib/description')
 var progress    = require('../lib/progress')
 
+var highlight   = require('highlight.js').highlight
 var sidebar     = require('gl-compare-sidebar')
 var fonts       = require('google-fonts')
 var slice       = require('sliced')
@@ -19,7 +20,12 @@ module.exports = function(opts) {
     var compare = sidebar(opts.compare)
 
     if (opts.description) {
-      compare.content.innerHTML = marked(opts.description)
+      compare.content.innerHTML = marked(opts.description, {
+        highlight: function(code, lang) {
+          if (!lang) return code
+          return highlight(lang, code).value
+        }
+      })
       openHook(compare.content)
     }
   }
