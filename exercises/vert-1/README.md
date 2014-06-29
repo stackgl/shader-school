@@ -1,5 +1,16 @@
 # Introduction to vertex shaders
 
+## Exercises
+
+For this exercise you will write a shader which applies a 2D rotation to a vertex.  Specifically, create a vertex shader that accepts the following parameters:
+
+* A `vec2` attribute called `position` representing the position of the vertices in the plane
+* A `float` uniform `theta` encoding the amount to rotate by in radians
+
+Edit the file called <a href="/open/vert-1" target="_blank">`vertex.glsl` in the directory of this project</a>.
+
+***
+
 ## Vertex shaders
 
 Vertex shaders control how geometry is rendered in WebGL, and are executed on the GPU before fragment shaders. A vertex in OpenGL is one of the corners of a primitive.  Primitives in OpenGL are simplices of dimension < 3, and are called:
@@ -27,12 +38,3 @@ void main() {
   gl_Position = vec4(position, 0, 1);
 }
 ```
-
-## Exercises
-
-For this exercise you will write a shader which applies a 2D rotation to a vertex.  Specifically, create a vertex shader that accepts the following parameters:
-
-* A `vec2` attribute called `position` representing the position of the vertices in the plane
-* A `float` uniform `theta` encoding the amount to rotate by in radians
-
-Edit the file called <a href="/open/vert-1" target="_blank">`vertex.glsl` in the directory of this project</a>.

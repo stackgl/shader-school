@@ -40,9 +40,18 @@ body .gl-compare-sidebar {
 }
 
 .gl-compare-content h1 {
+  text-transform: uppercase;
   font-weight: bold;
+  text-align: center;
   margin-bottom: 1em;
+  padding-bottom: 1em;
   border-bottom: 1px dotted #AAA;
+}
+
+.gl-compare-content hr {
+  margin: 1.25em 0;
+  height: 0;
+  border-top: 1px dotted #AAA;
 }
 
 .gl-compare-content pre {
@@ -58,11 +67,15 @@ body .gl-compare-sidebar {
   margin-top: 2em;
 }
 
-/*.gl-compare-content pre > code {
-  color: #34363B;
-}*/
+.gl-compare-content code {
+  color: #AAA;
+}
 
-.gl-compare-content ul {
+.gl-compare-content pre > code {
+  color: #FFF;
+}
+.gl-compare-content ul,
+.gl-compare-content ol {
   margin-bottom: 1em;
 }
 
@@ -70,6 +83,19 @@ body .gl-compare-sidebar {
   content: '\00a0* ';
   font-weight: bold;
   opacity: 0.5;
+}
+
+.gl-compare-content ul > li {
+  text-indent: -21px;
+  position: relative;
+  left: 21px;
+  margin-right: 21px;
+  margin-bottom: 0.25em;
+}
+
+.gl-compare-content ol > li {
+  margin-left: 2em;
+  margin-bottom: 0.5em;
 }
 
 #container {
@@ -96,5 +122,9 @@ body .gl-compare-sidebar {
   color: #58FF8B;
 }
 .gl-compare-content .hljs-literal {
+  color: #FF6E57;
+}
+
+.gl-compare-content .warn {
   color: #FF6E57;
 }

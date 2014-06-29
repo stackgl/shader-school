@@ -1,5 +1,11 @@
 # Introduction to Fragment shaders
 
+## Exercise
+
+Write a fragment shader which draws a disk of radius `128` centered at the point `vec2(256,256)` in device coordinates. The points inside the disk should be colored with `CIRCLE_COLOR` and the points outside should be colored with `OUTSIDE_COLOR`. To help get you started, a file called `fragment.glsl` has been created in <a href="/open/frag-1" target="_blank">this project's directory</a> to help get you started.
+
+***
+
 ### Fragments vs. pixels
 
 A *fragment* is the color of some fraction of a pixel. In the simplest case, there is a 1:1 relation between fragments and pixels, though with anti-aliasing this ratio could be much higher. Fragment shaders are programs which are run on the GPU and determine the color of each fragment.
@@ -29,7 +35,3 @@ Every fragment shader also recieves a special input variable called `gl_FragCoor
 * `gl_FragCoord.xy` is the coordinate of the fragment in units relative to the top-left of the buffer.  The y-component is the row of the fragment, and the x-coordinate is the column.
 * `gl_FragCoord.z` is the depth value of the fragment, in units between `[0,1]`, where `0` represents the closest possible z value and `1` represents the farthest possible z-value.
 * `gl_FragCoord.w` is the reciprocal of the homogeneous part of the fragment's position in clip coordinates
-
-## Exercise
-
-Write a fragment shader which draws a disk of radius `128` centered at the point `vec2(256,256)` in device coordinates. The points inside the disk should be colored with `CIRCLE_COLOR` and the points outside should be colored with `OUTSIDE_COLOR`. To help get you started, a file called <a href="/open/frag-1" target="_blank">`fragment.glsl` has been created in this project's directory to help get you started</a>.

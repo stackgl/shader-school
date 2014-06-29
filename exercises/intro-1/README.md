@@ -1,5 +1,13 @@
 # Introduction to GLSL
 
+## Exercise
+
+In <a href="/open/intro-1" target="_blank">this lesson's directory</a> you'll
+find a file called `hello.glsl` that exports a function called `sum`. Fix this
+function to return the sum of its first two arguments.
+
+***
+
 ## Overview of GLSL
 
 This first lesson covers the basics of shader programming with GLSL. In a few words, GLSL is a statically typed imperative programming language. Coming from JavaScript, the syntax of GLSL should be familiar with the same basic control flow structures: if statements and for loops, and semicolons and curly braces for delimiting statements and blocks.
@@ -54,9 +62,3 @@ int addTwoInts(int x, int y) {
 void doNothing() {
 }
 ```
-
-## Exercise
-
-In <a href="/open/intro-1" target="_blank">this lesson's directory</a> you'll
-find a file called `hello.glsl` that exports a function called `sum`. Fix this
-function to return the sum of its first two arguments.

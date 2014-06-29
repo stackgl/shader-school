@@ -1,6 +1,14 @@
 # Wave equation
 
-**WARNING** This lesson requires the floating point texture extension. If your GPU/browser do not support this, then this lesson will not work.
+## Exercise
+
+Implement a fragment shader which computes the the next state by explicit Euler integration.
+
+The previous state is stored in the texture `prevState[0]` and the previous-previous state is in `prevState[1]`. To help get started, a <a href="/open/wave" target="_blank">template file called `wave.glsl` has been created in the directory for this lesson</a>.
+
+<span class="warn">**WARNING:**</span> This lesson requires the floating point texture extension. If your GPU/browser do not support this, then this lesson will not work.
+
+***
 
 The (damped) wave equation is similar to the heat equation, except that it has a second order time derivative:
 
@@ -21,7 +29,3 @@ Where again laplace(f) is computed using a 5-point stencil:
 ```
 laplace(f)(x,y,t) = f(x-1,y,t) + f(x+1,y,t) + f(x,y-1,t) + f(x,y+1,t) - 4 * f(x,y,t)
 ```
-
-### Exercise
-
-Implement a fragment shader which computes the the next state by explicit Euler integration.  The previous state is stored in the texture `prevState[0]` and the previous-previous state is in `prevState[1]`. To help get started, a <a href="/open/wave" target="_blank">template file called `wave.glsl` has been created in the directory for this lesson</a>.

@@ -1,6 +1,41 @@
 # Control flow, user defined data types and macros
 
-In this lesson, we will finish up our discussion of the basic GLSL programming language, covering control flow statements, user defined data types and the preprocessor. 
+
+## Exercise
+
+To apply what we've learned about control flow, in this lesson we are going to render the mandelbrot set in GLSL. Given any complex number `c`, define the sequence of `z(n)` to be:
+
+```
+z(0)   = 0.0
+z(n+1) = z(n) * z(n) + c
+```
+
+Then we say that the point `c` is in the mandelbrot set if this sequence converges
+
+```
+    lim        |z(n)|   < infinity
+n -> infinity
+```
+
+Since we can't calculate z(infinity) directly, we will instead make do with a finite approximation.  Here you should write a shader program which computes `z(100)` and tests if the magnitude of `z` is less than 2.  You should implement the function called `mandelbrot` in the <a href="/open/intro-3">`mandelbrot.glsl` file in this project's directory</a>.
+
+### Hints
+
+Remember the definition of complex multiplication:
+
+```
+(a + b*i) * (c + d*i) = (a * c - b * d) + (a * d + b * d) * i
+```
+
+And the magnitude of a complex number is:
+
+```
+| a + b*i | = sqrt(a*a + b*b)
+```
+
+***
+
+In this lesson, we will finish up our discussion of the basic GLSL programming language, covering control flow statements, user defined data types and the preprocessor.
 
 ## If statements
 
@@ -91,35 +126,3 @@ float random(float seed) {
 ### Capabilities
 
 Conditional compilation is especially helpful when combined with knowledge of device capabilities. For example, if a WebGL implementation does not support some extension then the shader can detect this with an appropriate preprocessor command and select some fallback.
-
-## Exercise
-
-To apply what we've learned about control flow, in this lesson we are going to render the mandelbrot set in GLSL. Given any complex number `c`, define the sequence of `z(n)` to be:
-
-```
-z(0)   = 0.0
-z(n+1) = z(n) * z(n) + c
-```
-
-Then we say that the point `c` is in the mandelbrot set if this sequence converges
-
-```
-    lim        |z(n)|   < infinity
-n -> infinity
-```
-
-Since we can't calculate z(infinity) directly, we will instead make do with a finite approximation.  Here you should write a shader program which computes `z(100)` and tests if the magnitude of `z` is less than 2.  You should implement the function called `mandelbrot` in the <a href="/open/intro-3">`mandelbrot.glsl` file in this project's directory</a>.
-
-### Hints
-
-Remember the definition of complex multiplication:
-
-```
-(a + b*i) * (c + d*i) = (a * c - b * d) + (a * d + b * d) * i
-```
-
-And the magnitude of a complex number is:
-
-```
-| a + b*i | = sqrt(a*a + b*b)
-```

@@ -1,5 +1,11 @@
 # Qualifiers and built-ins
 
+## Exercise
+
+Write a function to compute the side lengths of a right triangle, given the angle for one of the sides and the length of the hypotenuse. To help you get started, a template file called `sides.glsl` has been created in <a href="/open/qualifiers" target="_blank">the directory for this lesson</a>.
+
+***
+
 ## Precision specifiers
 
 Floating point variables are declared with an optional precision specifier that tells the GPU how many bits to use when representing a variable. The types are:
@@ -77,7 +83,3 @@ Finally, GLSL comes with a collection of builtin functions for performing common
 * Rounding: `floor`, `ceil`, `fract`, `mod`, `step`
 * Magnitude: `abs`, `sign`, `min`, `max`, `clamp`
 * Interpolation: `mix`
-
-## Exercise
-
-Write a function to compute the side lengths of a right triangle, given the angle for one of the sides and the length of the hypotenuse. To help you get started, some <a href="/open/qualifiers" target="_blank">a template file called `sides.glsl` has been created in the directory for this lesson</a>.

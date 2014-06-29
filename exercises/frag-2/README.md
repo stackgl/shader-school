@@ -1,5 +1,14 @@
 # Uniform variables and textures
 
+## Exercise
+
+Write a program which swaps the red and blue color channels of a texture image. To do this, you should modify the <a href="/open/frag-2" target="_blank">`fragment.glsl` shader in this project's directory</a>. You will be given the following uniforms to help compute this quantity:
+
+* `screenSize` which should be applied to scale the coordinates of `gl_FragCoord` to an acceptable range.
+* `texture` which is a `sample2D` containing the texture to draw.
+
+***
+
 ## Uniform variables
 
 One way to send data to shaders is with `uniform` variables.  `uniform` variables can be set from within JavaScript and are broadcast to all executions of a shader. Here is how we could declare a fragment shader which takes as input some 4-vector called `foo` and assigns it to the fragment color:
@@ -42,10 +51,3 @@ Where:
 * `texture` is a sampler variable.
 * `coordinate` controls which data is read out from the texture.  Coordinates in the texture range from `0` to `1`.
 * `bias` is an optional parameter that changes the filtering of the texture.
-
-## Exercise
-
-Write a program which swaps the red and blue color channels of a texture image. To do this, you should modify the <a href="/open/frag-2" target="_blank">`fragment.glsl` shader in this project's directory</a>. You will be given the following uniforms to help compute this quantity:
-
-* `texture` which is a `sample2D` containing the texture to draw
-* `screenSize` which should be applied to scale the coordinates of `gl_FragCoord` to an acceptable range

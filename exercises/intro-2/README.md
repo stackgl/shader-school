@@ -1,5 +1,13 @@
 # Vectors
 
+## Exercise
+
+In this lesson, you will write a GLSL function which computes the unit angle bisector between two vectors.  That is, it is the vector whose length is `1` and whose angle is halfway between two vectors.  If the vectors are parallel or zero, you can return whatever you want. A file called <a href="/open/intro-2">`vectors.glsl` has been created for you as a template</a>.
+
+As an example, if `a = vec2(1,0)` and `b = vec2(0,1)`, then you should return the result `vec2(sqrt(2)/2, sqrt(2)/2)`.
+
+***
+
 After scalars, the next most important data type in GLSL are vectors.  GLSL comes with built in types for small vectors with up to 4 components.  Like scalars, vectors come in boolean, integer and floating point varieties which are declared using the following syntax:
 
 * `bvec2, bvec3, bvec4`: Boolean vector
@@ -43,7 +51,7 @@ Swizzle notation is useful when converting vectors from one format to another, a
 
 ### Arithmetic operations
 
-Arithmetic operations on vectors are applied component-wise.  For example, 
+Arithmetic operations on vectors are applied component-wise.  For example,
 
 ```glsl
 vec4 a = vec4(1, 2, 3, 4);
@@ -68,9 +76,3 @@ In addition to the standard arithmetic functions, vectors also support several s
 * `faceforward(n, I, nr)` reorient a normal to point away from a surface
 * `reflect(I, N)` - reflects a vector I along the axis N
 * `refract(I, N, eta)` - applies a refractive transformation to I according to Snell's law
-
-## Exercise
-
-In this lesson, you will write a GLSL function which computes the unit angle bisector between two vectors.  That is, it is the vector whose length is `1` and whose angle is halfway between two vectors.  If the vectors are parallel or zero, you can return whatever you want. A file called <a href="/open/intro-2">`vectors.glsl` has been created for you as a template</a>.
-
-As an example, if `a = vec2(1,0)` and `b = vec2(0,1)`, then you should return the result `vec2(sqrt(2)/2, sqrt(2)/2)`.

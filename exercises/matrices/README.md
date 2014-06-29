@@ -1,5 +1,11 @@
 # Matrices
 
+## Exercise
+
+Write a function to raise a 2x2 matrix `m` to the nth power, where 0 <= n < 16 is an integer. To get started, edit the template <a href="/open/matrices" target="_blank">file `mpow.glsl` in the directory for this project</a>.
+
+***
+
 Besides vectors, GLSL has special datatypes for representing low dimensional matrices. There are only 3 of these:  `mat2, mat3, mat4` which correspond to a 2x2, 3x3 and 4x4 square matrix respectively:
 
 ```glsl
@@ -81,7 +87,3 @@ vec2 v = m * vec2(1, 2);  //v = vec2(5, 8)
 //Switching order of arguments is equivalent to transposing:
 vec2 u = vec2(1, 2) * m;  //u = vec2(7, 10)
 ```
-
-## Exercise
-
-Write a function to raise a 2x2 matrix `m` to the nth power, where 0 <= n < 16 is an integer. To get started, edit the template <a href="/open/matrices" target="_blank">file `mpow.glsl` in the directory for this project</a>.

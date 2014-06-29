@@ -1,5 +1,11 @@
 # Multiple light sources
 
+## Exercise
+
+Modify the point light shader from the previous lesson to support multiple light sources. <a href="/open/light-5" target="_blank">Template files for this purpose have been created in the directory for this lesson.</a> The file `light.glsl` is used to define the datatype of the light values.  Use these parameters to apply multiple phong lighting contributions in the shader.
+
+***
+
 The Phong lighting model can be extended to support multiple lights by summing up their individual contributions. More generally, if `light0` and `light1` are light values from two different sources, their combined light value is:
 
 ```glsl
@@ -41,7 +47,3 @@ PointLight lights[10];
 //Modify the first light in the array
 lights[0].radius = 100.0;
 ```
-
-## Exercise
-
-Modify the point light shader from LIGHT 4 to support multiple light sources. <a href="/open/light-5" target="_blank">Template files for this purpose have been created in the directory for this lesson.</a> The file `light.glsl` is used to define the datatype of the light values.  Use these parameters to apply multiple phong lighting contributions in the shader.

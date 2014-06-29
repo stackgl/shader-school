@@ -1,4 +1,12 @@
-# GPGPU
+# Game of Life
+
+## Exercise
+
+In this [exercise's directory](/open/gpgpu-2) you'll find a file called `life.glsl`. Modify this file to create a fragment shader that implements Conway's game of life.
+
+The fragment shader will be executed once per cell. Output vec4(1,1,1,1) if the cell is on, otherwise vec4(0,0,0,1) if the cell is off. The previous state of the world is stored in the sampler `prevState` and the size of the state buffer passed in the uniform `stateSize`.
+
+***
 
 The practice of using graphics processing units for purposes other than 3D graphics is called general purpose GPU computing, or GPGPU for short. This exercise explores using the GPU to solve for state updates in cellular automata.
 
@@ -11,7 +19,3 @@ Conway's Game of Life is a well known example of a 2D totalistic cellular automa
 * Death: Otherwise, a cell turns off
 
 Iterating these simple rules many times yields chaotic and mysterious patterns.
-
-## A Simple Example
-
-In this [exercise's directory](/open/gpgpu-2) you'll find a file called `life.glsl`. Modify this file to create a fragment shader that implements Conway's game of life. The fragment shader will be executed once per cell. Output vec4(1,1,1,1) if the cell is on, otherwise vec4(0,0,0,1) if the cell is off. The previous state of the world is stored in the sampler `prevState` and the size of the state buffer passed in the uniform `stateSize`

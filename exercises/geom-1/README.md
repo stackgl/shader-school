@@ -1,10 +1,16 @@
 # Clip coordinates
 
+## Exercise
+
+In this exercise, you will implement a vertex shader which applies the sequence of operations discussed below to a 3D vertex. Your vertex shader should take a `vec3` attribute called `position` and `mat4` uniforms called `model`, `view` and `projection`. To get started a vertex shader called `transforms.glsl` has been created <a href="/open/geom-1" target="_blank">in this project's directory</a>, which you should edit to create your solution.
+
+***
+
 This lesson requires a bit more mathematics than the previous lessons.  However, it is necessary to understand this material in order to work with 3D graphics.
 
 ## Projective geometry
 
-You may have noticed from the first example that `gl_Position` is a 4D vector. At first this might seem a bit funny, but there is a good reason for this. Objects on the GPU are represented in what is known as a *homogeneous* coordinate system. While this may seem abstract, understanding homogeneous coordinates - and more broadly projective geometry - is essential for graphics programming. 
+You may have noticed from the first example that `gl_Position` is a 4D vector. At first this might seem a bit funny, but there is a good reason for this. Objects on the GPU are represented in what is known as a *homogeneous* coordinate system. While this may seem abstract, understanding homogeneous coordinates - and more broadly projective geometry - is essential for graphics programming.
 
 The basic idea in projective geometry is to replace points a space with lines passing through the origin in a space which is one dimension higher. One nice property of lines passing through the origin is that they can be parameterized by vectors.  For example, in a 3+1D projective geometry, the vector `[2, 0, 0, 1]` generates a line with points `[4, 0, 0, 2]`,  `[1, 0, 0, 0.5]`, `[2000, 0, 0, 1000]` and so on.  That is, we say that two vectors `[x0,y0,z0,w0]` and `[x1,y1,z1,w1]`, identify the same line if they are related by some non-zero scalar multiple `t != 0`:
 
@@ -92,7 +98,3 @@ The relationship between these coordinate systems is usually specified using 3 d
 * `projection`: Which transforms the view coordinate system into device clip coordinates.  This controls whether the view is orthographic or perspective, and also controls the aspect ratio of the camera.
 
 While it would in theory be sufficient to pass just one matrix which is the full data -> clip coordinate transformation, factoring the coordinate transformation into 3 phases can simplify various effects.  For example, some lighting operations must be applied in world coordinates, and some effects like billboarding for sprites need to be applied in a view coordinate system.
-
-## Exercise
-
-In this exercise, you will implement a vertex shader which applies the above sequence of operations to a 3D vertex. Your vertex shader should take a `vec3` attribute called `position` and `mat4` uniforms called `model`, `view` and `projection`. To get started a vertex shader called <a href="/open/geom-1" target="_blank">`transforms.glsl` has been created in this project's directory, which you should edit to create your solution.</a>

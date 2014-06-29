@@ -1,5 +1,15 @@
 # Heat equation
 
+## Exercise
+
+Implement a shader which computes a single step of the explicit Euler scheme for integrating the heat equation, described below.
+
+The previous state of `f(x,y,t-1)` will be encoded in a periodic texture. The diffusion constant and damping will be sent in the parameters `kdiffuse` and `kambient` respectively.
+
+To get started, there is a file called <a href="/open/heat" target="_blank">`heat.glsl` in the directory for this lesson</a>.
+
+***
+
 The damped heat equation is a second order linear partial differential equation which describes the flow of heat through a material. In the continuous 2D setting it is described by the following equation:
 
 ```
@@ -25,7 +35,3 @@ And with damping, the update rule for the integrator becomes:
 ```glsl
 nextState(x,y) = (1.0 - kDamping) * (kDiffuse * laplace(x,y) + prevState(x,y))
 ```
-
-## Exercise
-
-Implement a shader which computes a single step of the above explicit Euler scheme for integrating the heat equation. The previous state of `f(x,y,t-1)` will be encoded in a periodic texture. The diffusion constant and damping will be sent in the parameters `kdiffuse` and `kambient` respectively.  To get started, there is a file called <a href="/open/heat" target="_blank">`heat.glsl` in the directory for this lesson</a>.
