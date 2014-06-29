@@ -37,7 +37,6 @@ body .gl-compare-sidebar {
 .gl-compare-content code {
   font-family: 'Source Code Pro', monospace;
   font-weight: 200;
-  color: #AAA;
 }
 
 .gl-compare-content h1 {
@@ -77,4 +76,25 @@ body .gl-compare-sidebar {
   position: absolute;
   top: 0; left: 0;
   right: 0; bottom: 0;
+}
+
+.gl-compare-content .def { border-bottom: 1px dotted rgba(255,255,255,0.5); }
+.gl-compare-content .hljs-preprocessor {
+  color: #FF6E57;
+}
+.gl-compare-content .hljs-comment .def { border-bottom: none; }
+.gl-compare-content .hljs-preprocessor .def { border-bottom: none; }
+.gl-compare-content .hljs-number .def { border-bottom: none; }
+.gl-compare-content .hljs-comment {
+  color: #AAA;
+}
+.gl-compare-content .hljs-keyword .def { border-bottom-color: rgba(255, 226, 95, 0.5); }
+.gl-compare-content .hljs-keyword {
+  color: #FFE25F;
+}
+.gl-compare-content .hljs-number {
+  color: #58FF8B;
+}
+.gl-compare-content .hljs-literal {
+  color: #FF6E57;
 }

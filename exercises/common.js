@@ -1,12 +1,36 @@
 var description = require('../lib/description')
 var progress    = require('../lib/progress')
 
+var highlight   = require('highlight.js').highlight
 var sidebar     = require('gl-compare-sidebar')
 var fonts       = require('google-fonts')
+var quotemeta   = require('quotemeta')
+var glsldoc     = require('glsldoc')
 var slice       = require('sliced')
 var marked      = require('marked')
 var xhr         = require('xhr')
 var fs          = require('fs')
+
+var types = {}
+var exps  = glsldoc.map(function(node) {
+  types[node.name] = node.description.replace(/\"/g, '&quot;')
+  return quotemeta(node.name)
+}).join('|')
+
+var typeexps = new RegExp('([^a-zA-Z_])('+exps+')([^a-zA-Z_])', 'g')
+
+var markedOpts = {
+  highlight: function(code, lang) {
+    if (!lang) return code
+
+    code = highlight(lang, code).value
+    code = code.replace(typeexps, function(_, pre, type, post) {
+      return pre+'<span class="def" title="'+types[type]+'">'+type+'</span>'+post
+    })
+
+    return code
+  }
+}
 
 module.exports = function(opts) {
   opts = opts || {}
@@ -19,7 +43,7 @@ module.exports = function(opts) {
     var compare = sidebar(opts.compare)
 
     if (opts.description) {
-      compare.content.innerHTML = marked(opts.description)
+      compare.content.innerHTML = marked(opts.description, markedOpts)
       openHook(compare.content)
     }
   }
