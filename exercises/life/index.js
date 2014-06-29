@@ -62,30 +62,37 @@ var shaders = {
   }
 }
 
-var data = randomFill()
+var scale  = 3
+var width  = (canvas.width / scale)|0
+var height = (canvas.height / scale)|0
+var data   = randomFill(width, height)
+
 var outputs = {
-    actual: start(createFBO(gl, [SIZE, SIZE]), data)
-  , expected: start(createFBO(gl, [SIZE, SIZE]), data)
+    actual: start(createFBO(gl, [height, width]), data)
+  , expected: start(createFBO(gl, [height, width]), data)
 }
 
 var inputs = {
-    actual: start(createFBO(gl, [SIZE, SIZE]), data)
-  , expected: start(createFBO(gl, [SIZE, SIZE]), data)
+    actual: start(createFBO(gl, [height, width]), data)
+  , expected: start(createFBO(gl, [height, width]), data)
 }
 
 function createLoop(key) {
   return function render(fbo) {
+    var width  = (canvas.width / scale)|0
+    var height = (canvas.height / scale)|0
+    outputs[key].shape = [height, width]
     outputs[key].bind()
     shaders[key].logic.bind()
     shaders[key].logic.uniforms.prevState = inputs[key].color[0].bind(0)
-    shaders[key].logic.uniforms.stateSize = [SIZE, SIZE]
+    shaders[key].logic.uniforms.stateSize = [width, height]
     triangle(gl)
 
-    fbo.shape = [SIZE, SIZE]
+    fbo.shape = [height, width]
     fbo.bind()
     shaders[key].render.bind()
     shaders[key].render.uniforms.prevState = outputs[key].color[0].bind(0)
-    shaders[key].render.uniforms.stateSize = [SIZE, SIZE]
+    shaders[key].render.uniforms.stateSize = [width, height]
     triangle(gl)
 
     var tmp = inputs[key]
@@ -96,13 +103,12 @@ function createLoop(key) {
 
 function start(fbo, data) {
   fbo.color[0].setPixels(data)
-  fbo.color[0].wrap = gl.REPEAT
 
   return fbo
 }
 
-function randomFill() {
-  var shape = [SIZE, SIZE]
+function randomFill(width, height) {
+  var shape = [height, width]
   var data  = new Uint8Array(shape[0] * shape[1] * 4)
   var i = 0
 

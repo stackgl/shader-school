@@ -3,8 +3,8 @@ precision mediump float;
 uniform sampler2D prevState;
 uniform vec2 stateSize;
 
-vec4 state(vec2 x) {
-  return texture2D(prevState, x / stateSize);
+float state(vec2 x) {
+  return texture2D(prevState, fract(x / stateSize)).r;
 }
 
 void main() {
@@ -12,5 +12,8 @@ void main() {
 
   //TODO: Compute next state using a 5-point Laplacian stencil and the rule 
 
-  gl_FragColor = state(gl_FragCoord.xy);
+  float y = state(coord);
+
+
+  gl_FragColor = vec4(y,y,y,1);
 }
