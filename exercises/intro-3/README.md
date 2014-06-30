@@ -3,35 +3,35 @@
 
 ## Exercise
 
-To apply what we've learned about control flow, in this lesson we are going to render the mandelbrot set in GLSL. Given any complex number `c`, define the sequence of `z(n)` to be:
+Implement a function which tests whether a point is inside the Mandelbrot set after 100 iterations.  The Mandelbrot set is a fractal, which is defined by iterating a chaotic map on the complex plane and testing which points converge.  Given an input point `c`, one iteration of the Mandelbrot function is defined as follows:
 
-```
-z(0)   = 0.0
-z(n+1) = z(n) * z(n) + c
-```
-
-Then we say that the point `c` is in the mandelbrot set if this sequence converges
-
-```
-    lim        |z(n)|   < infinity
-n -> infinity
+```glsl
+vec2 mandelbrot(vec2 z, vec2 c) {
+  return vec2(z.x * z.x - z.y * z.y, 2.0 * z.x * z.y) + c;
+}
 ```
 
-Since we can't calculate z(infinity) directly, we will instead make do with a finite approximation.  Here you should write a shader program which computes `z(100)` and tests if the magnitude of `z` is less than 2.  You should implement the function called `mandelbrot` in the <a href="/open/intro-3">`mandelbrot.glsl` file in this project's directory</a>.
+And some iterations of the map are given as follows:
 
-### Hints
+```glsl
+vec2 z0 = vec2(0.0,0.0);        //No iterations
+vec2 z1 = mandelbrot(z0, c);    // 1 iteration
+vec2 z2 = mandelbrot(z1, c);    // 2 iterations
 
-Remember the definition of complex multiplication:
+// ... and so on ...
 
+vec2 zn = mandelbrot(zn_1, c);  // n iterations
 ```
-(a + b*i) * (c + d*i) = (a * c - b * d) + (a * d + b * d) * i
+
+As a general principle, say that a point in the Mandelbrot set diverges if it has a magnitude greater than 2:
+
+```glsl
+bool mandelbrotDiverges(vec2 z) {
+  return length(z) >= 2.0;
+}
 ```
 
-And the magnitude of a complex number is:
-
-```
-| a + b*i | = sqrt(a*a + b*b)
-```
+The Mandelbrot set is the collection of all points which do not diverge. Write a function which given a test point `c` tests if after 100 iterations it is still inside the Mandelbrot set.  To get started, a <a href="/open/intro-3">file `mandelbrot.glsl` has been created in this project's directory.</a>
 
 ***
 
