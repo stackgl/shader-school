@@ -1,4 +1,4 @@
-# Control flow, user defined data types and macros
+# Loops
 
 
 ## Exercise
@@ -35,25 +35,9 @@ The Mandelbrot set is the collection of all points which do not diverge. Write a
 
 ***
 
-In this lesson, we will finish up our discussion of the basic GLSL programming language, covering control flow statements, user defined data types and the preprocessor.
-
-## If statements
-
-The most basic control flow statement in GLSL are `if` statements.  `if` statements in GLSL are semantically and syntactically the same as in JavaScript.  For example, here is how one could write a short if block in a shader:
-
-```glsl
-if(x > 0.0) {
-  //Executed if x > 0
-} else if(x < 0.0) {
-  //Executed if x < 0
-} else {
-  //Executed if x == 0
-}
-```
-
 ## Loops
 
-GLSL also supports looping, but with the one catch that the number of times the loop executes must be statically determined and bounded.  For example, GLSL supports `for` loops just like JavaScript:
+GLSL supports looping, but with the one catch that the number of times the loop executes must be statically determined and bounded.  For example, GLSL supports `for` loops just like JavaScript:
 
 ```glsl
 float x = 0.0;
@@ -64,65 +48,11 @@ for(int i=0; i<100; ++i) {
 
 It is also possible to write `while` loops, again with the restriction that the loop must terminate.
 
-## Preprocessor
-
-GLSL also has a C-like preprocessor.  All preprocessor commands are prefixed with a `#` symbol and are executed at compile time.
-
-### Macros
-
-One of the most useful preprocessor features are macros. Macros are like functions, but they are expanded at compile time. This makes them useful for generating code or complex functions in shaders that would be too cumbersome to write by hand. Macros are also useful for defining constant values in shaders and for conditional compilation. To declare a macro, you can use the `#define` command.  For example, here is a simple use of macros:
-
 ```glsl
-#define MAX_LIGHTS 10
-
-vec3 lightPositions[MAX_LIGHTS];
-```
-
-When compiled, this code will expand into:
-
-```glsl
-vec3 lightPositions[10];
-```
-
-Macros can also take parameters, for example:
-
-```glsl
-#define PLUS_ONE(x)  (x+1.0)
-
-float y = 0.0;
-float z = PLUS_ONE(y);
-```
-
-Which expands to:
-
-```glsl
-float y = 0.0;
-float z = (y+1.0);
-```
-
-### Conditional compilation
-
-The GLSL preprocessor also supports basic logic for conditional compilation using the `#if`, `#else` and `#endif` commands:
-
-```glsl
-#define USE_FAST_RANDOM  1
-
-
-#if USE_FAST_RANDOM
-
-float random(float seed) {
-  return 2.0;  //Rolled using a fair die
+int i = 0;
+while(i < 10) {
+  i = i + 1;
 }
-
-#else
-
-float random(float seed) {
-  // ...
-}
-
-#endif
 ```
 
-### Capabilities
-
-Conditional compilation is especially helpful when combined with knowledge of device capabilities. For example, if a WebGL implementation does not support some extension then the shader can detect this with an appropriate preprocessor command and select some fallback.
+The requirement that loops terminate in a finite number of iterations makes `while` loops a bit trickier to use than `for` loops.  It is also possible to terminate loops early using the `break` keyword, or skip an iteration using `continue`, just like in JavaScript.
