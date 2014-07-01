@@ -128,3 +128,29 @@ body .gl-compare-sidebar {
 .gl-compare-content .warn {
   color: #FF6E57;
 }
+
+.notification {
+  opacity: 0;
+  font-weight: 400;
+  font-size: 12px;
+  color: #34363B;
+  padding: 1em;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+  width: 300px;
+  background: #FF6E57;
+
+  -moz-transition: opacity 0.5s, bottom 0.5s, top 0.5s, left 0.5s, right 0.5s;
+  -ms-transition: opacity 0.5s, bottom 0.5s, top 0.5s, left 0.5s, right 0.5s;
+  -o-transition: opacity 0.5s, bottom 0.5s, top 0.5s, left 0.5s, right 0.5s;
+  transition: opacity 0.5s, bottom 0.5s, top 0.5s, left 0.5s, right 0.5s;
+}
+
+.notification.opening {
+  opacity: 1;
+}
+
+.notification.closing {
+  opacity: 0;
+  right: -200px!important;
+}

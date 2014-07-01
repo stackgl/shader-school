@@ -3,6 +3,7 @@ var progress    = require('../lib/progress')
 
 var highlight   = require('highlight.js').highlight
 var sidebar     = require('gl-compare-sidebar')
+var remove      = require('remove-element')
 var fonts       = require('google-fonts')
 var quotemeta   = require('quotemeta')
 var glsldoc     = require('glsldoc')
@@ -10,6 +11,19 @@ var slice       = require('sliced')
 var marked      = require('marked')
 var xhr         = require('xhr')
 var fs          = require('fs')
+
+var notify = require('apprise')({
+  top: false,
+  right: true
+}).on('enter', function(node) {
+  node.classList.add('notification')
+}).on('exit', function(node) {
+  previous = null
+  node.classList.add('closing')
+  setTimeout(function() {
+    remove(node)
+  }, 1000)
+})
 
 var types = {}
 var exps  = glsldoc.map(function(node) {
@@ -66,6 +80,16 @@ module.exports = function(opts) {
       }
     })
   })
+}
+
+var previous = null
+window.onerror = function(message, source, line, ch, err) {
+  if (err.message === previous) return
+  var error = notify(10000)
+  error.innerHTML = previous = String(err.message)
+  setTimeout(function() {
+    error.classList.add('opening')
+  }, 1)
 }
 
 // For opening directory links cleanly without requiring a temporary
