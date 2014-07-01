@@ -6,5 +6,5 @@ uniform mat4 inverseModel, inverseView, inverseProjection;
 uniform vec3 ambient, diffuse, lightDirection;
 
 void main() {
-  gl_Position = vec4(0,0,0,1);
+  gl_Position = position;
 }

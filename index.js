@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var livePort  = Number(process.env.GLSLIFY_LIVE_PORT = 12491)
 var answers   = require('./lib/create-answers')
 var live      = require('glslify-live/server')
 var exercises = require('./exercises')
@@ -11,7 +12,6 @@ var path      = require('path')
 var url       = require('url')
 var fs        = require('fs')
 
-var livePort = Number(process.env.GLSLIFY_LIVE_PORT = 12491)
 var mainPort = 12492
 var closeWindow = fs.readFileSync(
   path.join(__dirname, 'lib/close-window.html')

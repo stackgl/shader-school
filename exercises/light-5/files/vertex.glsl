@@ -10,5 +10,5 @@ uniform vec3 ambient;
 uniform PointLight lights[4];
 
 void main() {
-  gl_Position = vec4(0,0,0,1);
+  gl_Position = position;
 }
