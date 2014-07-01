@@ -21,6 +21,7 @@ require('../common')({
     description: readme
   , compare: comparison
   , canvas: canvas
+  , dirname: process.env.dirname
   , test: matchFBO(comparison, 0.99)
 })
 

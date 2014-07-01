@@ -6,6 +6,7 @@ module.exports = function(sourceFiles) {
   var brfs    = ['-t', require.resolve('brfs')]
   var envify  = ['-t', '[', require.resolve('envify')]
 
+  envify.push('--dirname', path.basename(__dirname))
   sourceFiles.forEach(function(file) {
     var base = path.basename(file).replace(/\./g, '_')
     envify.push('--file_' + base)

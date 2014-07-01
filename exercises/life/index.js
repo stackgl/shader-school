@@ -25,6 +25,7 @@ var SIZE = 256
 
 require('../common')({
     description: readme
+  , dirname: process.env.dirname
   , compare: comparison
   , canvas: canvas
 })

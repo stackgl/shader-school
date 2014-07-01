@@ -22,7 +22,8 @@ require('../common')({
     description: readme
   , compare: comparison
   , canvas: canvas
-  , test: matchFBO(comparison, 0.99)  
+  , test: matchFBO(comparison, 0.99)
+  , dirname: process.env.dirname
 })
 
 window.addEventListener('resize', fit(canvas), false)
