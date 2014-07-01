@@ -1,8 +1,9 @@
 {
-  "name": "glslify-workshopper",
+  "name": "shader-school",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "mkdir answers; cd answers && NODE_ENV=development node .."
