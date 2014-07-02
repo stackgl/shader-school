@@ -7,6 +7,7 @@ var exercises = require('./exercises')
 var styles    = require('./style')
 var opener    = require('opener')
 var beefy     = require('beefy')
+var chalk     = require('chalk')
 var http      = require('http')
 var path      = require('path')
 var url       = require('url')
@@ -92,9 +93,8 @@ function createServer(root) {
 
       var url = 'http://localhost:'+mainPort
       opener(url)
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-      console.log('WORKSHOP URL:', url)
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+      console.log(chalk.yellow('WORKSHOP URL:'), chalk.underline.blue(url))
+      console.log()
     })
   }
 }

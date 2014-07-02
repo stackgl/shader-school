@@ -9,7 +9,6 @@ module.exports = function(sourceFiles) {
   envify.push('--dirname', path.basename(__dirname))
   sourceFiles.forEach(function(file) {
     var base = path.basename(file).replace(/\./g, '_')
-    console.log(base)
     envify.push('--file_' + base)
     envify.push(file)
   })
