@@ -6,6 +6,27 @@ In this lesson, you will write a GLSL function which computes the unit angle bis
 
 As an example, if `a = vec2(1,0)` and `b = vec2(0,1)`, then you should return the result `vec2(sqrt(2)/2, sqrt(2)/2)`.
 
+**Hint** It is useful to remember the angle bisector theorem.  In ascii art, suppose we have two vectors, A and B.  Then the angle bisector between A and B is the vector C:
+
+```
+ B
+ ^
+ |\
+ | \^ C
+ | /\
+ |/  \
+ *----> A
+ O
+```
+
+In this situation, the angle bisector theorem tells us the following information about the ratio of the lengths of these vectors:
+
+```glsl
+length(B - C) / length(C - A) == length(B) / length(A)
+```
+
+Using the above equation, solve for the position of C and then normalize it to unit length.
+
 ***
 
 After scalars, the next most important data type in GLSL are vectors.  GLSL comes with built in types for small vectors with up to 4 components.  Like scalars, vectors come in boolean, integer and floating point varieties which are declared using the following syntax:
