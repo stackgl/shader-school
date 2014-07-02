@@ -154,3 +154,29 @@ body .gl-compare-sidebar {
   opacity: 0;
   right: -200px!important;
 }
+
+.buttons {
+  position: absolute;
+  top: 4px; right: 4px;
+  list-style-type: none;
+}
+
+.buttons .button-home,
+.buttons .button-open {
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: #A9B0C2;
+  margin-left: 4px;
+  cursor: pointer;
+  float: right;
+  width: 48px;
+  height: 48px;
+}
+
+.buttons .button-home {
+  background-image: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="84" viewBox="0 0 100 84"><path fill="#34363B" d="M82 32.641v-23.641h-14v9.359l-18-18.359-50 51h12v33h31v-27h14v27h31v-33h12z"/></svg>');
+}
+.buttons .button-open {
+  background-image: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="#34363B" d="M96.249 25.057h-55.068l-9.803-11.375-.02.006c-.681-.696-1.628-1.131-2.678-1.131h-24.931c-2.07 0-3.749 1.679-3.749 3.75v67.387c0 2.071 1.679 3.75 3.749 3.75h92.5c2.071 0 3.75-1.679 3.751-3.75v-54.888c0-2.071-1.68-3.749-3.751-3.749z"/></svg>');
+}

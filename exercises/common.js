@@ -112,3 +112,26 @@ function openHook(content) {
     }, false)
   })
 }
+
+// Home/Open Buttons
+var buttons = document.body.appendChild(document.createElement('ul'))
+var home = buttons.appendChild(document.createElement('li'))
+var open = buttons.appendChild(document.createElement('li'))
+
+buttons.classList.add('buttons')
+home.classList.add('button-home')
+open.classList.add('button-open')
+
+home.setAttribute('title', 'Return to menu')
+home.addEventListener('click', function(e) {
+  window.location = '/'
+}, false)
+
+open.setAttribute('title', 'Open exercise shader directory')
+open.addEventListener('click', function(e) {
+  var src = '/open' + window.location.pathname
+
+  xhr(src, function(err) {
+    if (err) throw err
+  })
+}, false)
