@@ -1,9 +1,8 @@
 # Point sprites
 
-
 ## Exercise
 
-Create a vertex/fragment shader pair to render a collection of colored point sprites. <a href="/open/27-point-1" target="_blank">A pair of starting shaders have been created in the directory for this lesson to help get started.</a> These shaders get a standard collection of camera matrices factored into the model/view/projection transformations.  In addition, the shaders also get 3 attributes:
+Create a vertex/fragment shader pair to render a collection of colored point sprites. <a href="/open/27-prims-1" target="_blank">A pair of starting shaders have been created in the directory for this lesson to help get started.</a> These shaders get a standard collection of camera matrices factored into the model/view/projection transformations.  In addition, the shaders also get 3 attributes:
 
 * `position` which is the position of each point sprite
 * `color` which is the color of each point sprite

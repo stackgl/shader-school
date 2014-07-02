@@ -26,5 +26,6 @@
   "» GPGPU 1: GAME OF LIFE": "24-gpgpu-1",
   "» GPGPU 2: HEAT EQUATION": "25-gpgpu-2",
   "» GPGPU 3: WAVE EQUATION": "26-gpgpu-3",
-  "» POINT 1: POINT SPRITES": "27-point-1"
+  "» PRIMS 1: POINT SPRITES": "27-prims-1",
+  "» PRIMS 2: TRIANGLES": "28-prims-2"
 }
