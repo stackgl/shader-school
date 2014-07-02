@@ -85,6 +85,8 @@ From left to right:
 
 ![screenshot](http://imgur.com/GJtvajl.png)
 
+![screenshot](http://imgur.com/hegi9dZ.png)
+
 ![screenshot](http://imgur.com/QYyBoea.png)
 
 ![screenshot](http://imgur.com/MZyhKjs.png)
