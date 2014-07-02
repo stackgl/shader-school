@@ -9,9 +9,9 @@
 ## Running this thing
 
 First, you need to [get a browser with WebGL](http://get.webgl.org/), as well
-as a copy of [node.js](http://nodejs.org/). Once you have all of that set up,
-you can install the workshop using [npm](http://npmjs.org/), which is included
-with node:
+as a copy of [node.js](http://nodejs.org/) and [git](http://git-scm.com/). Once you have
+all of that set up, you can install the workshop using [npm](http://npmjs.org/), which
+is included with node:
 
 ```
 npm install -g shader-school
