@@ -23,11 +23,11 @@ vec2 z2 = mandelbrot(z1, c);    // 2 iterations
 vec2 zn = mandelbrot(zn_1, c);  // n iterations
 ```
 
-As a general principle, say that a point in the Mandelbrot set diverges if it has a magnitude greater than 2:
+As a general principle, say that a point in the Mandelbrot set diverges if it has a magnitude greater than 2, so we will classify points as inside the set if their magnitude is less than 2:
 
 ```glsl
-bool mandelbrotDiverges(vec2 z) {
-  return length(z) >= 2.0;
+bool mandelbrotConverges(vec2 z) {
+  return length(z) < 2.0;
 }
 ```
 
