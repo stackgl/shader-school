@@ -89,8 +89,12 @@ function createServer(root) {
       return menu(req, res)
     }).listen(mainPort, function(err) {
       if (err) throw err
-      opener('http://localhost:'+mainPort)
-      console.log('listening on port:', mainPort)
+
+      var url = 'http://localhost:'+mainPort
+      opener(url)
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+      console.log('WORKSHOP URL:', url)
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     })
   }
 }
