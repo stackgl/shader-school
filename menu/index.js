@@ -39,7 +39,6 @@ var rows = sidenote(keys.map(function(name, i) {
 }).map(function(row, i) {
   var cat = cats[i]
 
-  console.log(cat)
   if (lcat !== cat) {
     var line = '------------------------------------------'
 
