@@ -21,11 +21,19 @@ kD * ( ----- + ----- ) - kM * f = -----
 As before, this equation can be discretized using explicit Euler integration and finite differences.  However, because of the second order time dependency it is necessary to buffer two states instead of just one. This leads to the following update rule:
 
 ```
-f(x,y,t+1) = (1 - kdamping) * (kdiffuse * laplace(f)(x, y, t) + 2 * f(x,y,t) - f(x,y,t-1))
+f(x,y,t+1) = (1 - kdamping) * (
+  kdiffuse * laplace(f)(x, y, t) +
+  2 * f(x,y,t)
+) - f(x,y,t-1)
 ```
 
 Where again laplace(f) is computed using a 5-point stencil:
 
 ```
-laplace(f)(x,y,t) = f(x-1,y,t) + f(x+1,y,t) + f(x,y-1,t) + f(x,y+1,t) - 4 * f(x,y,t)
+laplace(f)(x,y,t) = (
+  f(x-1,y,t) +
+  f(x+1,y,t) +
+  f(x,y-1,t) +
+  f(x,y+1,t)
+) - 4 * f(x,y,t)
 ```

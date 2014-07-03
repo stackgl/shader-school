@@ -41,7 +41,8 @@ light.color = vec3(1, 0, 0);
 GLSL also supports arrays, using the same syntax as C.  Just like JavaScript array indexes start from `0`, though unlike in JavaScript their size must be declared in advance. For example, here is how to declare an array of 10 point lights in GLSL:
 
 ```glsl
-//Declare an array of 10 point lights called "lights"
+//Declare an array of 10 point lights
+//called "lights"
 PointLight lights[10];
 
 //Modify the first light in the array

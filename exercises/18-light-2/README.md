@@ -38,8 +38,14 @@ float lambertWeight(vec3 n, vec3 d) {
 Combined with an ambient term (as was used before in the flat shading model), this gives the following expression for the light reflected at a point on the surface:
 
 ```glsl
-vec3 reflectedLight(vec3 normal, vec3 lightDirection, vec3 ambient, vec3 diffuse) {
-  return ambient + diffuse * max(dot(normal, lightDirection), 0.0);
+vec3 reflectedLight(
+  vec3 normal,
+  vec3 lightDirection,
+  vec3 ambient,
+  vec3 diffuse
+) {
+  float brightness = dot(normal, lightDirection);
+  return ambient + diffuse * max(brightness, 0.0);
 }
 ```
 
@@ -48,7 +54,11 @@ vec3 reflectedLight(vec3 normal, vec3 lightDirection, vec3 ambient, vec3 diffuse
 One slightly tricky thing about this formula is that makes use of normal vectors.  Normal vectors, unlike points, are what are called dual vectors.  That is they encode planes parallel to the surface, not directions.  The parallel distance along a normal vector is given by the dot product with the normal vector. Or more precisely, given a test point p, the distance along the normal direction at a point on the surface is given by the following function:
 
 ```glsl
-function parallelDistance(vec3 surfacePoint, vec3 surfaceNormal, vec3 p) {
+float parallelDistance(
+  vec3 surfacePoint,
+  vec3 surfaceNormal,
+  vec3 p
+) {
   return dot(p - surfacePoint, surfaceNormal);
 }
 ```

@@ -16,7 +16,8 @@ The entry point for each fragment shader is a special procedure called `main()`,
 
 ```glsl
 void main() {
-  gl_FragData[0] = vec4(1, 0, 0, 1);    //Colors are represented by 4 vectors in RGBA order
+  //Colors are represented by 4 vectors in RGBA order
+  gl_FragData[0] = vec4(1, 0, 0, 1);
 }
 ```
 
@@ -28,7 +29,7 @@ void main() {
 }
 ```
 
-### `gl_FragCoord`
+### gl_FragCoord
 
 Every fragment shader also recieves a special input variable called `gl_FragCoord`. `gl_FragCoord` is a `vec4` which returns the coordinate of the fragment in device coordinates. Specifically:
 

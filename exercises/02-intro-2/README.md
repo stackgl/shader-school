@@ -17,7 +17,8 @@ Floating point variables are declared with an optional precision specifier that 
 The number of bits available at the different precision levels can vary between implementations. To declare a floating point variable, you just write the precision specifier then `float`.  For example:
 
 ```glsl
-lowp float t = 1.0;  // Declare a low precision float called t
+// Declare a low precision float called t
+lowp float t = 1.0;  
 mediump float middle;
 highp float zzz = -1.5;
 ```
@@ -25,9 +26,11 @@ highp float zzz = -1.5;
 Writing precision specifiers all the time can be a little tedious, so to save some keystrokes you can declare the precision of all floating point numbers in your code using the `precision` statement:
 
 ```glsl
-precision highp float;  //Now all floats are high precision
+//Now all floats are high precision
+precision highp float;  
 
-float x = -0.1;  //Equivalent to: highp float x = 1.0;
+//Equivalent to: highp float x = 1.0;
+float x = -0.1;  
 ```
 
 ## Constants
@@ -53,7 +56,12 @@ For example:
 ```glsl
 precision mediump float;
 
-void testFunction(in float x, inout float y, out float z, const float w) {
+void testFunction(
+  in float x,
+  inout float y,
+  out float z,
+  const float w
+) {
   x += 1.0;
   y += x;
   z = x + y + w;

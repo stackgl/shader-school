@@ -23,7 +23,8 @@ varying vec4 fragPosition;
 void main() {
   gl_Position = position;
 
-  //Set fragPosition variable for the fragment shader output
+  //Set fragPosition variable for the
+  //fragment shader output
   fragPosition = position;
 }
 ```

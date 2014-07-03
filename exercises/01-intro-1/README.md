@@ -27,11 +27,17 @@ Here are some examples of how to declare a variable in GLSL:
 ```glsl
 //Comments are written with slashes just like in JS
 
-int myInt;      //Declares an integer called myInt (not semicolons are not optional)
+//Declares an integer called myInt:
+//(note semicolons are not optional)
+int myInt;
 
-bool a, b, c;   //Can declare multiple values on one line, all have type bool
+//Can declare multiple values on one line,
+//all of these have type bool
+bool a, b, c;
 
-bool someBoolean = true; //Variables can be initialized when they are declared
+//Variables can be initialized when
+//they are declared
+bool someBoolean = true;
 ```
 
 ## Operators
@@ -39,13 +45,17 @@ bool someBoolean = true; //Variables can be initialized when they are declared
 Scalar datatypes support the same basic arithmetic operations as JavaScript.  On floating point numbers, the following operators are all defined: `+,-,*,/,<,>,<=,>=,==,!=`.  Additionally, variables can be updated by assignment using the `=` operator, and the related, `+=,-=,*=,/=,++,--` arithmetic assignments.  For example,
 
 ```glsl
-mediump float x = 1.0, y = -2.0;  //Declare floats x and y
+//Declare floats x and y
+mediump float x = 1.0, y = -2.0;
 
-mediump float z = x + 3.0 * y;    //Now: z = x + 3 y = -5
+//Now: z = x + 3 y = -5
+mediump float z = x + 3.0 * y;
 
-x++;  // Add 1 to x, so now: x = 2
+//Add 1 to x, so now: x = 2
+x++;  
 
-z += 2.0 * x; // Now: z = -1
+//Now: z = -1
+z += 2.0 * x;
 ```
 
 ## Procedures
@@ -53,12 +63,16 @@ z += 2.0 * x; // Now: z = -1
 GLSL allows for complex shaders to be decomposed into subroutines using C-like syntax. These subroutines may or may not return a value by a return statement.  Here is a subroutine which adds two integers together:
 
 ```glsl
-//Declare a subroutine called "addTwoInts" with return type "int" that accepts two arguments, "x" and "y" both int type
+//Declare a subroutine called "addTwoInts"
+//with return type "int" that accepts two
+//arguments, "x" and "y" both int type
 int addTwoInts(int x, int y) {
-  return x + y;       //Use a return statement to return a value
+  //Use a return statement to return a value
+  return x + y;
 }
 
-//To declare a subroutine that does not return a value, give it the return type "void"
+//To declare a subroutine that does not
+//return a value, give it the return type "void"
 void doNothing() {
 }
 ```

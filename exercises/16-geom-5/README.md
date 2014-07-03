@@ -14,6 +14,10 @@ This relation between rotations and axis-angle pairs is captured by a beautiful 
 
 ```glsl
 vec3 rotatePoint(vec3 p, vec3 n, float theta) {
-  return p * cos(theta) + cross(n, p) * sin(theta) + n * dot(p, n) * (1.0 - cos(theta));
+  return (
+    p * cos(theta) + cross(n, p) *
+    sin(theta) + n * dot(p, n) *
+    (1.0 - cos(theta))
+  );
 }
 ```
