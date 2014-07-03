@@ -43,11 +43,17 @@ Explicitly, the parameters in this model are:
 In GLSL, we can write out the Phong lighting weight compactly using the built in functions:
 
 ```glsl
-float phongWeight(vec3 lightDirection, vec3 surfaceNormal, vec3 eyeDirection, float shininess) {
+float phongWeight(
+  vec3 lightDirection,
+  vec3 surfaceNormal,
+  vec3 eyeDirection,
+  float shininess
+) {
   //First reflect light by surface normal
   vec3 rlight = reflect(lightDirection, surfaceNormal);
 
-  //Next find the projected length of the reflected light vector in the view direction
+  //Next find the projected length of the reflected
+  //light vector in the view direction
   float eyeLight = max(dot(rlight, eyeDirection), 0.0);
 
   //Finally exponentiate by the shininess factor
@@ -58,5 +64,9 @@ float phongWeight(vec3 lightDirection, vec3 surfaceNormal, vec3 eyeDirection, fl
 The Phong lighting model is then usually combined with diffuse and ambient terms to give a complete lighting model:
 
 ```glsl
-light = ambient + diffuse * lambert + specular * phong
+light = (
+    ambient
+  + diffuse * lambert
+  + specular * phong
+)
 ```

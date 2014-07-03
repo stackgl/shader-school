@@ -13,5 +13,7 @@ Up until now, we have assumed that all our light sources are infinitely far away
 To modify our previous lighting model to support point lights, all we need to do is replace the direction vector with a ray extending from the point on the surface to the light source.  That is, our new light direction becomes:
 
 ```glsl
-vec3 lightDirection = normalize(lightPosition - surfacePosition);
+vec3 lightDirection = normalize(
+  lightPosition - surfacePosition
+);
 ```

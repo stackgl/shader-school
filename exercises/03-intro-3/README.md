@@ -40,11 +40,20 @@ Floating point vectors and can have the same precision specifiers as floats, so 
 ```glsl
 precision mediump float;
 
-vec3 v(1.0, 2.0, 3.0);    //Declares a 3D medium precision floating point vector with components (1,2,3)
-lowp vec2 p = vec2(2.0);  //Create a low precision 2D vector with all components set to 2
-highp vec4 q = vec4(v, 1.0);  //Unpack first 3 components from v into q and set last component to 1.0
-bvec2 foo(true, false);   //A 2D boolean vector with true and false components
-ivec3 q(1,0,-1);          //A 3D integer vector with components 1,0,-1
+//Declares a 3D medium precision floating point
+//vector with components (1,2,3)
+vec3 v(1.0, 2.0, 3.0);
+//Create a low precision 2D vector with all
+//components set to 2
+lowp vec2 p = vec2(2.0);  
+//Unpack first 3 components from v into q and
+//set last component to 1.0
+highp vec4 q = vec4(v, 1.0);  
+//A 2D boolean vector with true and false
+//components
+bvec2 foo(true, false);
+//A 3D integer vector with components 1,0,-1
+ivec3 q(1,0,-1);
 ```
 
 ### Swizzles

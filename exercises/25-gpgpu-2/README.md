@@ -26,12 +26,19 @@ One way to solve this equation is to discretize it and numerically integrate to 
 
 ```glsl
 float laplace(x, y) {
-  return prevState(x-1,y) + prevState(x+1,y) + prevState(x,y-1) + prevState(x,y+1) - 4.0 * prevState(x,y);
+  return (
+    prevState(x-1,y) +
+    prevState(x+1,y) +
+    prevState(x,y-1) +
+    prevState(x,y+1)
+  ) - 4.0 * prevState(x,y);
 }
 ```
 
 And with damping, the update rule for the integrator becomes:
 
 ```glsl
-nextState(x,y) = (1.0 - kDamping) * (kDiffuse * laplace(x,y) + prevState(x,y))
+nextState(x,y) = (1.0 - kDamping) * (
+  kDiffuse * laplace(x,y) + prevState(x,y)
+)
 ```

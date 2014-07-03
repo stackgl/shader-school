@@ -36,14 +36,19 @@ uniform vec2 screenSize;
 void main() {
 
   //Draws the texture to the screen
-  gl_FragColor = texture2D(image, gl_FragCoord.xy / screenSize);
+  vec2 uv = gl_FragCoord.xy / screenSize;
+  gl_FragColor = texture2D(image, uv);
 }
 ```
 
 The built in `texture2D` has the following signature:
 
 ```glsl
-vec4 texture2D(in sampler2D texture, in vec2 coordinate, in float bias = 0.0);
+vec4 texture2D(
+  in sampler2D texture,
+  in vec2 coordinate,
+  in float bias = 0.0
+);
 ```
 
 Where:
