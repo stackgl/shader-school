@@ -60,6 +60,13 @@ module.exports = function(opts) {
       compare.content.innerHTML = marked(opts.description, markedOpts)
       openHook(compare.content)
     }
+
+    var hamburger = compare.el.querySelector('.gl-compare-hide')
+
+    hamburger.classList.add('flashing')
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.remove('flashing')
+    }, false)
   }
 
   compare.on('test', function() {
@@ -74,6 +81,7 @@ module.exports = function(opts) {
         progress.set(opts.dirname, true)
         compare.status = 'passed!'
         compare.statusColor = '#57FF8A'
+        home.classList.add('flashing')
       } else {
         compare.status = 'try again?'
         compare.statusColor = '#FF6E57'

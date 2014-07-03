@@ -175,8 +175,35 @@ body .gl-compare-sidebar {
 }
 
 .buttons .button-home {
-  background-image: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="84" viewBox="0 0 100 84"><path fill="#34363B" d="M82 32.641v-23.641h-14v9.359l-18-18.359-50 51h12v33h31v-27h14v27h31v-33h12z"/></svg>');
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iODQiIHZpZXdCb3g9IjAgMCAxMDAgODQiPjxwYXRoIGZpbGw9IiMzNDM2M0IiIGQ9Ik04MiAzMi42NDF2LTIzLjY0MWgtMTR2OS4zNTlsLTE4LTE4LjM1OS01MCA1MWgxMnYzM2gzMXYtMjdoMTR2MjdoMzF2LTMzaDEyeiIvPjwvc3ZnPg==');
 }
 .buttons .button-open {
-  background-image: url('data:image/svg+xml; utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="#34363B" d="M96.249 25.057h-55.068l-9.803-11.375-.02.006c-.681-.696-1.628-1.131-2.678-1.131h-24.931c-2.07 0-3.749 1.679-3.749 3.75v67.387c0 2.071 1.679 3.75 3.749 3.75h92.5c2.071 0 3.75-1.679 3.751-3.75v-54.888c0-2.071-1.68-3.749-3.751-3.749z"/></svg>');
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0iIzM0MzYzQiIgZD0iTTk2LjI0OSAyNS4wNTdoLTU1LjA2OGwtOS44MDMtMTEuMzc1LS4wMi4wMDZjLS42ODEtLjY5Ni0xLjYyOC0xLjEzMS0yLjY3OC0xLjEzMWgtMjQuOTMxYy0yLjA3IDAtMy43NDkgMS42NzktMy43NDkgMy43NXY2Ny4zODdjMCAyLjA3MSAxLjY3OSAzLjc1IDMuNzQ5IDMuNzVoOTIuNWMyLjA3MSAwIDMuNzUtMS42NzkgMy43NTEtMy43NXYtNTQuODg4YzAtMi4wNzEtMS42OC0zLjc0OS0zLjc1MS0zLjc0OXoiLz48L3N2Zz4=');
+}
+
+.buttons .button-home.flashing,
+.buttons .button-open.flashing,
+.flashing .gl-compare-show {
+  animation: flashing 1s infinite;
+  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+body .buttons .button-home.flashing,
+body .buttons .button-open.flashing {
+  animation-name: flashing, wobbling;
+}
+
+.gl-compare-hide.flashing {
+  animation: wobbling 1s infinite;
+}
+
+@keyframes flashing {
+  20%, 80% { background-color: #A9B0C2; }
+  50%      { background-color: #FFE169; }
+}
+
+@keyframes wobbling {
+  0%, 50%, 100% { transform: rotate(+0deg); }
+  60%           { transform: rotate(-3deg); }
+  80%           { transform: rotate(+3deg); }
 }
