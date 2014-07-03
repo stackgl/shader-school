@@ -80,17 +80,16 @@ speeds.prev.color[0].setPixels(ndarray(speeddata, [SIZE, SIZE, 4]))
 speeds.next.color[0].setPixels(ndarray(speeddata, [SIZE, SIZE, 4]))
 
 var updateSpeed = createShader({
-    frag: './shaders/speed.glsl'
-  , vert: './shaders/triangle.glsl'
+    frag: process.env.file_speed_glsl
+  , vert: process.env.file_triangle_glsl
 })(gl)
 var updatePos   = createShader({
-    frag: './shaders/position.glsl'
-  , vert: './shaders/triangle.glsl'
+    frag: process.env.file_position_glsl
+  , vert: process.env.file_triangle_glsl
 })(gl)
-
 var renderShader = createShader({
-    frag: './shaders/render.frag'
-  , vert: './shaders/render.vert'
+    frag: process.env.file_render_frag
+  , vert: process.env.file_render_vert
 })(gl)
 
 function render() {
