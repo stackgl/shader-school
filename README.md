@@ -1,6 +1,7 @@
 # Shader School
 
 [![NPM](https://nodei.co/npm/shader-school.png?downloads=true&stars=true)](https://nodei.co/npm/shader-school/)
+[![NPM](https://nodei.co/npm-dl/shader-school.png)](https://nodei.co/npm/shader-school/)
 
 **An introduction to GLSL shaders and graphics programming that runs in your web browser.**
 
