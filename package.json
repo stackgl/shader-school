@@ -66,7 +66,7 @@
     "right-now": "^1.0.0",
     "sidenote": "^1.0.0",
     "sliced": "0.0.5",
-    "stanford-dragon": "0.0.0",
+    "stanford-dragon": "^1.0.0",
     "wordwrap": "0.0.2",
     "xhr": "^1.9.0"
   }
