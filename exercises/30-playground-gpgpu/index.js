@@ -1,6 +1,6 @@
 var matchFBO     = require('../../lib/match-fbo')
 var mouse        = require('mouse-position')()
-var mouseDown    = require('mouse-pressed')()
+var mouseDown    = require('mouse-pressed')(null, true)
 var triangle     = require('a-big-triangle')
 var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
@@ -81,7 +81,7 @@ function update() {
 
   var mousePos   = [ mouse.x, canvas.height-mouse.y-1 ]
   var mouseState = [ mouseDown.left, mouseDown.middle, mouseDown.right ]
-  
+
   //Apply update
   front.bind()
 
