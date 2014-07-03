@@ -40,23 +40,6 @@ Full curriculum reviews
 [like this one](https://github.com/timoxley/functional-javascript-workshop/issues/7)
 are very helpful. More feedback like this please!
 
-## DONE
-
-* workshopper-style exercise menu.
-* bootstraps lesson files for students in the working directory.
-* diffs between actual/expected render loop.
-* live-reloads shaders on save.
-* lesson descriptions.
-* magically inline local files using envify.
-* trigger tests to check if passed.
-* record student progress.
-
-## TODO
-
-* back button to return to menu.
-* image/text preview on hover for lesson menu?
-* make the exit button work.
-
 ## Contributors
 
 <table><tbody>
