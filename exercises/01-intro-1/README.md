@@ -10,7 +10,7 @@ function to return the sum of its first two arguments.
 
 ## Overview of GLSL
 
-This first lesson covers the basics of shader programming with GLSL. In a few words, GLSL is a statically typed imperative programming language. Coming from JavaScript, the syntax of GLSL should be familiar with the same basic control flow structures: if statements and for loops, and semicolons and curly braces for delimiting statements and blocks.
+This lesson covers the basics of shader programming with GLSL. In a few words, GLSL is a statically typed imperative programming language. Coming from JavaScript, the syntax of GLSL should be familiar with the same basic control flow structures: if statements and for loops, and semicolons and curly braces for delimiting statements and blocks.
 
 However, there is one weird thing that makes GLSL different from most other programming languages -- *all GLSL programs must use a finite amount of memory and terminate in a finite time*.  This means no infinite loops, no recursion, no memory allocation and no strings.
 
