@@ -2,7 +2,7 @@ var exercises = require('../exercises.json')
 var progress = require('../lib/progress')
 var sidenote = require('sidenote')
 var menu = require('browser-menu')({
-    x: 2, y: 2
+    x: 0, y: 0
   , bg: process.browser ? '#61FF90' : 'green'
   , fg: process.browser ? '#34363B' : 'black'
 })
@@ -10,6 +10,7 @@ var menu = require('browser-menu')({
 menu.reset()
 menu.write('SHADER SCHOOL\n')
 menu.write('------------------------------------------------------\n')
+menu.element.style.margin = '2em'
 
 var keys = Object.keys(exercises)
 var rows = sidenote(keys.map(function(name, i) {
