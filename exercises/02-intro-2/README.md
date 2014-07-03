@@ -65,7 +65,7 @@ void test() {
   testFunction(x, y, z, w);
 
   //Now:
-  //  x == 2.0
+  //  x == 1.0
   //  y == 3.0
   //  z == 4.0
   //  w == -1.0
