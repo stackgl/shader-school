@@ -11,7 +11,9 @@ bool mandelbrot(vec2 q) {
 }
 
 void main() {
-  vec2 q = 2.0 * (gl_FragCoord.xy / screenSize) - vec2(1.5,1.0);
+  vec2 q = 2.0 * (gl_FragCoord.xy / screenSize) - vec2(1.0,1.0);
+  q.x *= screenSize.x / screenSize.y;
+  q.x -= 0.5;
   vec4 color = vec4(0,0,0,1);
   if(mandelbrot(q)) {
     color = vec4(1,1,1,1);  
