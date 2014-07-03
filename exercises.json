@@ -28,5 +28,6 @@
   "» GPGPU: WAVE EQUATION": "26-gpgpu-3",
   "» PRIMITIVES: POINT SPRITES": "27-prims-1",
   "» PRIMITIVES: TRIANGLES": "28-prims-2",
-  "» PLAYGROUND: FLOCKING": "29-playground-flocking"
+  "» PLAYGROUND: FLOCKING": "29-playground-flocking",
+  "» PLAYGROUND: GPGPU": "30-playground-gpgpu"
 }
