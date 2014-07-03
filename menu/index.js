@@ -7,23 +7,47 @@ var menu = require('browser-menu')({
   , fg: process.browser ? '#34363B' : 'black'
 })
 
+var line = '---------------------------------------------'
+
 menu.reset()
-menu.write('SHADER SCHOOL\n')
-menu.write('------------------------------------------------------\n')
+menu.write('<strong>SHADER SCHOOL</strong>\n')
 menu.element.style.margin = '2em'
 
+var lcat = null
+var cats = []
 var keys = Object.keys(exercises)
 var rows = sidenote(keys.map(function(name, i) {
   var dir = exercises[name]
+  var parts = name.match(/^(.*?)([A-Z][^\:]+\:)(.*?)$/)
+  var category = cats[i] = parts[2].slice(0, -1)
 
-  return [ name
+  var newname = parts
+    .slice(1, 2)
+    .concat(parts.slice(3))
+    .join('')
+    .replace(/\s+/, ' ')
+
+  exercises[newname] = exercises[name]
+
+  return [ newname
     , progress.get(dir)
     ? '[COMPLETE]'
     : '          '
   ]
 }), {
   distance: 10
-}).map(function(row) {
+}).map(function(row, i) {
+  var cat = cats[i]
+
+  console.log(cat)
+  if (lcat !== cat) {
+    var line = '------------------------------------------'
+
+    line = '- <span><span>' + cat + '</span></span> ' + line.slice(cat.length)
+    menu.write(line + '\n')
+    lcat = cat
+  }
+
   return menu.add(row), row
 })
 
