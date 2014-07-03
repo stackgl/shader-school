@@ -27,9 +27,6 @@ var rows = sidenote(keys.map(function(name, i) {
   return menu.add(row), row
 })
 
-menu.write('------------------------------------------------------\n')
-menu.add('» EXIT')
-
 menu.on('select', function(label) {
   var label = keys[rows.indexOf(label)]
 
