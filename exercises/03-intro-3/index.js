@@ -37,13 +37,13 @@ var testVectors = [
 //  offset
 var buffer = []
 for(var i=0; i<3; ++i) {
-  var x = [0,0,0]
+  var x = [1e-6,1e-6,1e-6]
   x[i] = 1
-  buffer.push(   0,   0,   0, 0)
-  buffer.push(x[0],x[1],x[2], 0)
-  buffer.push(x[0],x[1],x[2], 0)
+  buffer.push(1e-6,1e-6,1e-6,1e-6)
+  buffer.push(x[0],x[1],x[2],1e-6)
+  buffer.push(x[0],x[1],x[2],1e-6)
   buffer.push(x[0],x[1],x[2], 0.1)
-  buffer.push(x[0],x[1],x[2], 0)
+  buffer.push(x[0],x[1],x[2],1e-6)
   buffer.push(x[0],x[1],x[2], -0.1)
 }
 var vao = createVAO(gl, [{
