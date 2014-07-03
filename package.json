@@ -69,6 +69,7 @@
     "sliced": "0.0.5",
     "stanford-dragon": "^1.0.0",
     "wordwrap": "0.0.2",
-    "xhr": "^1.9.0"
+    "xhr": "^1.9.0",
+    "mouse-pressed": "0.0.1"
   }
 }
