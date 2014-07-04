@@ -16,7 +16,7 @@ However, there is one weird thing that makes GLSL different from most other prog
 
 ## Variables
 
-Variables in GLSL must be assigned a type when they are declared (unlike JavaScript) and are lexically scoped. While there are many datatypes in GLSL, to get started we are going to focus on a scalar variables, which represent single numerical or logical values. In GLSL, there only three scalar types:
+Variables in GLSL must be assigned a type when they are declared (unlike JavaScript) and are lexically scoped. While there are many datatypes in GLSL, to get started we are going to focus on scalar variables, which represent single numerical or logical values. In GLSL, there only three scalar types:
 
 * `bool` - which stores a logical truth value of either `true` or `false`
 * `int` - which stores a signed integer value
