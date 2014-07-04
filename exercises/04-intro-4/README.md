@@ -30,6 +30,8 @@ GLSL also supports component-wise comparison operations for vectors.  These are 
 * `greaterThanEqual(a,b)`
 * `equal(a,b)`
 
+for example: `a < b` == `lessThan(a, b)`
+
 ## Boolean operations
 
 Boolean vectors also support the following special aggregate operations:
