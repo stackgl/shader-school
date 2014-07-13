@@ -48,7 +48,7 @@ Scalar datatypes support the same basic arithmetic operations as JavaScript.  On
 //Declare floats x and y
 mediump float x = 1.0, y = -2.0;
 
-//Now: z = x + 3 y = -5
+//Now: z = x + 3 * y = -5
 mediump float z = x + 3.0 * y;
 
 //Add 1 to x, so now: x = 2
