@@ -29,7 +29,7 @@ Writing precision specifiers all the time can be a little tedious, so to save so
 //Now all floats are high precision
 precision highp float;  
 
-//Equivalent to: highp float x = 1.0;
+//Equivalent to: highp float x = -0.1;
 float x = -0.1;  
 ```
 
