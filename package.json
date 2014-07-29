@@ -14,6 +14,11 @@
     "Mikola Lysenko <mikolalysenko@gmail.com> (http://0fps.net)",
     "Chris Dickinson <chris@neversaw.us> (http://neversaw.us)"
   ],
+  "homepage": "http://nodeschool.io/#shader-school",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stackgl/shader-school.git"
+  },
   "license": "ISC",
   "dependencies": {
     "a-big-triangle": "0.0.0",
