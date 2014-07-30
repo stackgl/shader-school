@@ -50,8 +50,8 @@ var rows = sidenote(keys.map(function(name, i) {
   return menu.add(row), row
 })
 
-menu.on('select', function(label) {
-  var label = keys[rows.indexOf(label)]
+menu.on('select', function(label, i) {
+  var label = keys[i]
 
   // TODO: use the exit command?
   if (!exercises[label]) return console.error(label)

@@ -27,7 +27,7 @@
     "baboon-image": "^1.0.0",
     "beefy": "^2.0.2",
     "brfs": "^1.1.1",
-    "browser-menu": "0.0.2",
+    "browser-menu": "^0.1.0",
     "browserify": "^4.1.10",
     "canvas-fit": "0.0.0",
     "chalk": "^0.4.0",
