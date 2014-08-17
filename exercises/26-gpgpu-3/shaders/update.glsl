@@ -21,7 +21,7 @@ void main() {
   float w = laplacian(coord);
   float p0 = state0(coord);
   float p1 = state1(coord);
-  float y = (1.0 - kdamping) * (kdiffuse * w  + 2.0 * p0 - p1);
+  float y = (1.0 - kdamping) * (kdiffuse * w  + 2.0 * p0) - p1;
 
   gl_FragColor = vec4(y,y,y,y);
 }
