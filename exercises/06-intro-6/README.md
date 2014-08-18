@@ -75,7 +75,7 @@ mat2 w = mat2(7, 8,
 
 mat2 q = matrixCompMult(m, w);
 
-//q = mat2( 1, 16,
+//q = mat2( 7, 16,
 //         27, 40)
 ```
 
