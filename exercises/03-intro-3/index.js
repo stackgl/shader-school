@@ -99,7 +99,7 @@ var verifyShader = createShader({
   'void main() {',
     'vec2 actual = actualFunc(aVector, bVector);',
     'vec2 expected = expectedFunc(aVector, bVector);',
-    'if(distance(actual, expected) > 0.01) {',
+    'if(distance(actual, expected) > 0.01 && distance(normalize(aVector), -normalize(bVector))>0.01) {',
       'gl_FragColor = vec4(1,1,1,1);',
     '} else {',
       'gl_FragColor = vec4(0,0,0,0);',
