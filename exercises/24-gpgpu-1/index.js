@@ -114,7 +114,7 @@ function randomFill(width, height) {
   var i = 0
 
   while (i < data.length) {
-    data[i++] = Math.random() * 256
+    data[i++] = (Math.random()>.5)?255:0
     data[i++] = 0
     data[i++] = 0
     data[i++] = 1
