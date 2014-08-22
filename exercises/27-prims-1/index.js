@@ -92,7 +92,7 @@ var expectedShader = createShader({
 
 expectedShader.attributes.position.location = 0
 expectedShader.attributes.color.location = 1
-expectedShader.attributes.size.location = 1
+expectedShader.attributes.size.location = 2
 
 var cameraParams = {
   projection: mat4.create(),
