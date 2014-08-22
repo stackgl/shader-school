@@ -5,7 +5,7 @@
 Write a program which swaps the red and blue color channels of a texture image. To do this, you should modify the <a href="/open/09-frag-3" target="_blank">`fragment.glsl` shader in this project's directory</a>. You will be given the following uniforms to help compute this quantity:
 
 * `screenSize` which should be applied to scale the coordinates of `gl_FragCoord` to an acceptable range.
-* `texture` which is a `sample2D` containing the texture to draw.
+* `texture` which is a `sampler2D` containing the texture to draw.
 
 ***
 
@@ -25,7 +25,7 @@ void main() {
 
 ## Textures
 
-Uniforms are a great way to send small, frequently changing information to shaders.  However, sometimes we might want to send a larger, static data to fragment shaders.  This can be done using *textures*.  Textures in WebGL are 2D arrays of vectors. Textures are declared using the `sampler2D` data type, and accessed using the built in function `texture2D`:
+Uniforms are a great way to send small, frequently changing information to shaders.  However, sometimes we might want to send a larger, static data to fragment shaders.  This can be done using *textures*.  Textures in WebGL are 2D arrays of vectors.  Textures are declared using the `sampler2D` data type, and accessed using the built in function `texture2D()`:
 
 ```glsl
 precision highp float;
@@ -41,7 +41,7 @@ void main() {
 }
 ```
 
-The built in `texture2D` has the following signature:
+The built-in function `texture2D()` has the following signature:
 
 ```glsl
 vec4 texture2D(
