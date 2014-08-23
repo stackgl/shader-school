@@ -4,9 +4,11 @@
 
 In this exercise you will write a minimal vertex shader and fragment shader for rendering colored objects.
 
-Specifically, you should declare a vertex shader with two attributes: `position` and `color`.  Your fragment shader should output the interpolated value of `color` to the `gl_FragColor` register. This will be used to draw a shaded triangle.
+Specifically, you should declare a vertex shader with two attributes: `position` and `color`.  Your fragment shader should output the value of `color` to the `gl_FragColor` register, which will be automatically interpolated.  This will be used to draw a shaded triangle.
 
 To get you started, a template vertex and fragment shader have been created in <a href="/open/11-vert-2" target="_blank">the directory for this lesson</a>.
+
+Hint : The triangles' 3 corners are the only vertices used, so you (a) need to figure out their coordinates, and (b) construct an expression that colors each vertex correctly.  
 
 ***
 
