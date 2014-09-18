@@ -35,7 +35,7 @@ After scalars, the next most important data type in GLSL are vectors.  GLSL come
 * `ivec2, ivec3, ivec4`: Integer vector
 * `vec2, vec3, vec4`: Floating point vector
 
-Floating point vectors and can have the same precision specifiers as floats, so `lowp vec2` is a low precision float vector, for example.  The vector type keywords are also used to construct vectors.  Here are some examples:
+Floating point vectors can have the same precision specifiers as floats, so `lowp vec2` is a low precision float vector, for example.  The vector type keywords are also used to construct vectors.  Here are some examples:
 
 ```glsl
 precision mediump float;
