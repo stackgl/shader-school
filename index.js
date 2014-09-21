@@ -2,6 +2,7 @@
 
 var livePort  = Number(process.env.GLSLIFY_LIVE_PORT = 12491)
 var answers   = require('./lib/create-answers')
+var exmap     = require('./lib/exercise-map')
 var live      = require('glslify-live/server')
 var exercises = require('./exercises')
 var styles    = require('./style')
@@ -43,7 +44,8 @@ function createServer(root) {
     if (err) throw err
     var exNames  = Object.keys(exercises)
     var exLinks  = exNames.map(function(k) { return exercises[k] })
-    var exFiles  = exLinks.map(function(link) {
+    var exSlugs  = exLinks.map(function(k) { return exmap[k] })
+    var exFiles  = exSlugs.map(function(link, i) {
       var dir = path.resolve(root, link)
 
       return fs.readdirSync(dir).map(function(name) {
