@@ -1,63 +1,21 @@
-# GPGPU: Texture Feedback
+# Game of Life
 
-*in progress*
+## Exercise
 
-Your graphics card might have been designed for handling images, but it's
-useful for solving certain problems *really* quickly too. Shaders on the GPU
-run in *parallel*, and it's considerably better at handling thousands of small
-independent tasks when pitted against a CPU. So if you're willing to work
-around the specific restrictions of parallel computing, you can use the GPU
-for general computation too.
+In this [exercise's directory](/open/24-gpgpu-1) you'll find a file called `life.glsl`. Modify this file to create a fragment shader that implements Conway's game of life.
 
-This approach has been generalised to standards and platforms such as
-[OpenCL](https://www.khronos.org/opencl/) and
-[CUDA](http://www.nvidia.com/object/cuda_home_new.html). Unfortunately WebGL
-doesn't have its own equivalent [(yet)](http://en.wikipedia.org/wiki/WebCL), so
-for now we'll be using the classic
-[ping pong technique](http://www.seas.upenn.edu/~cis565/fbo.htm#feedback2),
-or texture feedback loop.
+The fragment shader will be executed once per cell. Output vec4(1,1,1,1) if the cell is on, otherwise vec4(0,0,0,1) if the cell is off. The previous state of the world is stored in the sampler `prevState` and the size of the state buffer passed in the uniform `stateSize`.
 
-## FBO Ping-Pong
+***
 
-To create a texture feedback loop, we simply need to draw each frame using
-the previous frame as input.
+The practice of using graphics processing units for purposes other than 3D graphics is called general purpose GPU computing, or GPGPU for short. This exercise explores using the GPU to solve for state updates in cellular automata.
 
-One restriction we have to work with is that when we're drawing to a framebuffer
-we can't use that same framebuffer as input to the texture. To work around this
-issue, we use two FBOs – one for rendering to, and one for reading from – and
-switch them every frame.
+## Game of life
 
-<TODO an illustrative gif demonstrating the process>
+Conway's Game of Life is a well known example of a 2D totalistic cellular automaton. The world in the game of life is a 2D grid of cells, which we shall assume wraps around at the boundary. In the game of life, updates proceed in rounds wherein each cell looks at its 8 neighbors and then determines its new state according to the following rules:
 
-A simple example would be:
+* Birth: If a cell is off and has exactly 3 neighbors, it turns on
+* Life: If a cell is on, and has 2 or 3 neighbors it stays on
+* Death: Otherwise, a cell turns off
 
-``` javascript
-var shader = require('./shaders/feedback-loop')
-var frame1 = createFBO(gl)
-var frame2 = createFBO(gl)
-
-function render() {
-  // Bind to our first FBO, and use the second one as
-  // an input texture to the shader:
-  frame1.bind()
-  shader.uniforms.previous = frame2.color[0].bind()
-
-  // Draw the scene to frame1:
-  drawFrame()
-
-  // Switch frame1 and frame2:
-  var tmp = frame2
-  frame2 = frame1
-  frame1 = tmp
-}
-```
-
-The end result is equivalent to creating a new framebuffer to draw to every
-frame, and retaining the previous one for input. However this way we can avoid
-the overhead in creating a new FBO every frame, which would be very expensive.
-
-## A Simple Example
-
-In this [exercise's directory](/open/gpgpu-1) you'll find a file called
-`render.frag` that handles the general setup of an FBO ping pong shader. Update
-it according to the instructions there to generate the expected output.
+Iterating these simple rules many times yields chaotic and mysterious patterns.

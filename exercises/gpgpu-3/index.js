@@ -1,3 +1,4 @@
+var matchFBO     = require('../../lib/match-fbo')
 var mouse        = require('mouse-position')()
 var triangle     = require('a-big-triangle')
 var throttle     = require('frame-debounce')
@@ -25,96 +26,96 @@ require('../common')({
     description: readme
   , compare: comparison
   , canvas: canvas
+  , test: matchFBO(comparison, 0.99)
   , dirname: process.env.dirname
 })
 
+
 window.addEventListener('resize', fit(canvas), false)
 
-var speed = 5
-var scale = 3
-var n     = 0
+var stateSize  = 512
+var tickCount  = 0
+var numBuffers = 3
 
-function render() {
-  if (!(n = (n+1) % speed)) comparison.run()
-  comparison.render()
+var renderShader = createShader({
+    frag: './shaders/render.glsl'
+  , vert: './shaders/pass-thru.glsl'
+})(gl)
+
+var pointShader = createShader({
+    frag: './shaders/point-fragment.glsl'
+  , vert: './shaders/point-vertex.glsl'
+})(gl)
+
+function createStateBuffers(n) {
+  var result = new Array(n)
+  for(var i=0; i<n; ++i) {
+    result[i] = createFBO(gl, [stateSize, stateSize], {float: false})
+  }
+  return result
 }
 
 var shaders = {
   actual: {
     logic: createShader({
-        frag: process.env.file_logic_frag
-      , vert: './shaders/triangle.vert'
+        frag: process.env.file_wave_glsl
+      , vert: './shaders/pass-thru.glsl'
     })(gl),
-    render: createShader({
-        frag: process.env.file_render_frag
-      , vert: './shaders/triangle.vert'
-    })(gl)
+    buffers: createStateBuffers(2)
   },
   expected: {
     logic: createShader({
-        frag: './shaders/logic_solution.frag'
-      , vert: './shaders/triangle.vert'
+        frag: './shaders/update.glsl'
+      , vert: './shaders/pass-thru.glsl'
     })(gl),
-    render: createShader({
-        frag: './shaders/render_solution.frag'
-      , vert: './shaders/triangle.vert'
-    })(gl)
+    buffers: createStateBuffers(2)
   }
 }
 
-var data = randomFill()
-var outputs = {
-    actual: start(createFBO(gl, [512, 512]), data)
-  , expected: start(createFBO(gl, [512, 512]), data)
-}
-
-var inputs = {
-    actual: start(createFBO(gl, [512, 512]), data)
-  , expected: start(createFBO(gl, [512, 512]), data)
+function render() {
+  tickCount += 1
+  comparison.run()
+  comparison.render()
 }
 
 function createLoop(key) {
   return function render(fbo) {
-    var height = (canvas.height / scale)|0
-    var width  = (canvas.width / scale)|0
+    var buffers = shaders[key].buffers
+    var shader  = shaders[key].logic
 
-    outputs[key].shape = [height, width]
-    outputs[key].bind()
-    shaders[key].logic.bind()
-    shaders[key].logic.uniforms.uTexture = inputs[key].color[0].bind(0)
-    shaders[key].logic.uniforms.uUnitSize = [width, height]
+    var front   = buffers[tickCount%buffers.length]
+    var back0   = buffers[(tickCount+buffers.length-1)%buffers.length]
+    var back1   = buffers[(tickCount+buffers.length-2)%buffers.length]
+    var shape   = [canvas.height, canvas.width]
+    for(var i = 0; i < buffers.length; i++) {
+      buffers[i].shape = shape
+    }
+
+    //Apply update
+    front.bind()
+
+    //Apply transformation
+    shader.bind()
+    shader.uniforms.stateSize = [ shape[1], shape[0] ]
+    shader.uniforms.prevState = [ back0.color[0].bind(0), back1.color[0].bind(1) ]
+    shader.uniforms.kdiffuse  = 0.1
+    shader.uniforms.kdamping  = 0.0005
     triangle(gl)
 
-    fbo.shape = [height, width]
+    //Draw mouse
+    pointShader.bind()
+    pointShader.uniforms.coord = [ 2.0*mouse.x/canvas.width-1.0, 1.0-2.0*mouse.y/canvas.height ]
+    pointShader.uniforms.color = [1,1,1,1]
+    pointShader.uniforms.size = 8.0
+    gl.drawArrays(gl.POINTS, 0, 1)
+
+
+    //Draw to framebuffer
+    fbo.shape = [canvas.height, canvas.width]
     fbo.bind()
-    shaders[key].render.bind()
-    shaders[key].render.uniforms.uTexture = outputs[key].color[0].bind(0)
+    renderShader.bind()
+    renderShader.uniforms.screenSize = [ canvas.width, canvas.height ]
+    renderShader.uniforms.state = front.color[0].bind()
     triangle(gl)
-
-    var tmp = inputs[key]
-    inputs[key] = outputs[key]
-    outputs[key] = tmp
   }
-}
-
-function start(fbo, data) {
-  fbo.shape = data.shape.slice(0, -1)
-  fbo.color[0].setPixels(data)
-
-  return fbo
-}
-
-function randomFill() {
-  var shape = [window.innerHeight, window.innerWidth]
-  var data  = new Uint8Array(shape[0] * shape[1] * 4)
-  var i = 0
-
-  while (i < data.length) {
-    data[i++] = Math.random() * 256
-    data[i++] = 0
-    data[i++] = 0
-    data[i++] = 1
-  }
-
-  return ndarray(data, shape.concat(4))
 }
