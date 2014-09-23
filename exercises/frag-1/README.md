@@ -12,7 +12,7 @@ A *fragment* is the color of some fraction of a pixel. In the simplest case, the
 
 ### Basics of writing fragment shaders
 
-The entry point for each fragment shader is a special procedure called `main()`, which takes no arguments and has no return value. Tthe output from a fragment shader is one or more RGBA color values. These values are the components of a special builtin array called `gl_FragData[]`. Here is a simple fragment shader that outputs the color red:
+The entry point for each fragment shader is a special procedure called `main()`, which takes no arguments and has no return value. The output from a fragment shader is one or more RGBA color values. These values are the components of a special builtin array called `gl_FragData[]`. Here is a simple fragment shader that outputs the color red:
 
 ```glsl
 void main() {
