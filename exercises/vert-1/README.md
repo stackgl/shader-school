@@ -19,7 +19,7 @@ Vertex shaders control how geometry is rendered in WebGL, and are executed on th
 * Lines - 2 vertices
 * Triangles - 3 vertices
 
-Primitves are drawn by linearly interpolating between their vertices, and vertex shaders control where the vertices of these primitives are placed on the screen. Like fragment shaders, the entry point for a vertex shader is a `void` procedure called `main()`. The output of a vertex shader is written to a special variable called `gl_Position` which controls the placement of the vertex in clip coordinates. Here is an example of a trivial vertex shader program which just outputs a vertex at the center of the screen:
+Primitives are drawn by linearly interpolating between their vertices, and vertex shaders control where the vertices of these primitives are placed on the screen. Like fragment shaders, the entry point for a vertex shader is a `void` procedure called `main()`. The output of a vertex shader is written to a special variable called `gl_Position` which controls the placement of the vertex in clip coordinates. Here is an example of a trivial vertex shader program which just outputs a vertex at the center of the screen:
 
 ```glsl
 void main() {

@@ -18,7 +18,7 @@ kD * ( ----- + ----- ) - kM * f = ---
      ( d x^2   d y^2 )            d t
 ```
 
-In this equation, `f(x,y,t)` is time evolving scalar field, representing the distribution of heat in the material. The parameter `kD` is the diffusion constant and controls the rate at which heat spreads, while `kM` is the damping factor which reprsents the rate at which heat is lost/gained. Equations of this sort are well studied in mechanics and engineering, and its solution has many applications.
+In this equation, `f(x,y,t)` is time evolving scalar field, representing the distribution of heat in the material. The parameter `kD` is the diffusion constant and controls the rate at which heat spreads, while `kM` is the damping factor which represents the rate at which heat is lost/gained. Equations of this sort are well studied in mechanics and engineering, and its solution has many applications.
 
 ## Euler integration
 

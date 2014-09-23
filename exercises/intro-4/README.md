@@ -18,7 +18,7 @@ if(a < 0.5) {
 }
 ```
 
-Unlikes JavaScript though, branches in GLSL are very expensive so they should be used sparingly.
+Unlike JavaScript though, branches in GLSL are very expensive so they should be used sparingly.
 
 ## Comparisons
 
