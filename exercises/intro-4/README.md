@@ -37,5 +37,5 @@ for example: `a < b` == `lessThan(a, b)`
 Boolean vectors also support the following special aggregate operations:
 
 * `any(b)` returns true if any component of `b` is true, false otherwise
-* `all(b)` returns false if any component of `b` is false, true otherwise
+* `all(b)` returns true if all components of `b` are true, false otherwise
 * `not(b)` negates the logical value of the components of `b`
