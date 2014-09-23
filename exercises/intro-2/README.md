@@ -48,7 +48,7 @@ While functions in GLSL return a single value, it is possible to simulate multip
 
 * `in` Passes the argument by value (default behaviour)
 * `inout` Passes the argument by reference
-* `out` The argument is unitialized, but writing to the value updates the parameter
+* `out` The argument is uninitialized, but writing to the value updates the parameter
 * `const` The argument is a constant value
 
 For example:

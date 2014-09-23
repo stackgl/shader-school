@@ -13,13 +13,13 @@ Implement a shader which renders a 3D object using Lambertian diffuse lighting. 
 
 * `mat4 model, view, projection` the transformations for moving the object from data coordinates to clip coordinates
 * `mat4 inverseModel, inverseView, inverseProjection` the matrix inverses of each of the above transformations
-* `vec3 ambient` the ambinet light coefficient
+* `vec3 ambient` the ambient light coefficient
 * `vec3 diffuse` the diffuse light coefficient
 * `vec3 lightDirection` the direction of the point light source (normalized)
 
 #### Notes
 
-To implement your shader, modify the `vertex.glsl` and `fragment.glsl` files <a href="/open/18-light-2" target="_blank">in this lessons's directory</a>.
+To implement your shader, modify the `vertex.glsl` and `fragment.glsl` files <a href="/open/18-light-2" target="_blank">in this lesson's directory</a>.
 
 ***
 

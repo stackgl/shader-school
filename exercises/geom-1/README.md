@@ -66,7 +66,7 @@ Working backwards from the formula for projecting points in clip coordinates to 
 
 ## Transformations
 
-Working in projective coordinates also has the advantage that it greatly simplifies coordinate transformations. Specifically, any change of reference frame in plane geometry can be encoded as a 4x4 matrix in homogeneous coordinates.  These matrices are used throughout graphics to control the position and orientation of the camera, the shape of the viewable frustum and the location of objects within the scene.  We will cover the different types of transformations in more detail in the coming lessons, but for now it is enough to understand that applying a transformation encoded in a 4x4 matrix `m` to vector `p` can be done using the following convetion:
+Working in projective coordinates also has the advantage that it greatly simplifies coordinate transformations. Specifically, any change of reference frame in plane geometry can be encoded as a 4x4 matrix in homogeneous coordinates.  These matrices are used throughout graphics to control the position and orientation of the camera, the shape of the viewable frustum and the location of objects within the scene.  We will cover the different types of transformations in more detail in the coming lessons, but for now it is enough to understand that applying a transformation encoded in a 4x4 matrix `m` to vector `p` can be done using the following convention:
 
 ```glsl
 vec4 transformPoint(mat4 transform, vec4 point) {

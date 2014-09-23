@@ -51,7 +51,7 @@
 
 * convolutions
     + blur
-    + edge enhancment maybe
+    + edge enhancement maybe
 * morphological
     + dilate/erode
     + open/close
