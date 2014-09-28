@@ -75,7 +75,10 @@ function createServer(root) {
       }
 
       if (paths[0] === 'open') {
-        opener(path.join(root, paths[1]))
+        var exPath = exmap[paths[1]]
+        if (exPath) {
+          opener(path.join(root, exPath))
+        }
         return res.end(closeWindow)
       }
 

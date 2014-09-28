@@ -2,7 +2,7 @@
 
 ## Exercise
 
-In this exercise write a subroutine to test if a point is contained in a bounding box defined by a pair of upper and lower bounds. A template file called `box.glsl` has been created <a href="/open/04-intro-4" target="_blank">in the directory for this purpose</a>.
+In this exercise write a subroutine to test if a point is contained in a bounding box defined by a pair of upper and lower bounds. A template file called `box.glsl` has been created <a href="/open/intro-4" target="_blank">in the directory for this purpose</a>.
 
 ***
 

@@ -2,7 +2,7 @@
 
 ## Exercise
 
-Write a fragment shader which colors fragments depending on their relative orientation to the view direction. If they are facing away from the camera, color them with `backColor`, or if they are facing towards the camera color them with `frontColor`.  To get started, a <a href="/open/28-prims-2" target="_blank">template file `fragment.glsl` has been created for you.</a>
+Write a fragment shader which colors fragments depending on their relative orientation to the view direction. If they are facing away from the camera, color them with `backColor`, or if they are facing towards the camera color them with `frontColor`.  To get started, a <a href="/open/prims-2" target="_blank">template file `fragment.glsl` has been created for you.</a>
 
 ***
 

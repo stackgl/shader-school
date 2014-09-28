@@ -19,7 +19,7 @@ Implement a shader which renders a 3D object using Lambertian diffuse lighting. 
 
 #### Notes
 
-To implement your shader, modify the `vertex.glsl` and `fragment.glsl` files <a href="/open/18-light-2" target="_blank">in this lesson's directory</a>.
+To implement your shader, modify the `vertex.glsl` and `fragment.glsl` files <a href="/open/light-2" target="_blank">in this lesson's directory</a>.
 
 ***
 

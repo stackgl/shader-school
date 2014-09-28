@@ -2,7 +2,7 @@
 
 ## Exercise
 
-Implement the Phong lighting model in GLSL.  To get started, a vertex and fragment shader have been created in <a href="/open/19-light-3" target="_blank">the directory for this lesson</a>.  The input to these shaders will be as follows:
+Implement the Phong lighting model in GLSL.  To get started, a vertex and fragment shader have been created in <a href="/open/light-3" target="_blank">the directory for this lesson</a>.  The input to these shaders will be as follows:
 
 ### Attributes
 

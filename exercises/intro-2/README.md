@@ -2,7 +2,7 @@
 
 ## Exercise
 
-Write a function to compute the side lengths of a right triangle, given the angle for one of the sides and the length of the hypotenuse. To help you get started, a template file called `sides.glsl` has been created in <a href="/open/02-intro-2" target="_blank">the directory for this lesson</a>.
+Write a function to compute the side lengths of a right triangle, given the angle for one of the sides and the length of the hypotenuse. To help you get started, a template file called `sides.glsl` has been created in <a href="/open/intro-2" target="_blank">the directory for this lesson</a>.
 
 ***
 

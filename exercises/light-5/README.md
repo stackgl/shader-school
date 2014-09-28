@@ -2,7 +2,7 @@
 
 ## Exercise
 
-Modify the point light shader from the previous lesson to support multiple light sources. <a href="/open/21-light-5" target="_blank">Template files for this purpose have been created in the directory for this lesson.</a> The file `light.glsl` is used to define the datatype of the light values.  Use these parameters to apply multiple phong lighting contributions in the shader.
+Modify the point light shader from the previous lesson to support multiple light sources. <a href="/open/light-5" target="_blank">Template files for this purpose have been created in the directory for this lesson.</a> The file `light.glsl` is used to define the datatype of the light values.  Use these parameters to apply multiple phong lighting contributions in the shader.
 
 ***
 

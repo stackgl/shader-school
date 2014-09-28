@@ -2,7 +2,7 @@
 
 ## Exercise
 
-Again, rotations are linear perspective transformations and so they can be written as matrices. For this exercise, you should translate the `rotatePoint` function below into a matrix. For the solution, <a href="/open/16-geom-5" target="_blank">modify the file `rotate.glsl` in this lesson's directory.</a>
+Again, rotations are linear perspective transformations and so they can be written as matrices. For this exercise, you should translate the `rotatePoint` function below into a matrix. For the solution, <a href="/open/geom-5" target="_blank">modify the file `rotate.glsl` in this lesson's directory.</a>
 
 ***
 

@@ -7,7 +7,7 @@ For this exercise you will write a shader which applies a 2D rotation to a verte
 * A `vec2` attribute called `position` representing the position of the vertices in the plane
 * A `float` uniform `theta` encoding the amount to rotate by in radians
 
-Edit the file called <a href="/open/10-vert-1" target="_blank">`vertex.glsl` in the directory of this project</a>.
+Edit the file called <a href="/open/vert-1" target="_blank">`vertex.glsl` in the directory of this project</a>.
 
 ***
 
