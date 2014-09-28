@@ -1,6 +1,6 @@
 {
   "name": "shader-school",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Self directed GLSL lessons",
   "main": "index.js",
   "bin": "index.js",
