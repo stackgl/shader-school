@@ -31,7 +31,7 @@ bool mandelbrotConverges(vec2 z) {
 }
 ```
 
-The Mandelbrot set is the collection of all points which do not diverge. Write a function which given a test point `c` tests if after 100 iterations it is still inside the Mandelbrot set.  To get started, a <a href="/open/05-intro-5">file `mandelbrot.glsl` has been created in this project's directory.</a>
+The Mandelbrot set is the collection of all points which do not diverge. Write a function which given a test point `c` tests if after 100 iterations it is still inside the Mandelbrot set.  To get started, a <a href="/open/intro-5">file `mandelbrot.glsl` has been created in this project's directory.</a>
 
 ***
 

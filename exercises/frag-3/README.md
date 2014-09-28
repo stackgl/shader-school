@@ -2,7 +2,7 @@
 
 ## Exercise
 
-Write a program which swaps the red and blue color channels of a texture image. To do this, you should modify the <a href="/open/09-frag-3" target="_blank">`fragment.glsl` shader in this project's directory</a>. You will be given the following uniforms to help compute this quantity:
+Write a program which swaps the red and blue color channels of a texture image. To do this, you should modify the <a href="/open/frag-3" target="_blank">`fragment.glsl` shader in this project's directory</a>. You will be given the following uniforms to help compute this quantity:
 
 * `screenSize` which should be applied to scale the coordinates of `gl_FragCoord` to an acceptable range.
 * `texture` which is a `sampler2D` containing the texture to draw.

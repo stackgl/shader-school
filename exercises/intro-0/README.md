@@ -4,7 +4,7 @@
 
 Each exercise has its own directory preloaded with shaders for you to edit.
 Generally, there will be
-<a href="/open/00-intro-0" target="_blank">a link like this one</a> that *will
+<a href="/open/intro-0" target="_blank">a link like this one</a> that *will
 open that directory for you*. If the link does not work for you, you can find
 the files for each exercise in the `answers/` directory.
 

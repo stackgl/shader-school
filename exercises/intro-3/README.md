@@ -2,7 +2,7 @@
 
 ## Exercise
 
-In this lesson, you will write a GLSL function which computes the unit angle bisector between two vectors.  That is, it is the vector whose length is `1` and whose angle is halfway between two vectors.  If the vectors are parallel or zero, you can return whatever you want. A file called <a href="/open/03-intro-3">`vectors.glsl` has been created for you as a template</a>.
+In this lesson, you will write a GLSL function which computes the unit angle bisector between two vectors.  That is, it is the vector whose length is `1` and whose angle is halfway between two vectors.  If the vectors are parallel or zero, you can return whatever you want. A file called <a href="/open/intro-3">`vectors.glsl` has been created for you as a template</a>.
 
 As an example, if `a = vec2(1,0)` and `b = vec2(0,1)`, then you should return the result `vec2(sqrt(2)/2, sqrt(2)/2)`.
 

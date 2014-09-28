@@ -2,7 +2,7 @@
 
 ## Exercise
 
-In this exercise, you will implement the two color version of Gooch shading. To get you started, <a href="/open/23-npr-2" target="_blank">a template vertex and fragment shader has been created in the directory for this project</a>.  These shaders will be passed the following parameters:
+In this exercise, you will implement the two color version of Gooch shading. To get you started, <a href="/open/npr-2" target="_blank">a template vertex and fragment shader has been created in the directory for this project</a>.  These shaders will be passed the following parameters:
 
 ### Attributes
 

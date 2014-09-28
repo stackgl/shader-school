@@ -2,7 +2,7 @@
 
 ## Exercise
 
-In this exercise, you will implement a vertex shader which applies the sequence of operations discussed below to a 3D vertex. Your vertex shader should take a `vec3` attribute called `position` and `mat4` uniforms called `model`, `view` and `projection`. To get started a vertex shader called `transforms.glsl` has been created <a href="/open/12-geom-1" target="_blank">in this project's directory</a>, which you should edit to create your solution.
+In this exercise, you will implement a vertex shader which applies the sequence of operations discussed below to a 3D vertex. Your vertex shader should take a `vec3` attribute called `position` and `mat4` uniforms called `model`, `view` and `projection`. To get started a vertex shader called `transforms.glsl` has been created <a href="/open/geom-1" target="_blank">in this project's directory</a>, which you should edit to create your solution.
 
 ***
 

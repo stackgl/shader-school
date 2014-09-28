@@ -2,7 +2,7 @@
 
 ## Exercise
 
-Write a function to raise a 2x2 matrix `m` to the nth power, where 0 <= n < 16 is an integer. To get started, edit the template <a href="/open/06-intro-6" target="_blank">file `mpow.glsl` in the directory for this project</a>.
+Write a function to raise a 2x2 matrix `m` to the nth power, where 0 <= n < 16 is an integer. To get started, edit the template <a href="/open/intro-6" target="_blank">file `mpow.glsl` in the directory for this project</a>.
 
 ***
 

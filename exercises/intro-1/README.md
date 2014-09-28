@@ -2,7 +2,7 @@
 
 ## Exercise
 
-In <a href="/open/01-intro-1" target="_blank">this lesson's directory</a> you'll
+In <a href="/open/intro-1" target="_blank">this lesson's directory</a> you'll
 find a file called `hello.glsl` that exports a function called `sum`. Fix this
 function to return the sum of its first two arguments.
 

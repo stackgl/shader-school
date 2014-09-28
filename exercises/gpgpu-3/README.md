@@ -4,7 +4,7 @@
 
 Implement a fragment shader which computes the the next state by explicit Euler integration.
 
-The previous state is stored in the texture `prevState[0]` and the previous-previous state is in `prevState[1]`. To help get started, a <a href="/open/26-gpgpu-3" target="_blank">template file called `wave.glsl` has been created in the directory for this lesson</a>.
+The previous state is stored in the texture `prevState[0]` and the previous-previous state is in `prevState[1]`. To help get started, a <a href="/open/gpgpu-3" target="_blank">template file called `wave.glsl` has been created in the directory for this lesson</a>.
 
 <span class="warn">**WARNING:**</span> This lesson requires the floating point texture extension. If your GPU/browser do not support this, then this lesson will not work.
 

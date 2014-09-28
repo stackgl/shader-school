@@ -4,7 +4,7 @@
 
 As a warm up, we will start with the very simplest lighting model, which is called "flat shading".  In flat shading, the light reflected from any surface to the detector is assumed to be constant. That is, there is some parameter called `kA` which just determines the color of each fragment.
 
-<a href="/open/17-light-1" target="_blank">The files `vertex.glsl` and `fragment.glsl` have been provided</a> as well as the appropriate uniform and attribute variables for the camera.  Apply the model, view and projection transformation matrices as in the `GEOM 1` exercise.
+<a href="/open/light-1" target="_blank">The files `vertex.glsl` and `fragment.glsl` have been provided</a> as well as the appropriate uniform and attribute variables for the camera.  Apply the model, view and projection transformation matrices as in the `GEOM 1` exercise.
 
 ***
 

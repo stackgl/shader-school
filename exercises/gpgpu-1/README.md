@@ -2,7 +2,7 @@
 
 ## Exercise
 
-In this [exercise's directory](/open/24-gpgpu-1) you'll find a file called `life.glsl`. Modify this file to create a fragment shader that implements Conway's game of life.
+In this [exercise's directory](/open/gpgpu-1) you'll find a file called `life.glsl`. Modify this file to create a fragment shader that implements Conway's game of life.
 
 The fragment shader will be executed once per cell. Output vec4(1,1,1,1) if the cell is on, otherwise vec4(0,0,0,1) if the cell is off. The previous state of the world is stored in the sampler `prevState` and the size of the state buffer passed in the uniform `stateSize`.
 

@@ -2,7 +2,7 @@
 
 ## Exercise
 
-There is no exercise for this lesson!  Play with the shaders and have fun!  The files for this module are stored in the <a href="/open/playground">answers/playground</a> directory.
+There is no exercise for this lesson!  Play with the shaders and have fun!  The files for this module are stored in the <a href="/open/playground-gpgu">answers/playground</a> directory.
 
 ***
 

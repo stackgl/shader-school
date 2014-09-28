@@ -6,7 +6,7 @@ Implement a shader which computes a single step of the explicit Euler scheme for
 
 The previous state of `f(x,y,t-1)` will be encoded in a periodic texture. The diffusion constant and damping will be sent in the parameters `kdiffuse` and `kambient` respectively.
 
-To get started, there is a file called <a href="/open/25-gpgpu-2" target="_blank">`heat.glsl` in the directory for this lesson</a>.
+To get started, there is a file called <a href="/open/gpgpu-2" target="_blank">`heat.glsl` in the directory for this lesson</a>.
 
 ***
 
