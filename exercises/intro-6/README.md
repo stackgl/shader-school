@@ -40,7 +40,7 @@ mat3 m = mat3(1.1, 2.1, 3.1,
 //Read out first column of m
 vec3 a = m[0];
 
-//Now: a = vec3(1.3, 2.3, 3.3);
+//Now: a = vec3(1.1, 2.1, 3.1);
 ```
 
 ### Arithmetic
