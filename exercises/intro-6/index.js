@@ -32,6 +32,7 @@ require('../common')({
   , canvas: canvas
   , test: function() {
     count = 3
+    render()
     return tester.apply(this, arguments)
   }
   , dirname: process.env.dirname
