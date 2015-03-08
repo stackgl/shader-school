@@ -1,4 +1,4 @@
-precision highp float;
+precision mediump float;
 
 void main() {
   vec2 cell = step(0.5, fract(gl_FragCoord.xy/32.0));
