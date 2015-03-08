@@ -1,6 +1,9 @@
 precision mediump float;
 
-uniform vec3 warm, cool, lightDirection;
+uniform vec3 warm;
+uniform vec3 cool;
+uniform vec3 lightDirection;
+
 varying vec3 fragNormal;
 
 uniform float numBands;
