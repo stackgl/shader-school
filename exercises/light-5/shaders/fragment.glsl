@@ -5,7 +5,9 @@ precision mediump float;
 uniform vec3 ambient;
 uniform PointLight lights[4];
 
-varying vec3 fragNormal, fragPosition, lightDirection[4];
+varying vec3 fragNormal;
+varying vec3 fragPosition;
+varying vec3 lightDirection[4];
 
 void main() {
   vec3 eyeDirection = normalize(fragPosition);

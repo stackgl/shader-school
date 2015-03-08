@@ -2,13 +2,22 @@ precision mediump float;
 
 #pragma glslify: PointLight = require(./light.glsl)
 
-attribute vec3 position, normal;
+attribute vec3 position;
+attribute vec3 normal;
 
-uniform mat4 model, view, projection;
-uniform mat4 inverseModel, inverseView, inverseProjection;
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+uniform mat4 inverseModel;
+uniform mat4 inverseView;
+uniform mat4 inverseProjection;
+
 uniform PointLight lights[4];
 
-varying vec3 fragNormal, fragPosition, lightDirection[4];
+varying vec3 fragNormal;
+varying vec3 fragPosition;
+varying vec3 lightDirection[4];
 
 void main() {
   vec4 viewPosition = view * model * vec4(position, 1.0);

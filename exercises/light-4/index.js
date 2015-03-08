@@ -124,11 +124,13 @@ function actual(fbo) {
   actualShader.bind()
   actualShader.uniforms = camera
 
+  if(actualShader.attributes.normal.location >= 0) {
+    normalBuffer.bind()
+    actualShader.attributes.normal.pointer()
+  }
+  
   vertexBuffer.bind()
   actualShader.attributes.position.pointer()
-
-  normalBuffer.bind()
-  actualShader.attributes.normal.pointer()
 
   gl.drawArrays(gl.TRIANGLES, 0, vertexCount)
 
