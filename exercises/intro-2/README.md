@@ -4,6 +4,10 @@
 
 Write a function to compute the side lengths of a right triangle, given the angle for one of the sides and the length of the hypotenuse. To help you get started, a template file called `sides.glsl` has been created in <a href="/open/intro-2" target="_blank">the directory for this lesson</a>.
 
+## Hint
+
+The inputs to `sin` and `cos` are in *radians* not *degrees*.  To convert from degrees to radians you can use the built in `radians` function.
+
 ***
 
 ## Precision specifiers
