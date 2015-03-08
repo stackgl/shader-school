@@ -1,9 +1,9 @@
-precision highp float;
+precision mediump float;
 
-attribute vec4 position;
+attribute vec3 position;
 uniform mat4 model, view, projection;
 uniform vec3 ambient;
 
 void main() {
-  gl_Position = position;
+  gl_Position = vec4(position, 1);
 }
