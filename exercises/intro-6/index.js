@@ -24,11 +24,16 @@ baboonTexture.minFilter = gl.NEAREST
 comparison.mode = 'slide'
 comparison.amount = 0.5
 
+var tester = matchFBO(comparison, 0.9)
+
 require('../common')({
     description: readme
   , compare: comparison
   , canvas: canvas
-  , test: matchFBO(comparison, 0.99)
+  , test: function() {
+    count = 3
+    return tester.apply(this, arguments)
+  }
   , dirname: process.env.dirname
 })
 
@@ -65,7 +70,7 @@ var expectedShader = createShader({
 var count = 0
 
 setInterval(function() {
-  count = (count + 1) % 15
+  count = (count+1) % 15
 }, 800)
 
 function render() {
