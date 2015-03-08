@@ -6,7 +6,7 @@ varying vec3 fragNormal;
 
 void main() {
   vec4 worldPosition = model * vec4(position, 1.0);
-  vec4 worldNormal = vec4(normal, 0.0) * inverseModel;
+  vec4 worldNormal = vec4(normal, 0.0) * inverseModel * inverseView;
 
   gl_Position = projection * view * worldPosition;
   fragNormal = worldNormal.xyz;
