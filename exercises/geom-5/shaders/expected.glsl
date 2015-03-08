@@ -1,9 +1,15 @@
-highp mat4 reflection(highp vec3 n) {
-  n = normalize(n);
-  return mat4(1.0-2.0*n.x*n.x,    -2.0*n.y*n.x,    -2.0*n.z*n.x, 0,
-                 -2.0*n.y*n.x, 1.0-2.0*n.y*n.y,    -2.0*n.z*n.y, 0, 
-                 -2.0*n.z*n.x,    -2.0*n.y*n.z, 1.0-2.0*n.z*n.z, 0,
-                            0,               0,               0, 1);
+highp mat4 rotation(highp vec3 n, highp float theta) {
+
+  float s = sin(theta);
+  float c = cos(theta);
+  float oc = 1.0 - c;
+
+  return mat4(
+    oc * n.x * n.x + c,       oc * n.x * n.y + n.z * s,   oc * n.z * n.x - n.y * s,   0.0,
+    oc * n.x * n.y - n.z * s, oc * n.y * n.y + c,         oc * n.y * n.z + n.x * s,   0.0,
+    oc * n.z * n.x + n.y * s, oc * n.y * n.z - n.x * s,   oc * n.z * n.z + c,         0.0,
+    0.0,                      0.0,                        0.0,                        1.0
+  );
 }
 
-#pragma glslify: export(reflection)
+#pragma glslify: export(rotation)

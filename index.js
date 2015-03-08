@@ -65,6 +65,13 @@ function createServer(root) {
     })
 
     http.createServer(function(req, res) {
+      // Force the addition of a query string. This
+      // works around an issue in beefy until it gets fixed:
+      // https://github.com/stackgl/shader-school/issues/107
+      req.url = req.url.indexOf('?') === -1
+        ? req.url + '?'
+        : req.url
+
       var uri = url.parse(req.url).pathname
       var paths = uri.split('/').filter(Boolean)
 
