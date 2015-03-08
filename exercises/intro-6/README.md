@@ -87,7 +87,7 @@ mat2 m = mat2(1, 2,
 
 vec2 v = m * vec2(1, 2);  //v = vec2(5, 8)
 
-//Switching order of arguments is equivalent
+//In GLSL, switching order of arguments is equivalent
 //to transposing:
 vec2 u = vec2(1, 2) * m;  //u = vec2(7, 10)
 ```

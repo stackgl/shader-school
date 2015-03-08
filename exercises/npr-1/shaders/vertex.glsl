@@ -1,7 +1,16 @@
 precision mediump float;
-attribute vec3 position, normal;
-uniform mat4 model, view, projection;
-uniform mat4 inverseModel, inverseView, inverseProjection;
+
+attribute vec3 position;
+attribute vec3 normal;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+uniform mat4 inverseModel;
+uniform mat4 inverseView;
+uniform mat4 inverseProjection;
+
 varying vec3 fragNormal;
 
 void main() {

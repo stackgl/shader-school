@@ -1,4 +1,4 @@
-precision highp float;
+precision mediump float;
 
 uniform mat4 model, view, projection;
 uniform vec3 ambient;

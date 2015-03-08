@@ -36,6 +36,7 @@ window.addEventListener('resize', fit(canvas), false)
 
 var vertexNormals = getNormals(dragon.cells, dragon.positions, 0.1)
 var vertexData = []
+var vertexCount = dragon.cells.length * 3
 for(var i=0; i<dragon.cells.length; ++i) {
   var loop = dragon.cells[i]
   for(var j=0; j<loop.length; ++j) {
@@ -43,16 +44,7 @@ for(var i=0; i<dragon.cells.length; ++i) {
   }
 }
 var vertexBuffer = createBuffer(gl, vertexData)
-var vertexArray = createVAO(gl, [
-  {
-    "buffer": vertexBuffer,
-    "size": 3 
-  },
-  {
-    "buffer": createBuffer(gl, vertexNormals),
-    "size": 3
-  }
-])
+var normalBuffer = createBuffer(gl, vertexNormals)
 
 var actualShader = createShader({
     frag: process.env.file_fragment_glsl
@@ -72,6 +64,7 @@ var pointShader = createShader({
     frag: './shaders/point-fragment.glsl'
   , vert: './shaders/point-vertex.glsl'
 })(gl)
+pointShader.attributes.position.location = 0
 
 function getCamera() {
   var projection = mat4.perspective(
@@ -154,8 +147,15 @@ function actual(fbo) {
   actualShader.bind()
   actualShader.uniforms = camera
 
-  vertexArray.bind()
-  vertexArray.draw(gl.TRIANGLES, vertexData.length / 3)
+  if(actualShader.attributes.normal.location > 0) {
+    normalBuffer.bind()
+    actualShader.attributes.normal.pointer()
+  }
+
+  vertexBuffer.bind()
+  actualShader.attributes.position.pointer()
+
+  gl.drawArrays(gl.TRIANGLES, 0, vertexCount)
 
   pointShader.bind()
   pointShader.uniforms.model = camera.model
@@ -164,7 +164,7 @@ function actual(fbo) {
   for(var i=0; i<4; ++i) {
     pointShader.uniforms.lightPosition = camera.lights[i].position
     pointShader.uniforms.diffuse = camera.lights[i].diffuse
-    vertexArray.draw(gl.POINTS, 1)
+    gl.drawArrays(gl.POINTS, 0, 1)
   }
 }
 
@@ -180,16 +180,24 @@ function expected(fbo) {
   expectedShader.bind()
   expectedShader.uniforms = camera
 
-  vertexArray.bind()
-  vertexArray.draw(gl.TRIANGLES, vertexData.length / 3)
+  normalBuffer.bind()
+  expectedShader.attributes.normal.pointer()
+
+  vertexBuffer.bind()
+  expectedShader.attributes.position.pointer()
+
+  gl.drawArrays(gl.TRIANGLES, 0, vertexCount)
 
   pointShader.bind()
   pointShader.uniforms.model = camera.model
   pointShader.uniforms.view = camera.view
   pointShader.uniforms.projection = camera.projection
+
+  vertexBuffer.bind()
+  pointShader.attributes.position.pointer()
   for(var i=0; i<4; ++i) {
     pointShader.uniforms.lightPosition = camera.lights[i].position
     pointShader.uniforms.diffuse = camera.lights[i].diffuse
-    vertexArray.draw(gl.POINTS, 1)
+    gl.drawArrays(gl.POINTS, 0, 1)
   }
 }

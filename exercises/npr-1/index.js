@@ -34,6 +34,7 @@ require('../common')({
 window.addEventListener('resize', fit(canvas), false)
 
 var vertexNormals = getNormals(dragon.cells, dragon.positions, 0.1)
+var vertexCount = dragon.cells.length*3
 var vertexData = []
 for(var i=0; i<dragon.cells.length; ++i) {
   var loop = dragon.cells[i]
@@ -42,17 +43,7 @@ for(var i=0; i<dragon.cells.length; ++i) {
   }
 }
 var vertexBuffer = createBuffer(gl, vertexData)
-var vertexArray = createVAO(gl, [
-  {
-    "buffer": vertexBuffer,
-    "size": 3 
-  },
-  {
-    "buffer": createBuffer(gl, vertexNormals),
-    "size": 3
-  }
-])
-
+var normalBuffer = createBuffer(gl, vertexNormals)
 
 var actualShader = createShader({
     frag: process.env.file_fragment_glsl
@@ -122,8 +113,15 @@ function actual(fbo) {
   actualShader.bind()
   actualShader.uniforms = camera
 
-  vertexArray.bind()
-  vertexArray.draw(gl.TRIANGLES, vertexData.length / 3)
+  if(actualShader.attributes.normal.location >= 0) {
+    normalBuffer.bind()
+    actualShader.attributes.normal.pointer()
+  }
+
+  vertexBuffer.bind()
+  actualShader.attributes.position.pointer()
+
+  gl.drawArrays(gl.TRIANGLES, 0, vertexCount)
 }
 
 function expected(fbo) {
@@ -138,6 +136,11 @@ function expected(fbo) {
   expectedShader.bind()
   expectedShader.uniforms = camera
 
-  vertexArray.bind()
-  vertexArray.draw(gl.TRIANGLES, vertexData.length / 3)
+  normalBuffer.bind()
+  expectedShader.attributes.normal.pointer()
+
+  vertexBuffer.bind()
+  expectedShader.attributes.position.pointer()
+
+  gl.drawArrays(gl.TRIANGLES, 0, vertexCount)
 }

@@ -1,6 +1,7 @@
 precision mediump float;
 
-uniform vec3 diffuse, lightDirection;
+uniform vec3 diffuse;
+uniform vec3 lightDirection;
 varying vec3 fragNormal;
 
 uniform float numBands;

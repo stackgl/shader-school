@@ -1,8 +1,15 @@
 precision mediump float;
 
-uniform vec3 ambient, diffuse, specular, lightPosition;
+uniform vec3 ambient;
+uniform vec3 diffuse;
+uniform vec3 specular;
+uniform vec3 lightPosition;
+
 uniform float shininess;
-varying vec3 fragNormal, fragPosition, lightDirection;
+
+varying vec3 fragNormal;
+varying vec3 fragPosition;
+varying vec3 lightDirection;
 
 void main() {
   vec3 eyeDirection = normalize(fragPosition);

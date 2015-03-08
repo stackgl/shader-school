@@ -1,8 +1,19 @@
-precision highp float;
+precision mediump float;
 
-uniform mat4 model, view, projection;
-uniform mat4 inverseModel, inverseView, inverseProjection;
-uniform vec3 ambient, diffuse, specular, lightPosition, eyeDirection;
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+uniform mat4 inverseModel;
+uniform mat4 inverseView;
+uniform mat4 inverseProjection;
+
+uniform vec3 ambient;
+uniform vec3 diffuse;
+uniform vec3 specular;
+
+uniform vec3 lightPosition;
+
 uniform float shininess;
 
 void main() {

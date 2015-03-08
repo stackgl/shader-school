@@ -1,10 +1,20 @@
-precision highp float;
+precision mediump float;
 
-attribute vec4 position, normal;
-uniform mat4 model, view, projection;
-uniform mat4 inverseModel, inverseView, inverseProjection;
-uniform vec3 ambient, diffuse, lightDirection;
+attribute vec3 position;
+attribute vec3 normal;
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+uniform mat4 inverseModel;
+uniform mat4 inverseView;
+uniform mat4 inverseProjection;
+
+uniform vec3 ambient;
+uniform vec3 diffuse;
+uniform vec3 lightDirection;
 
 void main() {
-  gl_Position = position;
+  gl_Position = vec4(position, 1);
 }
