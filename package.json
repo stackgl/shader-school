@@ -7,7 +7,7 @@
   "scripts": {
     "pack": "rm -rf answers; rm -rf node_modules && npm install && npm dedupe && node prepack && find . -type file | grep -v workshop.tar.gz | grep -v .git | tar -cvzf ./workshop.tar.gz -T - && node postpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "mkdir answers; cd answers && NODE_ENV=development node .."
+    "start": "node start.js"
   },
   "authors": [
     "Hugh Kennedy <hughskennedy@gmail.com> (http://hughsk.io/)",
