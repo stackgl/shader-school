@@ -6,26 +6,15 @@ In this lesson, you will write a GLSL function which computes the unit angle bis
 
 As an example, if `a = vec2(1,0)` and `b = vec2(0,1)`, then you should return the result `vec2(sqrt(2)/2, sqrt(2)/2)`.
 
-**Hint** It is useful to remember the angle bisector theorem.  In ascii art, suppose we have two vectors, A and B.  Then the angle bisector between A and B is the vector C:
+## Hint
+
+To compute the angle bisector between two vectors, you can use the following formula:
 
 ```
- B
- ^
- |\
- | \^ C
- | /\
- |/  \
- *----> A
- O
+vec3 bisector(vec3 a, vec3 b) {
+  return normalize(length(b) * a + length(a) * b);
+}
 ```
-
-In this situation, the angle bisector theorem tells us the following information about the ratio of the lengths of these vectors:
-
-```glsl
-length(B - C) / length(C - A) == length(B) / length(A)
-```
-
-Using the above equation, solve for the position of C and then normalize it to unit length.
 
 ***
 
