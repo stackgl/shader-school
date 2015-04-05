@@ -62,7 +62,7 @@ Ranges and subtypes of vectors can also be selected using the same symbols.  For
 vec4 p = vec4(1, 2, 3, 4);
 
 vec2 q = p.xy;   //q = vec2(1, 2)
-vec2 r = p.bgr;  //r = vec3(3, 2, 1)
+vec3 r = p.bgr;  //r = vec3(3, 2, 1)
 vec3 a = p.xxy;  //a = vec3(1, 1, 2)
 ```
 
