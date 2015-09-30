@@ -34,7 +34,7 @@
     "clamp": "^1.0.0",
     "conway-hart": "^0.1.0",
     "domify": "^1.2.2",
-    "ecstatic": "^0.5.3",
+    "ecstatic": "^1.0.1",
     "envify": "^1.2.1",
     "findup-element": "0.0.0",
     "frame-debounce": "0.0.0",
