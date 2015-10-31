@@ -9,7 +9,7 @@ void main() {
   vec3 normal = normalize(fragNormal);
   vec3 light = normalize(lightDirection);
   
-  float lambert = dot(normal, light);
+  float lambert = max(dot(normal, light), 0.0);
   float phong = pow(max(dot(reflect(light, normal), eyeDirection), 0.0), shininess);
 
   vec3 lightColor = ambient + diffuse * lambert + specular * phong;
