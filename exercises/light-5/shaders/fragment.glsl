@@ -16,7 +16,7 @@ void main() {
 
   for(int i=0; i<4; ++i) {
     vec3 light = normalize(lightDirection[i]);
-    float lambert = dot(normal, light);
+    float lambert = max(dot(normal, light), 0.0);
     float phong = pow(max(dot(reflect(light, normal), eyeDirection), 0.0), lights[i].shininess);
     lightColor += lambert * lights[i].diffuse + phong * lights[i].specular;
   }
