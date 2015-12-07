@@ -1,5 +1,6 @@
 var mouse        = require('mouse-position')()
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var matchFBO     = require('../../lib/match-fbo')
 var throttle     = require('frame-debounce')
 var dragon       = require('stanford-dragon/3')
@@ -46,24 +47,24 @@ for(var i=0; i<dragon.cells.length; ++i) {
 var vertexBuffer = createBuffer(gl, vertexData)
 var normalBuffer = createBuffer(gl, vertexNormals)
 
-var actualShader = createShader({
-    frag: process.env.file_fragment_glsl
-  , vert: process.env.file_vertex_glsl
-})(gl)
+var actualShader = createShader(gl
+  , glslify(process.env.file_vertex_glsl)
+  , glslify(process.env.file_fragment_glsl))
 actualShader.attributes.position.location = 0
-actualShader.attributes.normal.location = 1
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+if (actualShader.attributes.normal) {
+  actualShader.attributes.normal.location = 1
+}
+
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 expectedShader.attributes.position.location = 0
 expectedShader.attributes.normal.location = 1
 
-var pointShader = createShader({
-    frag: './shaders/point-fragment.glsl'
-  , vert: './shaders/point-vertex.glsl'
-})(gl)
+var pointShader = createShader(gl
+  , glslify('./shaders/point-vertex.glsl')
+  , glslify('./shaders/point-fragment.glsl'))
 pointShader.attributes.position.location = 0
 
 function getCamera() {
@@ -147,7 +148,7 @@ function actual(fbo) {
   actualShader.bind()
   actualShader.uniforms = camera
 
-  if(actualShader.attributes.normal.location > 0) {
+  if(actualShader.attributes.normal && actualShader.attributes.normal.location > 0) {
     normalBuffer.bind()
     actualShader.attributes.normal.pointer()
   }
@@ -176,7 +177,7 @@ function expected(fbo) {
   gl.enable(gl.DEPTH_TEST)
   gl.depthMask(true)
   gl.depthFunc(gl.LEQUAL)
-  
+
   expectedShader.bind()
   expectedShader.uniforms = camera
 

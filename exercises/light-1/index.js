@@ -1,5 +1,6 @@
 var mouse        = require('mouse-position')()
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var matchFBO     = require('../../lib/match-fbo')
 var throttle     = require('frame-debounce')
 var dragon       = require('stanford-dragon/3')
@@ -45,7 +46,7 @@ var vertexBuffer = createBuffer(gl, vertexData)
 var vertexArray = createVAO(gl, [
   {
     "buffer": vertexBuffer,
-    "size": 3 
+    "size": 3
   },
   {
     "buffer": createBuffer(gl, vertexNormals),
@@ -54,17 +55,15 @@ var vertexArray = createVAO(gl, [
 ])
 
 
-var actualShader = createShader({
-    frag: process.env.file_fragment_glsl
-  , vert: process.env.file_vertex_glsl
-})(gl)
+var actualShader = createShader(gl
+  , glslify(process.env.file_vertex_glsl)
+  , glslify(process.env.file_fragment_glsl))
 actualShader.attributes.position.location = 0
 //actualShader.attributes.normal.location = 1
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 
 expectedShader.attributes.position.location = 0
 //expectedShader.attributes.normal.location = 1

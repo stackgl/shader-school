@@ -4,7 +4,8 @@ var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
 var compare      = require('gl-compare')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var createFBO    = require('gl-fbo')
 var fs           = require('fs')
 
@@ -35,18 +36,15 @@ function render() {
 }
 
 var shaders = {
-  actual: createShader({
-      frag: process.env.file_render_frag
-    , vert: './shaders/triangle.vert'
-  })(gl),
-  expected: createShader({
-      frag: './shaders/expected.frag'
-    , vert: './shaders/triangle.vert'
-  })(gl),
-  display: createShader({
-      frag: './shaders/display.frag'
-    , vert: './shaders/triangle.vert'
-  })(gl)
+  actual: createShader(gl
+    , glslify('./shaders/triangle.vert')
+    , glslify(process.env.file_render_frag)),
+  expected: createShader(gl
+    , glslify('./shaders/triangle.vert')
+    , glslify('./shaders/expected.frag')),
+  display: createShader(gl
+    , glslify('./shaders/triangle.vert')
+    , glslify('./shaders/display.frag'))
 }
 
 var outputs = {

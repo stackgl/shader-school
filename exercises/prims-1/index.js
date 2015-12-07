@@ -6,7 +6,8 @@ var getContext   = require('gl-context')
 var compare      = require('gl-compare')
 var createBuffer = require('gl-buffer')
 var createVAO    = require('gl-vao')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var fs           = require('fs')
 var now          = require('right-now')
 var glm          = require('gl-matrix')
@@ -76,19 +77,21 @@ require('../common')({
 
 window.addEventListener('resize', fit(canvas), false)
 
-var actualShader = createShader({
-    frag: process.env.file_fragment_glsl
-  , vert: process.env.file_vertex_glsl
-})(gl)
+var actualShader = createShader(gl
+  , glslify(process.env.file_vertex_glsl)
+  , glslify(process.env.file_fragment_glsl))
 
 actualShader.attributes.position.location = 0
-actualShader.attributes.color.location = 1
-actualShader.attributes.size.location = 2
+if (actualShader.attributes.color) {
+  actualShader.attributes.color.location = 1
+}
+if (actualShader.attributes.size) {
+  actualShader.attributes.size.location = 2
+}
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 
 expectedShader.attributes.position.location = 0
 expectedShader.attributes.color.location = 1

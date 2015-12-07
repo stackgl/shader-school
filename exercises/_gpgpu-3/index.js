@@ -5,7 +5,8 @@ var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
 var compare      = require('gl-compare')
 var ndarray      = require('ndarray')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var createFBO    = require('gl-fbo')
 var fs           = require('fs')
 
@@ -41,24 +42,20 @@ function render() {
 
 var shaders = {
   actual: {
-    logic: createShader({
-        frag: process.env.file_logic_frag
-      , vert: './shaders/triangle.vert'
-    })(gl),
-    render: createShader({
-        frag: process.env.file_render_frag
-      , vert: './shaders/triangle.vert'
-    })(gl)
+    logic: createShader(gl
+      , glslify('./shaders/triangle.vert')
+      , glslify(process.env.file_logic_frag)),
+    render: createShader(gl
+      , glslify('./shaders/triangle.vert')
+      , glslify(process.env.file_render_frag))
   },
   expected: {
-    logic: createShader({
-        frag: './shaders/logic_solution.frag'
-      , vert: './shaders/triangle.vert'
-    })(gl),
-    render: createShader({
-        frag: './shaders/render_solution.frag'
-      , vert: './shaders/triangle.vert'
-    })(gl)
+    logic: createShader(gl
+      , glslify('./shaders/triangle.vert')
+      , glslify('./shaders/logic_solution.frag')),
+    render: createShader(gl
+      , glslify('./shaders/triangle.vert')
+      , glslify('./shaders/render_solution.frag'))
   }
 }
 

@@ -6,7 +6,8 @@ var getContext   = require('gl-context')
 var compare      = require('gl-compare')
 var createTexture= require('gl-texture2d')
 var baboon       = require('baboon-image')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var now          = require('right-now')
 var fs           = require('fs')
 
@@ -40,8 +41,8 @@ require('../common')({
 
 window.addEventListener('resize', fit(canvas), false)
 
-var actualShader = createShader({
-  vertex: [
+var actualShader = createShader(gl
+  , glslify([
 'precision highp float;',
 '#pragma glslify: matrixPower = require('+process.env.file_mpow_glsl+')',
 'attribute vec2 position;',
@@ -52,21 +53,18 @@ var actualShader = createShader({
   'gl_Position = vec4(position, 0, 1);',
   'vec2 textureCoordinate = vec2(0.5,0.5) - 0.5 * position;',
   'coord = matrixPower(mat, n) * textureCoordinate;',
-'}'].join('\n'),
-  fragment: [
+'}'].join('\n'), {inline: true})
+  , glslify([
 'precision highp float;',
 'uniform sampler2D texture;',
 'varying vec2 coord;',
 'void main() {',
   'gl_FragColor = texture2D(texture, coord);',
-'}'].join('\n'),
-  inline: true
-})(gl)
+'}'].join('\n'), {inline: true}))
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 
 var count = 0
 

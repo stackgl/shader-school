@@ -4,7 +4,8 @@ var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
 var compare      = require('gl-compare')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var now          = require('right-now')
 var fs           = require('fs')
 
@@ -27,9 +28,9 @@ require('../common')({
 
 window.addEventListener('resize', fit(canvas), false)
 
-var actualShader = createShader({
-  vertex: "attribute vec2 uv;void main() {gl_Position = vec4(uv,0,1);}",
-  fragment: [
+var actualShader = createShader(gl
+  , glslify("attribute vec2 uv;void main() {gl_Position = vec4(uv,0,1);}", {inline: true})
+  , glslify([
 "precision mediump float;",
 "uniform vec2 screenSize, boxLo, boxHi;",
 "#pragma glslify: inBox=require(" + process.env.file_box_glsl + ")",
@@ -40,14 +41,11 @@ var actualShader = createShader({
   "} else {",
     "gl_FragColor = vec4(0,0,0,1);",
   "}",
-"}"].join("\n"),
-  inline: true
-})(gl)
+"}"].join("\n"), {inline: true}))
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 
 var boxLo = [0,0]
 var boxHi = [0,0]

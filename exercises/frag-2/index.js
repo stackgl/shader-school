@@ -4,7 +4,8 @@ var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
 var compare      = require('gl-compare')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var fs           = require('fs')
 var now          = require('right-now')
 
@@ -27,15 +28,13 @@ require('../common')({
 
 window.addEventListener('resize', fit(canvas), false)
 
-var actualShader = createShader({
-    frag: process.env.file_fragment_glsl
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var actualShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify(process.env.file_fragment_glsl))
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 
 var clearColor = [0,0,0,0]
 

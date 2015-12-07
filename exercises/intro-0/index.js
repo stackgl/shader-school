@@ -1,5 +1,6 @@
 var mouse        = require('mouse-position')()
-var createShader = require('glslify')
+var glslify      = require('glslify')
+var createShader = require('gl-shader')
 var matchFBO     = require('../../lib/match-fbo')
 var throttle     = require('frame-debounce')
 var dragon       = require('stanford-dragon/3')
@@ -54,8 +55,9 @@ var vertexArray = createVAO(gl, [
   }
 ])
 
-var actualShader = createShader({
-    frag: [
+var actualShader = createShader(gl
+  , glslify(fs.readFileSync(__dirname + '/shaders/vertex.glsl', 'utf8'), {inline: true})
+  , glslify([
       'precision mediump float;'
 
     , 'uniform vec3 ambient, specular, lightPosition;'
@@ -76,16 +78,13 @@ var actualShader = createShader({
     , '  gl_FragColor = vec4(lightColor + boost, 1);'
     , '}'
     ].join('\n')
-  , vert: fs.readFileSync(__dirname + '/shaders/vertex.glsl', 'utf8')
-  , inline: true
-})(gl)
+    , { inline: true}))
 actualShader.attributes.position.location = 0
 actualShader.attributes.normal.location = 1
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 expectedShader.attributes.position.location = 0
 expectedShader.attributes.normal.location = 1
 
