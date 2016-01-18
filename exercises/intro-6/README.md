@@ -85,9 +85,9 @@ Instead, the `*` operator has the effect of multiplying matrices and transformin
 mat2 m = mat2(1, 2,
               3, 4);
 
-vec2 v = m * vec2(1, 2);  //v = vec2(5, 8)
+vec2 v = m * vec2(1, 2);  //v = vec2(7, 10)
 
 //In GLSL, switching order of arguments is equivalent
 //to transposing:
-vec2 u = vec2(1, 2) * m;  //u = vec2(7, 10)
+vec2 u = vec2(1, 2) * m;  //u = vec2(5, 11)
 ```
