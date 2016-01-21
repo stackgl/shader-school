@@ -7,7 +7,8 @@ var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
 var compare      = require('gl-compare')
 var ndarray      = require('ndarray')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var createFBO    = require('gl-fbo')
 var fs           = require('fs')
 var now          = require('right-now')
@@ -28,15 +29,13 @@ require('../common')({
 })
 
 window.addEventListener('resize', fit(canvas), false)
-var renderShader = createShader({
-    frag: process.env.file_render_glsl
-  , vert: './shaders/pass-thru.glsl'
-})(gl)
+var renderShader = createShader(gl
+  , glslify('./shaders/pass-thru.glsl')
+  , glslify(process.env.file_render_glsl))
 
-var updateShader = createShader({
-    frag: process.env.file_update_glsl
-  , vert: './shaders/pass-thru.glsl'
-})(gl)
+var updateShader = createShader(gl
+  , glslify('./shaders/pass-thru.glsl')
+  , glslify(process.env.file_update_glsl))
 
 var buffers = new Array(numBuffers)
 for(var i=0; i<numBuffers; ++i) {

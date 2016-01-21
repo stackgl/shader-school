@@ -6,7 +6,8 @@ var getContext   = require('gl-context')
 var compare      = require('gl-compare')
 var createBuffer = require('gl-buffer')
 var createVAO    = require('gl-vao')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var fs           = require('fs')
 var now          = require('right-now')
 var glm          = require('gl-matrix')
@@ -22,12 +23,12 @@ var comparison = compare(gl, actual, expected)
 var vertexPositions = []
 for(var i=0; i<128; ++i) {
   for(var j=0; j<128; ++j) {
-    vertexPositions.push(i, j, 
-                         i+1, j, 
+    vertexPositions.push(i, j,
+                         i+1, j,
                          i, j+1,
 
-                         i, j+1, 
-                         i+1, j, 
+                         i, j+1,
+                         i+1, j,
                          i+1, j+1)
   }
 }
@@ -52,16 +53,14 @@ require('../common')({
 
 window.addEventListener('resize', fit(canvas), false)
 
-var actualShader = createShader({
-    frag: process.env.file_fragment_glsl
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var actualShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify(process.env.file_fragment_glsl))
 actualShader.attributes.position.location = 0
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 expectedShader.attributes.position.location = 0
 
 var cameraParams = {
@@ -76,7 +75,7 @@ var cameraParams = {
 function render() {
 
   var t = now() * 0.001
- 
+
   mat4.perspective(
     cameraParams.projection,
     Math.PI/4.0,

@@ -4,11 +4,12 @@ var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
 var compare      = require('gl-compare')
-var createAxes   = require('gl-axes')
+var createAxes   = require('gl-axes3d')
 var glm          = require('gl-matrix')
 var createBuffer = require('gl-buffer')
 var createVAO    = require('gl-vao')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var path         = require('path')
 var fs           = require('fs')
 var now          = require('right-now')
@@ -21,9 +22,9 @@ var gl         = getContext(canvas, render)
 var comparison = compare(gl, actual, expected)
 var axes       = createAxes(gl, {
   bounds: [[-1,-1,-1], [1,1,1]],
-  axesColors: [[1,1,1], [1,1,1], [1,1,1]],
+  lineColor: [[1,1,1], [1,1,1], [1,1,1]],
   gridColor: [1,1,1],
-  labels: [ "x", "f(x,y)", "y" ]
+  labelText: [ "x", "f(x,y)", "y" ]
 })
 
 var count = 0
@@ -60,8 +61,8 @@ require('../common')({
 
 window.addEventListener('resize', fit(canvas), false)
 
-var actualShader = createShader({
-  vertex: "attribute vec2 uv;\
+var actualShader = createShader(gl
+  , glslify("attribute vec2 uv;\
 uniform mat4 view;\
 uniform mat4 projection;\
 varying float value;\n\
@@ -71,21 +72,17 @@ void main() {\
   float f = func(coord.x, coord.y);\
   gl_Position = projection * view * vec4(coord.x, f, coord.y, 1.0);\
   value = f;\
-}",
-  fragment: "precision highp float;\
+}", {inline: true})
+  , glslify("precision highp float;\
 varying float value;\
 void main() {\
   vec3 color = vec3(sin(value), cos(value+0.7853981633974483), cos(value));\
   gl_FragColor = vec4(normalize(color), 1.0);\
-}",
-  inline: true
-})(gl)
+}", {inline: true}))
 
-
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 
 var camera
 
@@ -124,7 +121,7 @@ function actual(fbo) {
 
   actualShader.bind()
   actualShader.uniforms = camera
-  
+
   vao.bind()
   vao.draw(gl.TRIANGLES, count)
 }

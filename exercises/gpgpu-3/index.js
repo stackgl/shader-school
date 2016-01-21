@@ -6,7 +6,8 @@ var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
 var compare      = require('gl-compare')
 var ndarray      = require('ndarray')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var createFBO    = require('gl-fbo')
 var fs           = require('fs')
 
@@ -37,15 +38,13 @@ var stateSize  = 512
 var tickCount  = 0
 var numBuffers = 3
 
-var renderShader = createShader({
-    frag: './shaders/render.glsl'
-  , vert: './shaders/pass-thru.glsl'
-})(gl)
+var renderShader = createShader(gl
+  , glslify('./shaders/pass-thru.glsl')
+  , glslify('./shaders/render.glsl'))
 
-var pointShader = createShader({
-    frag: './shaders/point-fragment.glsl'
-  , vert: './shaders/point-vertex.glsl'
-})(gl)
+var pointShader = createShader(gl
+  , glslify('./shaders/point-vertex.glsl')
+  , glslify('./shaders/point-fragment.glsl'))
 
 function createStateBuffers(n) {
   var result = new Array(n)
@@ -57,17 +56,15 @@ function createStateBuffers(n) {
 
 var shaders = {
   actual: {
-    logic: createShader({
-        frag: process.env.file_wave_glsl
-      , vert: './shaders/pass-thru.glsl'
-    })(gl),
+    logic: createShader(gl
+      , glslify('./shaders/pass-thru.glsl')
+      , glslify(process.env.file_wave_glsl)),
     buffers: createStateBuffers(2)
   },
   expected: {
-    logic: createShader({
-        frag: './shaders/update.glsl'
-      , vert: './shaders/pass-thru.glsl'
-    })(gl),
+    logic: createShader(gl
+      , glslify('./shaders/pass-thru.glsl')
+      , glslify('./shaders/update.glsl')),
     buffers: createStateBuffers(2)
   }
 }

@@ -9,7 +9,8 @@ var createBuffer = require('gl-buffer')
 var ndarray      = require('ndarray')
 var createVAO    = require('gl-vao')
 var createFBO    = require('gl-fbo')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var fs           = require('fs')
 var now          = require('right-now')
 var glm          = require('gl-matrix')
@@ -79,18 +80,15 @@ positions.next.color[0].setPixels(ndarray(posdata, [SIZE, SIZE, 4]))
 speeds.prev.color[0].setPixels(ndarray(speeddata, [SIZE, SIZE, 4]))
 speeds.next.color[0].setPixels(ndarray(speeddata, [SIZE, SIZE, 4]))
 
-var updateSpeed = createShader({
-    frag: process.env.file_speed_glsl
-  , vert: process.env.file_triangle_glsl
-})(gl)
-var updatePos   = createShader({
-    frag: process.env.file_position_glsl
-  , vert: process.env.file_triangle_glsl
-})(gl)
-var renderShader = createShader({
-    frag: process.env.file_render_frag
-  , vert: process.env.file_render_vert
-})(gl)
+var updateSpeed = createShader(gl
+  , glslify(process.env.file_triangle_glsl)
+  , glslify(process.env.file_speed_glsl))
+var updatePos   = createShader(gl
+  , glslify(process.env.file_triangle_glsl)
+  , glslify(process.env.file_position_glsl))
+var renderShader = createShader(gl
+  , glslify(process.env.file_render_vert)
+  , glslify(process.env.file_render_frag))
 
 function render() {
   var t = now() * 0.001

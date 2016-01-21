@@ -4,12 +4,12 @@ var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
 var compare      = require('gl-compare')
-var createAxes   = require('gl-axes')
 var createFBO    = require('gl-fbo')
 var glm          = require('gl-matrix')
 var createBuffer = require('gl-buffer')
 var createVAO    = require('gl-vao')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var fs           = require('fs')
 var now          = require('right-now')
 var mat4         = glm.mat4
@@ -32,7 +32,7 @@ var testVectors = [
   [0.4,8]
 ]
 
-//Draw 3 arrows, format = 
+//Draw 3 arrows, format =
 //  weights
 //  offset
 var buffer = []
@@ -64,9 +64,8 @@ require('../common')({
 
 window.addEventListener('resize', fit(canvas), false)
 
-var actualShader = createShader({
-    frag: 'void main() { gl_FragColor = vec4(1, 1, 1, 1); }'
-  , vert: '\
+var actualShader = createShader(gl
+  , glslify('\
 precision mediump float;\
 attribute vec4 vertexData;\
 uniform vec2 aVector;\
@@ -80,17 +79,22 @@ void main() {\
   float offsetScale = vertexData.w;\
   vec2 headShift = offsetScale * normalize(vec2(-base.y, base.x)) - abs(offsetScale) * normalize(base);\
   gl_Position = vec4(base + headShift, 0.0, 1.0);\
-}'
-  , inline: true
-})(gl)
+}', {inline: true})
+  , glslify('void main() { gl_FragColor = vec4(1, 1, 1, 1); }', {inline: true}))
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 
-var verifyShader = createShader({
-    frag: [
+var verifyShader = createShader(gl
+  , glslify([
+  'attribute vec2 position;',
+  'varying vec2 aVector;',
+  'void main() {',
+    'gl_Position = vec4(position,0,1);',
+    'aVector = position;',
+  '}'].join('\n'), {inline: true})
+  , glslify([
   'precision highp float;',
   '#pragma glslify: actualFunc=require(' + process.env.file_vectors_glsl + ')',
   '#pragma glslify: expectedFunc=require(./shaders/expected.glsl)',
@@ -104,16 +108,7 @@ var verifyShader = createShader({
     '} else {',
       'gl_FragColor = vec4(0,0,0,0);',
     '}',
-  '}'].join('\n')
-  , vert: [
-  'attribute vec2 position;',
-  'varying vec2 aVector;',
-  'void main() {',
-    'gl_Position = vec4(position,0,1);',
-    'aVector = position;',
-  '}'].join('\n')
-  , inline: true
-})(gl)
+  '}'].join('\n'), {inline: true}))
 
 var aVector = [0,0]
 var bVector = [0,0]

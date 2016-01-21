@@ -4,12 +4,12 @@ var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
 var compare      = require('gl-compare')
-var createAxes   = require('gl-axes')
 var createFBO    = require('gl-fbo')
 var glm          = require('gl-matrix')
 var createBuffer = require('gl-buffer')
 var createVAO    = require('gl-vao')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var fs           = require('fs')
 var now          = require('right-now')
 var mat4         = glm.mat4
@@ -21,7 +21,7 @@ var gl         = getContext(canvas, render)
 var comparison = compare(gl, actual, expected)
 var verifyFBO  = createFBO(gl, [512,512])
 
-//Draw 3 arrows, format = 
+//Draw 3 arrows, format =
 //  weights
 //  offset
 var buffer = [
@@ -59,9 +59,8 @@ require('../common')({
 
 window.addEventListener('resize', fit(canvas), false)
 
-var actualShader = createShader({
-    frag: 'void main() { gl_FragColor = vec4(1, 1, 1, 1); }'
-  , vert: '\
+var actualShader = createShader(gl
+  , glslify('\
 precision mediump float;\
 attribute vec4 vertexData;\
 uniform highp float angle;\n\
@@ -80,17 +79,24 @@ void main() {\
     shift.y = -min(0.8*abs(op), abs(shift.y));\
   }\
   gl_Position = vec4(vec2(-0.5, -0.5) - shift, 0.0, 1.0);\
-}'
-  , inline: true
-})(gl)
+}', {inline: true})
+  , glslify('void main() { gl_FragColor = vec4(1, 1, 1, 1); }', {inline: true}))
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 
-var verifyShader = createShader({
-    frag: [
+var verifyShader = createShader(gl
+  , glslify([
+  'attribute vec2 position;',
+  'varying float theta;',
+  'varying float radius;',
+  'void main() {',
+    'theta=45.0*(position.x+1.0);',
+    'radius=position.y+1.5;',
+    'gl_Position = vec4(position,0,1);',
+  '}'].join('\n'), {inline: true})
+  , glslify([
   'precision highp float;',
   '#pragma glslify: actualFunc=require(' + process.env.file_sides_glsl + ')',
   '#pragma glslify: expectedFunc=require(./shaders/expected.glsl)',
@@ -106,18 +112,7 @@ var verifyShader = createShader({
     '} else {',
       'gl_FragColor = vec4(0,0,0,0);',
     '}',
-  '}'].join('\n')
-  , vert: [
-  'attribute vec2 position;',
-  'varying float theta;',
-  'varying float radius;',
-  'void main() {',
-    'theta=45.0*(position.x+1.0);',
-    'radius=position.y+1.5;',
-    'gl_Position = vec4(position,0,1);',
-  '}'].join('\n')
-  , inline: true
-})(gl)
+  '}'].join('\n'), {inline: true}))
 
 var angle
 

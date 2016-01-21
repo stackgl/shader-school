@@ -3,7 +3,8 @@ var throttle     = require('frame-debounce')
 var fit          = require('canvas-fit')
 var getContext   = require('gl-context')
 var compare      = require('gl-compare')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var fs           = require('fs')
 
 var container  = document.getElementById('container')
@@ -23,15 +24,13 @@ require('../common')({
 
 window.addEventListener('resize', fit(canvas), false)
 
-var actualShader = createShader({
-    frag: process.env.file_triangle_frag
-  , vert: './shaders/triangle.vert'
-})(gl)
+var actualShader = createShader(gl
+  , glslify('./shaders/triangle.vert')
+  , glslify(process.env.file_triangle_frag))
 
-var expectedShader = createShader({
-    frag: './shaders/triangle.frag'
-  , vert: './shaders/triangle.vert'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/triangle.vert')
+  , glslify('./shaders/triangle.frag'))
 
 function render() {
   comparison.run()

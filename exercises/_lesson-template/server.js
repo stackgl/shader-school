@@ -2,7 +2,7 @@ var path = require('path')
 
 module.exports = function(sourceFiles) {
   var glslify = ['-t', require.resolve('glslify')]
-  var live    = ['-t', require.resolve('glslify-live')]
+  //var live    = ['-t', require.resolve('glslify-live')]
   var brfs    = ['-t', require.resolve('brfs')]
   var envify  = ['-t', '[', require.resolve('envify')]
 
@@ -23,7 +23,7 @@ module.exports = function(sourceFiles) {
     , watchify: false
     , bundlerFlags: []
       .concat(envify)
-      .concat(live)
+      //.concat(live)
       .concat(glslify)
       .concat(brfs)
   })

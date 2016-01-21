@@ -6,7 +6,8 @@ var getContext   = require('gl-context')
 var compare      = require('gl-compare')
 var createBuffer = require('gl-buffer')
 var createVAO    = require('gl-vao')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var fs           = require('fs')
 var now          = require('right-now')
 var glm          = require('gl-matrix')
@@ -31,20 +32,13 @@ require('../common')({
 
 window.addEventListener('resize', fit(canvas), false)
 
+var actualShader = createShader(gl
+  , glslify(process.env.file_transforms_glsl)
+  , glslify('./shaders/fragment.glsl'))
 
-
-
-
-var actualShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: process.env.file_transforms_glsl
-})(gl)
-
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
-
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 
 function getCamera() {
   var projection = mat4.perspective(
@@ -84,7 +78,7 @@ function actual(fbo) {
 
   actualShader.bind()
   actualShader.uniforms = camera
-  
+
   vertexArray.bind()
   vertexArray.draw(gl.POINTS, vertexData.length / 3)
 }

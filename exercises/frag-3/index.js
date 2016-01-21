@@ -8,7 +8,8 @@ var getContext   = require('gl-context')
 var compare      = require('gl-compare')
 var createFBO    = require('gl-fbo')
 var createTexture= require('gl-texture2d')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var fs           = require('fs')
 var baboon       = require('baboon-image')
 var now          = require('right-now')
@@ -56,15 +57,13 @@ window.addEventListener('resize', fit(canvas), false)
 var baboonTexture = createTexture(gl, baboon.step(-1,1))
 baboonTexture.wrap = gl.REPEAT
 
-var actualShader = createShader({
-    frag: process.env.file_fragment_glsl
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var actualShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify(process.env.file_fragment_glsl))
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 
 var tick
 

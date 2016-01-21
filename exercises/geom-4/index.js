@@ -7,7 +7,8 @@ var getContext   = require('gl-context')
 var compare      = require('gl-compare')
 var createBuffer = require('gl-buffer')
 var createVAO    = require('gl-vao')
-var createShader = require('glslify')
+var createShader = require('gl-shader')
+var glslify      = require('glslify')
 var fs           = require('fs')
 var now          = require('right-now')
 var glm          = require('gl-matrix')
@@ -51,9 +52,8 @@ var vertexArray = createVAO(gl, [
     "size": 3
   }])
 
-var actualShader = createShader({
-    frag: 'void main(){gl_FragColor=vec4(1,1,1,1);}'
-  , vert: [
+var actualShader = createShader(gl
+  , glslify([
 'precision highp float;',
 'attribute vec3 position;',
 'uniform mat4 view, projection;',
@@ -61,14 +61,12 @@ var actualShader = createShader({
 '\n\n#pragma glslify: transform = require(' + process.env.file_reflect_glsl + ')\n\n',
 'void main() {',
   'gl_Position = projection * view * transform(planeVec) * vec4(position, 1);',
-'}'].join('\n')
-  , inline: true
-})(gl)
+'}'].join('\n'), {inline: true})
+  , glslify('void main(){gl_FragColor=vec4(1,1,1,1);}', {inline: true}))
 
-var expectedShader = createShader({
-    frag: './shaders/fragment.glsl'
-  , vert: './shaders/vertex.glsl'
-})(gl)
+var expectedShader = createShader(gl
+  , glslify('./shaders/vertex.glsl')
+  , glslify('./shaders/fragment.glsl'))
 
 function getCamera() {
   var projection = mat4.perspective(
@@ -105,7 +103,7 @@ function actual(fbo) {
 
   actualShader.bind()
   actualShader.uniforms = camera
-  
+
   vertexArray.bind()
   vertexArray.draw(gl.LINES, vertexData.length / 3)
 }
