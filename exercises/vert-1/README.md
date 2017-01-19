@@ -13,7 +13,7 @@ Edit the file called <a href="/open/vert-1" target="_blank">`vertex.glsl` in the
 
 ## Vertex shaders
 
-Vertex shaders control how geometry is rendered in WebGL, and are executed on the GPU before fragment shaders. A vertex in OpenGL is one of the corners of a primitive.  Primitives in OpenGL are simplices of dimension < 3, and are called:
+Vertex shaders control how geometry is rendered in WebGL, and are executed on the GPU before fragment shaders. A vertex in WebGL is one of the corners of a primitive.  Primitives in WebGL are simplices of dimension < 3, and are called:
 
 * Points - 1 vertex
 * Lines - 2 vertices
