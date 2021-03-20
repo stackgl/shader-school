@@ -2,7 +2,7 @@
 
 ## Exercise
 
-Write a fragment shader which draws a disk of radius `128` centered at the point `vec2(256,256)` in device coordinates. The points inside the disk should be colored with `CIRCLE_COLOR` and the points outside should be colored with `OUTSIDE_COLOR`. To help get you started, a file called `fragment.glsl` has been created in <a href="/open/frag-1" target="_blank">this project's directory</a> to help get you started.
+Write a fragment shader which draws a disk of radius `128` centered at the point `vec2(256,256)` in device coordinates. The points inside the disk should be colored with `CIRCLE_COLOR` and the points outside should be colored with `OUTSIDE_COLOR`. A file called `fragment.glsl` has been created in <a href="/open/frag-1" target="_blank">this project's directory</a> to help get you started.
 
 ***
 
