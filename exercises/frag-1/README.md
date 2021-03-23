@@ -33,6 +33,6 @@ void main() {
 
 Every fragment shader also receives a special input variable called `gl_FragCoord`. `gl_FragCoord` is a `vec4` which returns the coordinate of the fragment in device coordinates. Specifically:
 
-* `gl_FragCoord.xy` is the coordinate of the fragment in units relative to the top-left of the buffer.  The y-component is the row of the fragment, and the x-coordinate is the column.
+* `gl_FragCoord.xy` is the coordinate of the fragment in units relative to the bottom-left of the buffer.  The y-component is the row of the fragment, and the x-coordinate is the column.
 * `gl_FragCoord.z` is the depth value of the fragment, in units between `[0,1]`, where `0` represents the closest possible z value and `1` represents the farthest possible z-value.
 * `gl_FragCoord.w` is the reciprocal of the homogeneous part of the fragment's position in clip coordinates
