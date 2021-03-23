@@ -61,14 +61,14 @@ var shaders = {
         frag: process.env.file_wave_glsl
       , vert: './shaders/pass-thru.glsl'
     })(gl),
-    buffers: createStateBuffers(2)
+    buffers: createStateBuffers(numBuffers)
   },
   expected: {
     logic: createShader({
         frag: './shaders/update.glsl'
       , vert: './shaders/pass-thru.glsl'
     })(gl),
-    buffers: createStateBuffers(2)
+    buffers: createStateBuffers(numBuffers)
   }
 }
 
